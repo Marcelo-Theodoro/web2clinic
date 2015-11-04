@@ -1,0 +1,5 @@
+{{extend 'layout.html'}}
+{{for n in consultas:}}
+{{=n}}
+_________________________
+{{pass}}

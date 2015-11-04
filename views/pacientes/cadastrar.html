@@ -1,0 +1,207 @@
+{{extend 'layout.html'}}
+<div class="col-md-12">
+	<span>
+		<h3>Cadastrar novo paciente.</h3> <br />
+	</span>
+	<form action="#" enctype="multipart/form-data" method="post">
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Nome</label>
+				<div class="col-sm-6">
+					<input class="form-control string" name="nome" type="text" value="" />
+					<span class="help-block"></span>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">CPF</label>
+				<div class="col-sm-6">
+					<input class="form-control string" name="cpf" type="text" value="" />
+					<span class="help-block"></span>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Profissão</label>
+				<div class="col-sm-6">
+					<input class="form-control string" name="profissão" type="text" value="" />
+					<span class="help-block"></span>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2" >Endereço</label>
+				<div class="col-sm-6">
+					<input class="text form-control" name="endereco" ></input>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2" >Cidade</label>
+				<div class="col-sm-6">
+					<input class="text form-control" name="cidade" ></input>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2" >UF</label>
+				<div class="col-sm-6">
+					<select class="generic-widget form-control" name="uf">
+						<option value=""></option>
+						<option value="SP">SP</option>
+						<option value="AC">AC</option>
+						<option value="AL">AL</option>
+						<option value="AP">AP</option>
+						<option value="AM">AM</option>
+						<option value="BA">BA</option>
+						<option value="CE">CE</option>
+						<option value="DF">DF</option>
+						<option value="ES">ES</option>
+						<option value="GO">GO</option>
+						<option value="MA">MA</option>
+						<option value="MT">MT</option>
+						<option value="MS">MS</option>
+						<option value="MG">MG</option>
+						<option value="PR">PR</option>
+						<option value="PB">PB</option>
+						<option value="PA">PA</option>
+						<option value="PE">PE</option>
+						<option value="PI">PI</option>
+						<option value="RJ">RJ</option>
+						<option value="RN">RN</option>
+						<option value="RS">RS</option>
+						<option value="RO">RO</option>
+						<option value="RR">RR</option>
+						<option value="SC">SC</option>
+						<option value="SE">SE</option>
+						<option value="TO">TO</option>
+					</select>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2" >CEP</label>
+				<div class="col-sm-6">
+					<input class="text form-control" name="cep" ></input>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Telefone</label>
+				<div class="col-sm-6">
+					<input class="form-control string" name="telefone" type="text" value=""/>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Data de nascimento</label>
+				<div class="col-sm-6">
+					<input class="date form-control" name="nascimento" type="text" value="" />
+					<span class="help-block">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Sexo</label>
+				<div class="col-sm-6">
+					<select class="generic-widget form-control" name="sexo">
+						<option value="Masculino">Masculino</option>
+						<option selected="selected "value="Feminino">Feminino</option>
+					</select>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Escolaridade</label>
+				<div class="col-sm-6">
+					<select class="generic-widget form-control" name="escolaridade">
+						<option value=""></option>
+						<option value="Nenhuma">Nenhuma</option>
+						<option value="1º grau">1º grau</option>
+						<option value="2º grau">2º grau</option>
+						<option value="Superior">Superior</option>
+					</select>
+					<span class="help-block">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Estado Civil/União</label>
+				<div class="col-sm-6">
+					<select class="generic-widget form-control" name="estadocivil">
+						<option value=""></option>
+						<option value="Casada">Casada</option>
+						<option value="Solteira (sem união estável)">Solteira (sem união estável)</option>
+						<option value="Solteira (com união estável)">Solteira (com união estável)</option>
+						<option value="Outra">Outra</option>
+					</select>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Cor/Raça</label>
+				<div class="col-sm-6">
+					<select class="generic-widget form-control" name="cor">
+						<option value=""></option>
+						<option value="Branca">Branca</option>
+						<option value="Negra">Negra</option>
+						<option value="Parda">Parda</option>
+						<option value="Indígena">Indígena</option>
+						<option value="Asiática">Asiática</option>
+					</select>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Foto</label>
+				<div class="col-sm-6">
+					<input class="upload input-file" name="image" type="file" />
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group" >
+				<label class="control-label col-sm-2" >Observações</label>
+				<div class="col-sm-6">
+					<textarea class="text form-control" cols="40" name="observacoes" rows="10"></textarea>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-2">
+					<input class="btn btn-primary" type="submit" value="Gravar informações" />
+				</div>
+			</div>
+		</div>
+		{{=form.hidden_fields()}}
+	</form>
+</div>

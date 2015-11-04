@@ -1,0 +1,696 @@
+{{extend 'base_form.html'}}
+<form action="#" enctype="multipart/form-data" method="post">
+    <div class="thumbnail">
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Movito da consulta</label>
+                <div class="col-sm-10">
+                    <textarea class="text form-control" cols="20" name="motivo_consulta" rows="5"></textarea>
+                    <span class="help-block"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-sm-1">
+                <p>ANTECEDENTES PESSOAIS: </p>
+            </div>
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <div class="col-sm-8">Hipertensão :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="hipertensao" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control string" name="hipertensao_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <div class="col-sm-8">Tireoidopatia :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="tireoidopatia" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control string" name="tireoidopatia_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">
+                            <div class="col-sm-8">Tromboflebite :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="tromboflebite" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-9">
+                            <input class="form-control string" name="tromboflebite_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">
+                            <div class="col-sm-8">Gastrite/colicistopatia :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="gastriste_colocistopatia" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-9">
+                            <input class="form-control string" name="gastriste_colocistopatia_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">
+                            <div class="col-sm-10">Doença cárdio-cerebrovascular :</div> 
+                            <div class="col-sm-2">
+                                <input class="boolean" name="doenca_cardio_cerebrovascular" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-9">
+                            <input class="form-control string" name="doenca_cardio_cerebrovascular_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">
+                                <div class="col-sm-9">Nefropatia :</div> 
+                                <div class="col-sm-3">
+                                    <input class="boolean" name="nefropatia" type="checkbox" value="on">
+                                </div>
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control string" name="nefropatia_texto" type="text" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">
+                                <div class="col-sm-9">Hepatopatia :</div> 
+                                <div class="col-sm-3">
+                                    <input class="boolean" name="hepatopatia" type="checkbox" value="on">
+                                </div>
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control string" name="hepatopatia_texto" type="text" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">
+                                <div class="col-sm-9">Cirugia :</div> 
+                                <div class="col-sm-3">
+                                    <input class="boolean" name="cirugia" type="checkbox" value="on">
+                                </div>
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control string" name="cirugia_texto" type="text" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">
+                                <div class="col-sm-9">Câncer :</div> 
+                                <div class="col-sm-3">
+                                    <input class="boolean" name="cancer" type="checkbox" value="on">
+                                </div>
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control string" name="cancer_texto" type="text" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">
+                                <div class="col-sm-9">Tabagismo :</div> 
+                                <div class="col-sm-3">
+                                    <input class="boolean" name="tabagismo" type="checkbox" value="on">
+                                </div>
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control string" name="tabagismo_texto" type="text" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">
+                                <div class="col-sm-9">Etilismo :</div> 
+                                <div class="col-sm-3">
+                                    <input class="boolean" name="etilismo" type="checkbox" value="on">
+                                </div>
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control string" name="etilismo_texto" type="text" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">
+                                <div class="col-sm-9">Medicação em uso :</div> 
+                                <div class="col-sm-3">
+                                    <input class="boolean" name="medicacao_em_uso" type="checkbox" value="on">
+                                </div>
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control string" name="medicacao_em_uso_texto" type="text" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label col-sm-4">
+                                <div class="col-sm-9">Neuro-psiquiátrico :</div> 
+                                <div class="col-sm-3">
+                                    <input class="boolean" name="neuro_psquiatrico" type="checkbox" value="on">
+                                </div>
+                            </label>
+                            <div class="col-sm-8">
+                                <input class="form-control string" name="neuro_psquiatrico_texto" type="text" value="" />
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">
+                            <div class="col-sm-8">Atividade fisica :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="atividade_fisica" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-9">
+                            <input class="form-control string" name="atividade_fisica_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-sm-1">
+                <p>ANTECEDENTES FAMILIARES: </p>
+            </div>
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-4">Câncer de mama :</div> 
+                            <div class="col-sm-8">
+                                <input class="boolean" name="cancer_de_mama" type="checkbox" value="on">
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-4">Câncer de útero :</div> 
+                            <div class="col-sm-8">
+                                <input class="boolean" name="cancer_de_utero" type="checkbox" value="on">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-4">Câncer de ovário :</div> 
+                            <div class="col-sm-8">
+                                <input class="boolean" name="cancer_de_ovario" type="checkbox" value="on">
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-4">Câncer cólon :</div> 
+                            <div class="col-sm-8">
+                                <input class="boolean" name="cancer_de_colon" type="checkbox" value="on">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-4">Osteoporose :</div> 
+                            <div class="col-sm-8">
+                                <input class="boolean" name="osteoporose" type="checkbox" value="on">
+                            </div>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-4">Cárido-cerebrovascular :</div> 
+                            <div class="col-sm-8">
+                                <input class="boolean" name="cardio_cerebrovascular" type="checkbox" value="on">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-4">Outros :</div> 
+                            <div class="col-sm-8">
+                                <input class="boolean" name="outros_AF" type="checkbox" value="on">
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-sm-1">
+                <p>Antecedentes Tocoginecologicos: </p>
+            </div>
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <div class="col-sm-8">Menarca :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="menarca" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control string" name="menarca_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <div class="col-sm-8">Ciclos Regulares :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="ciclos_regulares" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control string" name="ciclos_regulares_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <div class="col-sm-8">Ativadade Sexual :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="atividade_sexual" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control string" name="atividade_sexual_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">DUM :</label>
+                        <div class="col-sm-10">
+                            <input class="form-control string" name="dum" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">G :</label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="g_AT" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        <label class="control-label col-sm-2">P :</label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="p_AT" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        <label class="control-label col-sm-2">A :</label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="#" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">  
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">PNL :</label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="pnl_AT" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        <label class="control-label col-sm-2">PC :</label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="pc_AT" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        <label class="control-label col-sm-2">PF :</label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="pf_AT" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Idade Menopausa :</label>
+                        <div class="col-sm-4">
+                            <input class="form-control string" name="idade_menopausa" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                        <label class="control-label col-sm-2">Tempo de Menopausa :</label>
+                        <div class="col-sm-4">
+                            <input class="form-control string" name="tempo_menopausa" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Tipo Menopausa : </label>
+                        <div class="col-sm-10">
+                            <select class="generic-widget form-control" name="tipo_menopausa">
+                                <option value=""></option>
+                                <option value="Natural">Natural</option>
+                                <option value="Cirúrgica">Cirúrgica</option>
+                                <option value="Radioterápica">Radioterápica</option>
+                                <option value="Quimioterápia">Quimioterápia</option>
+                            </select>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-8">Ciclos Regulares :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="histerectomia" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-8">Ooforectoma bilateral :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="ooforectoma_bilateral" type="checkbox" value="on">
+                            </div>
+                        </label>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-sm-1">
+                <p>Uso prévio de Hormônios: </p>
+            </div>
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <div class="col-sm-8">Pilula :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="pipula" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control string" name="pipula_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">
+                            <div class="col-sm-8">Reposição hormonal :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="reposicao_hormonal" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-10">
+                            <input class="form-control string" name="reposicao_hormonal_texto" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-sm-1">
+                <p>Exame fisico geral e Ginecológico: </p>
+            </div>
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="form-group">
+                        {{items = ['peso', 'altura', 'pa', 'imc']}}
+                        {{for item in items:}}
+                        <label class="control-label col-sm-1">{{=item.capitalize()}} :</label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="{{=item}}" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        {{pass}}
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="form-group">
+                        <label class="control-label col-sm-3">Mamas</label>
+                        {{items = ['MAMAS_inspecao', 'MAMAS_palpacao', 'MAMAS_axila']}}
+                        {{for item in items:}}
+                        {{label = item.replace('MAMAS_','')}}
+                        <label class="control-label col-sm-1">{{=label.capitalize()}} :</label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="{{=item}}" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        {{pass}}
+                    </div>  
+                </div>
+                {{itens = ['abdome', 'oge', 'ogi_vagina', 'colo', 'corpo_do_utero' , 'anexos' , 'toque_retal']}}
+                {{t_itens = 0}}
+                {{while t_itens < 7:}}
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{=itens[t_itens].replace('_', ' ').capitalize()}} :</label>
+                        <div class="col-sm-4">
+                            <input class="form-control string" name="{{=itens[t_itens]}}" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        {{if_t = t_itens + 1}}
+                        {{if if_t <= 6:}}
+                        <label class="control-label col-sm-2">{{=itens[t_itens + 1].replace('_', ' ').capitalize()}} :</label>
+                        <div class="col-sm-4">
+                            <input class="form-control string" name="{{=itens[t_itens + 1]}}" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        {{else:}}
+                        <!-- fim -->
+                        {{pass}}
+                    </div>  
+                </div>
+                {{t_itens = t_itens + 2}}
+                {{pass}}
+            </div>
+        </div>
+    </div>
+<hr>
+    <div class="thumbnail">
+        <div class="row">
+            <div class="col-sm-1">
+                <p>Exames Complementares </p>
+            </div>
+            <div class="col-sm-11">
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Teste Progesterona : </label>
+                        <div class="col-sm-6">
+                            <select class="generic-widget form-control" name="teste_progesterona">
+                                <option value=""></option>
+                                <option value="Positivo">Postivo</option>
+                                <option value="Negativo">Negativo</option>
+                            </select>
+                            <span class="help-block"></span>
+                        </div>
+                        <div class="col-sm-4">
+                            <input class="form-control string" name="teste_progesterona_data" type="text" value="" placeholder="data" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        {{itens = ['colpocitologia_oncologica', 'im', 'im_data']}}
+                        {{for item in itens:}}
+                        <label class="control-label col-sm-2">{{=item.replace('_', ' ').capitalize()}} : </label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="{{=item}}" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        {{pass}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        {{itens = ['mamografia', 'mamografia_data', 'glicemia']}}
+                        {{for item in itens:}}
+                        <label class="control-label col-sm-2">{{=item.replace('_', ' ').capitalize()}} : </label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="{{=item}}" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        {{pass}}
+                    </div>
+                </div>
+             
+                <div class="row">
+                    <div class="form-group">
+                        {{itens = ['colesterou_total', 'hdl', 'ldl' , 'triglicerides']}}
+                        {{for item in itens:}}
+                        <label class="control-label col-sm-2">{{=item.replace('_', ' ').capitalize()}} : </label>
+                        <div class="col-sm-1">
+                            <input class="form-control string" name="{{=item}}" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        {{pass}}
+                    </div>
+                </div>
+                {{itens = ['ultra_sonografia_transvaginal', 'densitometria_ossea' , 'dosagens_hormonais']}}
+                {{for item in itens:}}
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">{{=item.replace('_', ' ').capitalize()}} : </label>
+                        <div class="col-sm-6">
+                            <input class="form-control string" name="{{=item}}" type="text" value=""/>
+                            <span class="help-block"></span>
+                        </div>
+                        <label class="control-label col-sm-1">Data : </label>
+                        <div class="col-sm-2">
+                            <input class="form-control string" name="{{=item}}_data" type="text" value="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+                {{pass}}
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-6">
+                            <div class="col-sm-8">Consulta com outro Especialista :</div> 
+                            <div class="col-sm-4">
+                                <input class="boolean" name="consulta_outro_especialista" type="checkbox" value="on">
+                            </div>
+                        </label>
+                        <div class="col-sm-6">
+                            <input class="form-control string" name="consulta_outro_especialista_texto" type="text" value="" placeholder="" />
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Diagnóstico clinico</label>
+                        <div class="col-sm-10">
+                            <textarea class="text form-control" cols="20" name="diagnostico_clinico" rows="5"></textarea>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Orientação terapêutica</label>
+                        <div class="col-sm-10">
+                            <textarea class="text form-control" cols="20" name="orientacao_terapeutica" rows="5"></textarea>
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+<div class="thumbnail">
+    <div class="row">
+        <div class="col-sm-1">
+            <p>Evolução </p>
+        </div>
+        <div class="col-sm-11">
+            <div class="row">
+                <div class="form-group">
+                    {{itens = ['data_EVOLUCAO', 'pa_EVOLUCAO' , 'peso_EVOLUCAO' , 'altura_EVOLUCAO' , 'imc_EVOLUCAO']}}
+                    {{for item in itens:}}
+                    <label class="control-label col-sm-1">{{=item.replace('_EVOLUCAO', ' ').upper()}} :</label>
+                    <div class="col-sm-1">
+                        <input class="form-control string" name="{{=item}}" type="text" value="" />
+                        <span class="help-block"></span>
+                    </div>
+                    {{pass}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <textarea class="text form-control" cols="20" name="texto_EVOLUCAO" rows="5"></textarea>
+                        <span class="help-block"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <div class="col-sm-2">
+            <input class="btn btn-primary" type="submit" value="Gravar informações" />
+        </div>
+    </div>
+</div>
+{{=form.hidden_fields()}}
+</form>
+<!-- {{=form}} -->

@@ -1,0 +1,56 @@
+{{extend 'layout.html'}}
+<div class="row">
+	<div class="col-md-6 col-lg-6">
+		<div class="calendario" id='calendar'>
+		</div>
+	</div>
+	<div class="col-md-5 col-lg-5">
+		<div class="list-group">
+			<a href="#" class="list-group-item active">Todos os Agendamentos </a>
+		{{for item in lista:}}
+<a class="list-group-item" href="{{=URL('paciente', args=item['id_paciente'])}}">{{=item['nome']}} - {{=item['dia']}}</a>
+{{pass}}
+		</div>
+	</div>
+	
+</div>
+<script>
+	$(document).ready(function() {
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			lang: 'pt-br',
+			selectable: false,
+			selectHelper: false,
+			select: function(start, end) {
+				var title = prompt('Event Title:');
+				var eventData;
+				if (title) {
+					eventData = {
+						title: title,
+						start: start,
+						end: end
+					};
+					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				}
+				$('#calendar').fullCalendar('unselect');
+			},
+			editable: false,
+			eventLimit: false, // allow "more" link when too many events
+			events: [
+			{{for item in lista:}}
+		{
+			title: '{{=item['nome']}}',
+			start: '{{=item['dia']}}T{{=item['hora_inicio']}}',
+			end: '{{=item['dia']}}T{{=item['hora_fim']}}',
+			url: '{{=URL('agendamento', args=item['id_agendamento'])}}'
+		},
+		{{pass}}
+			]
+		});
+	});
+</script>
+<!-- /Calendar -->

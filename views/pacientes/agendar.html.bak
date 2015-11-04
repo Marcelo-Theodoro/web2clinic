@@ -1,0 +1,45 @@
+{{extend 'layout.html'}}
+<div class="col-md-12">
+	<span>
+	<h3>Agendar para {{=paciente.nome}}</h3>
+	</span>
+	{{=form.custom.begin}}
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Dia</label>
+				<div class="col-sm-6">
+					<input class="date form-control" name="dia" type="text" value="" autocomplete="off"  placeholder="Prencha desta forma DD-MM-AAAA">
+					<span class="help-block"></span>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Hora de inicio da consulta:</label>
+				<div class="col-sm-6">
+					<input class="form-control time hasTimeEntry" name="hora_inicio" type="text" value="" autocomplete="off"  placeholder="Prencha desta forma HH:MM">
+					<span class="help-block">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Horario previsto para o fim:</label>
+				<div class="col-sm-6">
+					<input class="form-control time hasTimeEntry" name="hora_fim" type="text" value="" autocomplete="off"  placeholder="Prencha desta forma HH:MM">
+					<span class="help-block">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-2">
+					<input class="btn btn-primary" type="submit" value="Agendar" />
+				</div>
+			</div>
+		</div>
+	{{=form.custom.end}}
+</div>
+<!-- {{=form}} -->

@@ -1,0 +1,121 @@
+<!--Baixar o js faltando 
+https://github.com/sollenne/bootstrap-stopwatch
+-->
+{{extend 'layout.html'}}
+<div class="col-md-2" >
+	<div class="thumbnail"  data-spy="affix-top" data-offset-top="100">
+	 <form name="clock"><br />
+       <input type="text" size="12" name="stwa" /><br />
+       <input type="button" name="theButton" onClick="stopwatch(this.value);" value="Start" />
+       <input type="button" value="Reset" onClick="resetIt();reset();" />
+       </form>
+		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Diagnostico</a></p>
+		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Prescição medica</a></p>
+		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Atestado</a></p>
+		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Consultas</a></p>
+	</div>
+</div>				
+<div class="col-md-10">
+	<div class="panel panel-success">
+		<div class="panel-heading">Dados Pessoais </div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-12">
+					<p><h3><strong>Nome: </strong>{{=paciente['nome']}}</h3></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<p><strong>Data de nascimento:</strong> {{=paciente['nascimento']}} </p>
+				</div>
+				<div class="col-md-6">
+					<p><strong>CPF: </strong>{{=paciente['cpf']}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p><strong>Endereço: </strong>{{=paciente['endereco']}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<p><strong>Cidade: </strong>{{=paciente['cidade']}} </p>
+				</div>
+				<div class="col-md-4">
+					<p><strong>UF: </strong>{{=paciente['uf']}}</p>
+				</div>
+				<div class="col-md-4">
+					<p><strong>CEP: </strong>{{=paciente['cep']}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p><strong>Telefone:</strong> {{=paciente['telefone']}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<p><strong>Escolaridade:</strong> {{=paciente['escolaridade']}}</p>
+				</div>
+				<div class="col-md-4">
+					<p><strong>Estado civil:</strong> {{=paciente['estadocivil']}}</p>
+				</div>
+				<div class="col-md-4">
+					<p><strong>Cor:</strong> {{=paciente['cor']}}</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p><strong>Observações: </strong>{{=paciente['observacoes']}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-danger">
+		<div class="panel-heading">Prontuario</div>
+		<div class="panel-body">
+			{{include}}
+		</div>
+	</div>
+</div>
+<script language="JavaScript" type="text/javascript">
+<!--
+
+var sec = -1;
+var min = 0;
+var hour = 0;
+function stopwatch(text) {
+   sec++;
+  if (sec == 60) {
+   sec = 0;
+   min = min + 1; }
+  else {
+   min = min; }
+  if (min == 60) {
+   min = 0; 
+   hour += 1; }
+
+if (sec<=9) { sec = "0" + sec; }
+   document.clock.stwa.value = ((hour<=9) ? "0"+hour : hour) + " : " + ((min<=9) ? "0" + min : min) + " : " + sec;
+
+  if (text == "Start") { document.clock.theButton.value = "Stop "; }
+  if (text == "Stop ") { document.clock.theButton.value = "Start"; }
+
+  if (document.clock.theButton.value == "Start") {
+   window.clearTimeout(SD);
+   sec=sec-1;
+   return true; }
+SD=window.setTimeout("stopwatch();", 1000);
+}
+
+function resetIt() {
+  sec = -1;
+  min = 0;
+  hour = 0;
+  if (document.clock.theButton.value == "Stop ") {
+  document.clock.theButton.value = "Start"; }
+  window.clearTimeout(SD);
+ }
+
+// -->
+</script>

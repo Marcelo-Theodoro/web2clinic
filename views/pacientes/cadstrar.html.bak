@@ -1,0 +1,3 @@
+{{extend 'layout.html'}}
+<h1>Este é o template pacientes/cadstrar.html</h1>
+{{=BEAUTIFY(response._vars)}}

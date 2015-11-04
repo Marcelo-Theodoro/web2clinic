@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+<br /><br />
+Dados da consulta de {{=paciente.nome}} no dia {{=consulta.hora_fim}} numa consulta de {{=consulta.tipo_consulta}}<br /><br />
+<a href="{{=URL('prontuario_consulta', args=id_consulta)}}">[VER PRONTUÁRIO CONSULTA]</a><br />
+[EDITAR]<br />
+[APAGAR]<br />
+[Gerar documentos]

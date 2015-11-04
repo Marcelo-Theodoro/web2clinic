@@ -1,0 +1,3 @@
+{{extend 'base_form.html'}}
+<h1>Esse é o form 1</h1><br /><br />
+{{=form}}

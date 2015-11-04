@@ -1,0 +1,101 @@
+{{extend 'layout.html'}}
+<div class="col-md-12">
+	<span>
+        <h3>Cadastrar novo paciente.</h3> <br />
+	</span>
+	<form action="#" enctype="multipart/form-data" method="post">
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Nome</label>
+				<div class="col-sm-6">
+					<input class="form-control string" name="nome" type="text" value="" />
+					<span class="help-block"></span>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Data de nascimento</label>
+				<div class="col-sm-6">
+					<input class="date form-control" name="nascimento" type="text" value="" />
+					<span class="help-block">
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Sexo</label>
+				<div class="col-sm-6">
+					<select class="generic-widget form-control" name="sexo">
+						<option value="Masculino">Masculino</option>
+						<option value="Feminino">Feminino</option>
+					</select>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Email</label>
+				<div class="col-sm-6">
+					<input class="form-control string" name="email" type="email" value="" />
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">CPF</label>
+				<div class="col-sm-6">
+					<input class="form-control string"name="CPF" type="text" value=""/>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Celular</label>
+				<div class="col-sm-6">
+					<input class="form-control string" name="celular" type="text" value=""/>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Foto</label>
+				<div class="col-sm-6">
+					<input class="upload input-file" name="image" type="file" />
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2" >Endereço</label>
+				<div class="col-sm-6">
+					<textarea class="text form-control" cols="40" name="endereco" rows="10"></textarea>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group" >
+				<label class="control-label col-sm-2" >Observações</label>
+				<div class="col-sm-6">
+					<textarea class="text form-control" cols="40" name="observacoes" rows="10"></textarea>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-2">
+					<input class="btn btn-primary" type="submit" value="Gravar informações" />
+				</div>
+			</div>
+		</div>
+		{{=form.hidden_fields()}}
+	</form>
+</div>

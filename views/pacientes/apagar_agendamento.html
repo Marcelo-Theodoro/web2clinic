@@ -1,0 +1,13 @@
+{{extend 'layout.html'}}
+<h1> Tem certeza que gostaria de deletar esse agendamento? </h1><br />
+
+<div class="row">
+	<div class="col-md-12">
+		<p><strong>Nome:</strong> <a href="{{=URL('paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
+		<p><strong>Dia agendado:</strong> {{=agendamento.dia}}</p>
+		<p><strong>Hora início:</strong> {{=agendamento.hora_inicio}}</p>
+		<p><strong>Hora fim:</strong> {{=agendamento.hora_fim}}</p>
+	</div>
+</div>
+<br />
+{{=form}}
