@@ -66,7 +66,7 @@
 				<label class="control-label col-sm-12">
 					<div class="col-sm-2">Tipo de Parto:</div> 
 					<div class="col-sm-10">
-						<select class="generic-widget form-control" name="inicio_P">
+						<select class="generic-widget form-control" name="tipo_parto_P">
 							{{itens = ['Normal', 'Fórcepe', 'Cesária', 'Cefálico', 'Pélvico', 'Único', 'Gemelar']}}
 							{{for item in itens:}}
 							<option value="{{=item}}">{{=item}}</option>
@@ -132,7 +132,7 @@
 			<div class="form-group">
 				{{itens = ['gestacao_P', 'parto_P', 'ignorado_P']}}
 				{{for item in itens:}}
-				<label class="control-label col-sm-2 col-xs-12 col-sm-offset-1">
+				<label class="control-label col-sm-2 col-md-2 col-xs-12 col-sm-offset-1">
 					<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
 					<div class="col-sm-8">
 						<input class="boolean" name="morte_feta_{{=item}}" type="checkbox" value="on">
@@ -321,13 +321,12 @@
 		</div>
 	</div>
 	<hr>
-	<div class="thumbnail">
 		<div class="row">
 			<div class="form-group">
 				<label class="control-label col-sm-6 col-xs-12">
 					<div class="col-sm-4">Alojamento conjunto:</div> 
 					<div class="col-sm-8">
-						<input class="boolean" name="vdrl_P" type="checkbox" value="on">
+						<input class="boolean" name="alojamento_conjunto_P" type="checkbox" value="on">
 						<span class="help-block"></span>
 					</div>
 				</label>
@@ -380,12 +379,12 @@
 				<label class="control-label col-sm-4">
 					<div class="col-sm-4">Idade alta</div> 
 					<div class="col-sm-8">
-						<input class="form-control string" name="idadei_alta_P" type="text" value="" />
+						<input class="form-control string" name="idade_alta_P" type="text" value="" />
 						<span class="help-block"></span>
 					</div>
 				</label>
 				<label class="control-label col-sm-4">
-					<div class="col-sm-4">Transferências:</div> 
+					<div class="col-sm-4">Transferência:</div> 
 					<div class="col-sm-8">
 						  <select class="generic-widget form-control" name="transferencias_P">
 						  		{{itens = ['+ 24', '- 24']}}
