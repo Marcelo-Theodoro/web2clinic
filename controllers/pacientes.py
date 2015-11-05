@@ -44,11 +44,9 @@ def buscar(base, id):
 
 
 def index():
-    rows = db(db.pacientes).select()
-    pacientes = len(rows)
-
-    rows = db(db.agendamentos).select()
-    agendamentos = len(rows)
+    pacientes = db(db.pacientes).select()
+    agendamentos = db(db.agendamentos).select()
+    consultas = db(db.consultas).select()
     return locals()
 
 
