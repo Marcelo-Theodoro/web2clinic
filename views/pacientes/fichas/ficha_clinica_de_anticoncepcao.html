@@ -283,7 +283,7 @@
 					<label class="control-label col-sm-6">
 						<div class="col-sm-4">{{=item.replace('_AO','').replace('_',' ').capitalize()}}</div> 
 						<div class="col-sm-8">
-							<input class="form-control string" name="ciclo_menstrual_AM" type="text" value="" />
+							<input class="form-control string" name="{{=item}}" type="text" value="" />
 							<span class="help-block"></span>
 						</div>
 					</label>
@@ -301,7 +301,7 @@
 					<label class="control-label col-sm-6">
 						<div class="col-sm-4">{{=item.replace('_AO','').replace('_',' ').capitalize()}}</div> 
 						<div class="col-sm-8">
-							<input class="form-control string" name="ciclo_menstrual_AM" type="text" value="" />
+							<input class="form-control string" name="{{=item}}" type="text" value="" />
 							<span class="help-block"></span>
 						</div>
 					</label>
@@ -319,7 +319,7 @@
 					<label class="control-label col-sm-6">
 						<div class="col-sm-4">{{=item.replace('_AO','').replace('_',' ').capitalize()}}</div> 
 						<div class="col-sm-8">
-							<input class="form-control string" name="ciclo_menstrual_AM" type="text" value="" />
+							<input class="form-control string" name="{{=item}}" type="text" value="" />
 							<span class="help-block"></span>
 						</div>
 					</label>
@@ -372,9 +372,9 @@
 			</div>
 			<div class="row">
 				<div class="form-group">
-					<label class="control-label col-sm-4">Frequência de realões sexuais : </label>
+					<label class="control-label col-sm-4">Frequência de relações sexuais : </label>
 					<div class="col-sm-8">
-						<select class="generic-widget form-control" name="tipo_menopausa">
+						<select class="generic-widget form-control" name="frequencia_relacoes_sexuais_HS">
 							<option value=""></option>
 							<option value="nenhuma">Nenhuma</option>
 							<option value="1 relação semana">Uma por semana</option>
@@ -496,7 +496,7 @@
 					<p>Conclusão</p>
 				</div>
 			</div>
-			{{itens =['metodo_escolha_paciente', 'indicacao_medica', 'metodo_anticoncepcional']}}
+			{{itens =['metodo_escolha_pacientes', 'indicacao_medica', 'metodo_anticoncepcional']}}
 			{{for item in itens:}}
 			<div class="row">
 				<div class="form-group">
