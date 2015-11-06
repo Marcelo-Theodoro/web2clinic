@@ -1,3 +1,555 @@
+<!--0.1-->
+{{extend 'base_form.html'}}
+<form action="#" enctype="multipart/form-data" method="post">
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> Parto</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				{{itens = ['data_P', 'local_P']}}
+				{{for item in itens:}}
+				<label class="control-label col-sm-6">
+					<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-8">
+						<input class="form-control string" name="{{=item}}" type="text" value="" />
+						<span class="help-block"></span>
+					</div>
+				</label>
+				{{pass}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-6 col-sm-offset-6">
+					<div class="col-sm-4">Nivel de atenção:</div> 
+					<div class="col-sm-8">
+						  <select class="generic-widget form-control" name="nivel_atencao_P">
+						  		{{itens = ['1 º', '2º', '3º', 'Domiciliar', 'Outro']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-6">
+					<div class="col-sm-4">Idade gestacional:</div> 
+					<div class="col-sm-8">
+						<input class="form-control string" name="idade_gestacional_P" type="text" value="" />
+						<span class="help-block">Semanas</span>
+					</div>
+				</label>
+				<label class="control-label col-sm-6">
+					<div class="col-sm-4">Inicio:</div> 
+					<div class="col-sm-8">
+						<select class="generic-widget form-control" name="inicio_P">
+							{{itens = ['Espontâneo', 'Induzido']}}
+							{{for item in itens:}}
+							<option value="{{=item}}">{{=item}}</option>
+							{{pass}}
+						</select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-12">
+					<div class="col-sm-2">Tipo de Parto:</div> 
+					<div class="col-sm-10">
+						<select class="generic-widget form-control" name="tipo_parto_P">
+							{{itens = ['Normal', 'Fórcepe', 'Cesária', 'Cefálico', 'Pélvico', 'Único', 'Gemelar']}}
+							{{for item in itens:}}
+							<option value="{{=item}}">{{=item}}</option>
+							{{pass}}
+						</select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				{{itens = ['episiotomia_P', 'laceracao_P', 'delivramento_espontaneo_P', 'curagem_P', 'mae_rh_P', 'imunoglobulina_P']}}
+				{{for item in itens:}}
+				<label class="control-label col-sm-6 col-xs-12">
+					<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-8">
+						<input class="boolean" name="{{=item}}" type="checkbox" value="on">
+						<span class="help-block"></span>
+					</div>
+				</label>
+				{{pass}}
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-6">
+					<div class="col-sm-4">Responsável pelo parto:</div> 
+					<div class="col-sm-8">
+						<select class="generic-widget form-control" name="responsavel_parto_P">
+							{{itens = ['Médico', 'Enfermeira', 'Auxiliar']}}
+							{{for item in itens:}}
+							<option value="{{=item}}">{{=item}}</option>
+							{{pass}}
+						</select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+				<label class="control-label col-sm-6">
+					<div class="col-sm-2">Outro:</div> 
+					<div class="col-sm-4">
+						<input class="form-control string" name="responsavel_outro_P" type="text" value="" />
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-6 col-xs-12">
+					<div class="col-sm-4">Morte fetal:</div> 
+					<div class="col-sm-8">
+						<input class="boolean" name="morte_fetal_P" type="checkbox" value="on">
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				{{itens = ['gestacao_P', 'parto_P', 'ignorado_P']}}
+				{{for item in itens:}}
+				<label class="control-label col-sm-2 col-md-2 col-xs-12 col-sm-offset-1">
+					<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-8">
+						<input class="boolean" name="morte_feta_{{=item}}" type="checkbox" value="on">
+						<span class="help-block"></span>
+					</div>
+				</label>
+				{{pass}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-12">
+					<div class="col-sm-2">Causa:</div> 
+					<div class="col-sm-10">
+						<input class="form-control string" name="morte_feta_causa_P" type="text" value="" />
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		{{itens = ['medicaocoes_parto_P', 'intercorrencias_parto_P']}}
+		{{for item in itens:}}
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">{{=item.replace('_P','').replace('_',' ').replace('coes','ções').capitalize()}}</label>
+				<div class="col-sm-10">
+					<textarea class="text form-control" cols="20" name="{{=item}}" rows="2"></textarea>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		{{pass}}
+	</div>
+	<hr>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> Recém-Nascido</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-12">
+					<div class="col-sm-4">Sexo:</div> 
+					<div class="col-sm-8">
+						  <select class="generic-widget form-control" name="sexo_RN">
+						  		{{itens = ['Masculino', 'Feminino']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-8">
+					<div class="col-sm-4">APGAR:</div> 
+					<div class="col-sm-8">
+						  <select class="generic-widget form-control" name="apgar_RN">
+						  		{{itens = ['1º minuto', '5º minuto']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-6 col-xs-12">
+					<div class="col-sm-4">Reanimação:</div> 
+					<div class="col-sm-8">
+						<input class="boolean" name="reanimacao_P" type="checkbox" value="on">
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-6 col-xs-12">
+					<div class="col-sm-4">VDRL:</div> 
+					<div class="col-sm-8">
+						<input class="boolean" name="vdrl_P" type="checkbox" value="on">
+						<span class="help-block"></span>
+					</div>
+				</label>
+				<label class="control-label col-sm-6">
+					<div class="col-sm-4">Tipagem Sanguinea:</div> 
+					<div class="col-sm-8">
+						<input class="form-control string" name="tipagem_sanguinea_P" type="text" value="" />
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-6">
+					<div class="col-sm-4">Peso:</div> 
+					<div class="col-sm-8">
+						<input class="form-control string" name="peso_P" type="text" value="" />
+						<span class="help-block"></span>
+					</div>
+				</label>
+				<label class="control-label col-sm-6">
+					<div class="col-sm-4">Idade do exame fisico:</div> 
+					<div class="col-sm-8">
+						<input class="form-control string" name="idade_exame_fisico_P" type="text" value="" />
+						<span class="help-block">Semanas</span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-8">
+					<div class="col-sm-4">Peso idade gestacional:</div> 
+					<div class="col-sm-8">
+						  <select class="generic-widget form-control" name="peso_idade_gestacional_P">
+						  		{{itens = [' ', 'AIG', 'GIG', 'PIG']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		{{select = ['exame_fisico_P','exame_neurologico_P']}}
+		{{for item in select:}}
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-8">
+					<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-8">
+						  <select class="generic-widget form-control" name="{{=item}}">
+						  		{{itens = ['Normal', 'Anormal']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		{{pass}}
+		<div class="row">
+			<div class="form-group">
+				{{itens = ['estatura_P', 'perimetro_cefalico_P']}}
+				{{for item in itens:}}
+				<label class="control-label col-sm-6">
+					<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-8">
+						<input class="form-control string" name="{{=item}}" type="text" value="" />
+						<span class="help-block">cm</span>
+					</div>
+				</label>
+				{{pass}}
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Achados anormais:</label>
+				<div class="col-sm-10">
+					<textarea class="text form-control" cols="20" name="achados_anormais_P" rows="2"></textarea>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-6 col-xs-12">
+					<div class="col-sm-4">Alojamento conjunto:</div> 
+					<div class="col-sm-8">
+						<input class="boolean" name="alojamento_conjunto_P" type="checkbox" value="on">
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">Patologias intercorrentes:</div> 
+			<div class="form-group">
+				{{itens = ['memb_hialina', 'hemorragia', 'anomalia_congenita', 'aspiracao_meconial', 'hiperbilirrubinemia', 'apneia', 'outras_sindromes', 'convuncao' ]}}
+				{{for item in itens:}}
+				<label class="control-label col-sm-6 col-xs-12">
+					<div class="col-sm-4">{{=item.replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-8">
+						<input class="boolean" name="patologias_intercorrentes_{{=item}}_P" type="checkbox" value="on">
+						<span class="help-block"></span>
+					</div>
+				</label>
+				{{pass}}
+			</div>
+				<label class="control-label col-sm-2">Outras</label>
+				<div class="col-sm-10">
+					<textarea class="text form-control" cols="20" name="patologias_intercorrentes_outras_P" rows="2"></textarea>
+					<span class="help-block"></span>
+				</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-8">
+					<div class="col-sm-4">Alta RN:</div> 
+					<div class="col-sm-8">
+						  <select class="generic-widget form-control" name="alta_rn_P">
+						  		{{itens = ['Sadio', 'Transferido']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">Óbito</div> 
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-4">
+					<div class="col-sm-4">Idade alta</div> 
+					<div class="col-sm-8">
+						<input class="form-control string" name="idadei_alta_P" type="text" value="" />
+						<span class="help-block"></span>
+					</div>
+				</label>
+				<label class="control-label col-sm-4">
+					<div class="col-sm-4">Transferência:</div> 
+					<div class="col-sm-8">
+						  <select class="generic-widget form-control" name="transferencias_P">
+						  		{{itens = ['+ 24', '- 24']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+				<label class="control-label col-sm-4">
+					<div class="col-sm-12">
+						<input class="form-control string" name="transferencias_dias_P" type="text" value="" />
+						<span class="help-block">Dias</span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<div class="col-sm-4">Idade óbito:</div> 
+				
+				{{for item in itens:}}
+				<label class="control-label col-sm-4">
+					<div class="col-sm-12">
+						<input class="form-control string" name="idade_obito_{{=item}}_P" type="text" value="" />
+						<span class="help-block">{{=item.capitalize()}}</span>
+					</div>
+				</label>
+				{{pass}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Causa óbito:</label>
+				<div class="col-sm-10">
+					<textarea class="text form-control" cols="20" name="causa_obito_P" rows="2"></textarea>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-12">
+					<div class="col-sm-2">Sexo:</div> 
+					<div class="col-sm-10">
+						  <select class="generic-widget form-control" name="sexo_P">
+						  		{{itens = ['Masculino', 'Feminino']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-12">
+					<div class="col-sm-2">Tratamento:</div> 
+					<div class="col-sm-10">
+						  <select class="generic-widget form-control" name="alimentacao_P">
+						  		{{itens = ['Mama', 'Mista', 'Artificial']}}
+								{{for item in itens:}}
+                                <option value="{{=item}}">{{=item}}</option>
+                                {{pass}}
+                            </select>
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-8">
+				<p> Consulta de Puerpério</p>
+			</div>
+			<label class="control-label col-sm-4">
+				<div class="col-sm-4">Data</div> 
+				<div class="col-sm-8">
+					<input class="form-control string" name="data_CP" type="text" value="" />
+					<span class="help-block"></span>
+				</div>
+			</label>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Queixas:</label>
+				<div class="col-sm-10">
+					<textarea class="text form-control" cols="20" name="queixas_CP" rows="2"></textarea>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="form-group">
+				{{itens = ['pa_CP', 'estado_geral_CP', 'mucosa_CP']}}
+				{{for item in itens:}}
+				<label class="control-label col-sm-4">
+					<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-8">
+						<input class="form-control string" name="{{=item}}" type="text" value="" />
+						<span class="help-block"></span>
+					</div>
+				</label>
+				{{pass}}
+			</div>
+		</div>
+		<hr>
+		{{itens = ['mamas_CP', 'abdome_CP', 'exame_ginecologico_CP']}}
+		{{for item in itens:}}
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-12">
+					<div class="col-sm-2">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-10">
+						<input class="form-control string" name="{{=item}}" type="text" value="" />
+						<span class="help-block"></span>
+					</div>
+				</label>
+			</div>
+		</div>
+		{{pass}}
+		<hr>
+	 	<div class="row">
+	 		<div class="col-sm-12">Anticoncepção:</div>
+			<div class="form-group">
+				{{itens = ['aleitamento_materno_CP', 'barreira_CP', 'diu_CP', 'hormonal_oral_CP', 'hormonal_injetavel_CP', 'comportamental_CP', 'cirurgico_CP', 'nenhum_CP']}}
+				{{for item in itens:}}
+				<label class="control-label col-sm-6 col-xs-12">
+					<div class="col-sm-4">{{=item.replace('_CP','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-8">
+						<input class="boolean" name="{{=item}}" type="checkbox" value="on">
+						<span class="help-block"></span>
+					</div>
+				</label>
+				{{pass}}
+			</div>
+		</div>
+        <hr>
+        <div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Orientação/Conduta:</label>
+				<div class="col-sm-10">
+					<textarea class="text form-control" cols="20" name="orientacao_CP" rows="2"></textarea>
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+    	<div class="form-group">
+       		<div class="col-sm-2">
+           		<input class="btn btn-primary" type="submit" value="Gravar informações" />
+        	</div>
+   		</div>
+	</div>
+{{=form.hidden_fields()}}
+</form>
+=======
 {{extend 'base_form.html'}}
 <form action="#" enctype="multipart/form-data" method="post">
 	<div class="thumbnail">
@@ -548,3 +1100,4 @@
 	</div>
 {{=form.hidden_fields()}}
 </form>
+>>>>>>> origin/master
