@@ -63,6 +63,7 @@ def paciente():
                                                     f='pacientes'),
                                               client_side=True)
     paciente = buscar('paciente', id_paciente)
+    paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
     return locals()
 
 
@@ -287,7 +288,6 @@ def ver_consulta():
     consulta = buscar('consulta', id_consulta)
     consulta.tipo_consulta = [i['label'] for i in tipos_consultas
                               if consulta.tipo_consulta == i['form']][0]
-    # test
     paciente = buscar('paciente', consulta.id_paciente)
     return locals()
 
