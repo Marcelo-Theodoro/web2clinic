@@ -14,11 +14,13 @@ def buscar_agendamento(id):
 
 
 def buscar_consulta(id):
-    return db(db.consultas.id == id).select().first()
+    consulta = db(db.consultas.id == id).select().first()
+    return consulta
 
 
 def buscar_consulta_paciente(id):
-    return db(db.consultas.id_paciente == id).select()
+    consulta = db(db.consultas.id_paciente == id).select()
+    return consulta
 
 
 def buscar(base, id):
@@ -276,12 +278,15 @@ def todas_consultas():
     links = [lambda row: A('Ver consulta', _class='button btn btn-default',
                            _href=URL(c='pacientes', f='ver_consulta',
                                      args=[row.id]))]
-    form = SQLFORM.smartgrid(db.consultas, linked_tables=['id_paciente'],
-                             fields=[db.consultas.id_paciente,
-                                     db.consultas.tipo_consulta,
-                                     db.consultas.hora_fim],
-                             csv=False, editable=False, deletable=False,
-                             details=False, create=False, links=links)
+    haders = {'consultas.id_paciente': 'Paciente'}
+    db.consultas.id_paciente.readable = True
+    form = SQLFORM.grid(db.consultas,
+                        fields=[db.consultas.id_paciente,
+                                db.consultas.tipo_consulta,
+                                db.consultas.hora_fim],
+                        csv=False, editable=False, deletable=False,
+                        details=False, create=False, links=links,
+                        headers=haders)
     return locals()
 
 
