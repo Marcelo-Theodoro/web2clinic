@@ -2,11 +2,15 @@
 
 
 def buscar_paciente(id):
-    return db(db.pacientes.id == id).select().first()
+    paciente = db(db.pacientes.id == id).select().first()
+    paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
+    return paciente
 
 
 def buscar_agendamento(id):
-    return db(db.agendamentos.id == id).select().first()
+    agendamento = db(db.agendamentos.id == id).select().first()
+    agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
+    return agendamento
 
 
 def buscar_consulta(id):
@@ -63,7 +67,6 @@ def paciente():
                                                     f='pacientes'),
                                               client_side=True)
     paciente = buscar('paciente', id_paciente)
-    paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
     return locals()
 
 
