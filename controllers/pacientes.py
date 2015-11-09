@@ -280,6 +280,10 @@ def todas_consultas():
                                      args=[row.id]))]
     haders = {'consultas.id_paciente': 'Paciente'}
     db.consultas.id_paciente.readable = True
+    db.consultas.tipo_consulta.represent = lambda value, row: '{0}'.\
+                                           format([i['label']
+                                                   for i in tipos_consultas
+                                                   if value == i['form']][0])
     form = SQLFORM.grid(db.consultas,
                         fields=[db.consultas.id_paciente,
                                 db.consultas.tipo_consulta,
