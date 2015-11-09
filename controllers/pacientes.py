@@ -242,6 +242,9 @@ def consultas():
                                                   f='todas_consultas'))
     paciente = buscar('paciente', id_paciente)
     consultas = buscar('consulta_paciente', id_paciente)
+    for consulta in consultas:
+        consulta.tipo_consulta = [i['label'] for i in tipos_consultas
+                                  if consulta.tipo_consulta == i['form']][0]
     return locals()
 
 
