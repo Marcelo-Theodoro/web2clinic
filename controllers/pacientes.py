@@ -285,6 +285,8 @@ def ver_consulta():
     id_consulta = request.args(0) or redirect(URL(c='pacientes',
                                                   f='todas_consultas'))
     consulta = buscar('consulta', id_consulta)
+    consulta.tipo_consulta = [i['label'] for i in tipos_consultas
+                              if consulta.tipo_consulta == i['form']][0]
     paciente = buscar('paciente', consulta.id_paciente)
     return locals()
 
