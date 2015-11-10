@@ -55,6 +55,3 @@ db.define_table('consultas',
                 format='%(id_paciente)s %(tipo_consulta)s'
                 )
 
-# O problema coma tabela 'consultas' é: Ela deve estar preparada para armazenar,
-#  tanto infos relacionadas a consultas sem agendamento, quanto,
-#  com agendamento.

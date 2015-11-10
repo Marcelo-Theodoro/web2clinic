@@ -39,12 +39,6 @@
 	</div>
 </div>
 <hr>
-{{tipo = len(tipos)}} <!-- seta o total de tipos -->
-{{itens = total_por_tipo}} <!-- seta o array -->
-{{for item in itens:}}
-	{{i = 1}}
-	{{=tipos[i]}}: {{=item}}
-	{{if i <= tipo:}}
-		{{i = i+1}}
-	{{pass}}
+{{for dict in lista:}}
+{{=dict['label']}}<br />
 {{pass}}
