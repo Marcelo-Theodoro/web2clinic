@@ -1,3 +1,4 @@
+<!-- fix #21 -->
 {{extend 'layout.html'}}
 <div class="row">
 	<div class="col-md-12">
@@ -18,7 +19,8 @@
 		<a href="{{=URL('apagar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon plus icon-plus glyphicon glyphicon-plus">Apagar</span></a>
 	</div>
 </div>
-</div>
 <div class="row">
-	{{=form}}
+	<div class="col-md-12">
+		{{=form}}
+	</div>
 </div>
