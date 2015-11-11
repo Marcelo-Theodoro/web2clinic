@@ -24,7 +24,6 @@
 // ├────────────────────────────────────────────────────────────┤ \\
 // │ Author Dmitry Baranovskiy (http://dmitry.baranovskiy.com/) │ \\
 // └────────────────────────────────────────────────────────────┘ \\
-
 (function (glob) {
     var version = "0.4.2",
         has = "hasOwnProperty",

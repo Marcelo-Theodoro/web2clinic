@@ -4,7 +4,6 @@ Copyright 2014 Olly Smith All rights reserved.
 Licensed under the BSD-2-Clause License.
 */
 
-
 (function() {
   var $, Morris, minutesSpecHelper, secondsSpecHelper,
     __slice = [].slice,
