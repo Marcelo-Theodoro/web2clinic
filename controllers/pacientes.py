@@ -53,16 +53,15 @@ def index():
     total_pacientes = db(db.pacientes).count()
     total_agendamentos = db(db.agendamentos).count()
     total_consultas = db(db.consultas).count()
-    
-    itens = ['ficha_clinica_mulher','ficha_de_anticoncepcao', 'ficha_clinica_de_climaterio', 'ficha_clinica_de_anticoncepcao', 'ficha_clinica_mastologia'
-'ficha_clinica_parto_e_puerperio', 'ficha_clinica_pre_natal', 'ficha_clinica_de_uroginecologia']
-    tipos = []
-    total_por_tipo = []
-    for item in itens:
-      if not db(db.consultas.tipo_consulta == item).isempty():
-        total_por_tipo.append(len(db(db.consultas.tipo_consulta == item).select()))
-        tipos.append(item)
 
+    itens = [i['form'] for i in tipos_consultas]
+    lista = []
+    for item in itens:
+        qtd_consultas = len(db(db.consultas.tipo_consulta == item).select())
+        if qtd_consultas:
+            label = [i['label'] for i in tipos_consultas
+                     if item == i['form']][0]
+            lista.append({'label': label, 'qtd': qtd_consultas})
     return locals()
 
 
