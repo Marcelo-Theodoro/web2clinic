@@ -902,3 +902,10 @@ db.define_table('ficha_de_anticoncepcao',
              Field('colo_ESPECULAR', type='text'),
              Field('cont_vaginal_ESPECULAR', type='text'),
             )
+
+db.define_table('retorno',
+                Field('id_paciente', 'reference pacientes',
+                      readable=False, writable=False),
+                Field('texto', 'text'),
+                Field('data', type='date'),
+                )

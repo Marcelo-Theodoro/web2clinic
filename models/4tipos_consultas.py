@@ -46,4 +46,10 @@ tipos_consultas = [
                         base=db.ficha_de_anticoncepcao,
                         view_form='pacientes/fichas/ficha_de_anticoncepcao.html',
                         view_prontuario='pacientes/prontuarios/prontuario_anticoncepcao.html'),
+
+                   dict(form='retorno',
+                        label='Retorno',
+                        base=db.retorno,
+                        view_form='pacientes/fichas/retorno.html',
+                        view_prontuario='pacientes/prontuarios/retorno.html'),
                   ]
