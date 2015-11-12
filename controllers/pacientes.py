@@ -3,13 +3,13 @@
 
 def buscar_paciente(id):
     paciente = db(db.pacientes.id == id).select().first()
-    paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
+    # paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
     return paciente
 
 
 def buscar_agendamento(id):
     agendamento = db(db.agendamentos.id == id).select().first()
-    agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
+    # agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
     return agendamento
 
 
@@ -77,6 +77,7 @@ def paciente():
                                                     f='pacientes'),
                                               client_side=True)
     paciente = buscar('paciente', id_paciente)
+    paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
     return locals()
 
 
@@ -160,6 +161,7 @@ def agendamento():
                                                      f='agendamentos'),
                                                  client_side=True)
     agendamento = buscar('agendamento', id_agendamento)
+    agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
     id_paciente = agendamento.id_paciente
     paciente = buscar('paciente', id_paciente)
     form = SQLFORM.factory(Field('tipo_consulta',
@@ -182,6 +184,7 @@ def apagar_agendamento():
                                                      f='agendamentos'),
                                                  client_side=True)
     agendamento = buscar('agendamento', id_agendamento)
+    agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
     id_paciente = agendamento.id_paciente
     paciente = buscar('paciente', id_paciente)
     form = SQLFORM.factory()
@@ -196,6 +199,7 @@ def agendamentos():
     lista = []
     for agendamento in agendamentos:
         paciente = buscar('paciente', agendamento.id_paciente)
+        agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
         lista.append(dict({'dia': agendamento.dia,
                            'hora_inicio': agendamento.hora_inicio,
                            'hora_fim': agendamento.hora_fim,
@@ -217,6 +221,7 @@ def consulta():
         agendamento = buscar('agendamento', id_agendamento)
         id_paciente = agendamento.id_paciente
         paciente = buscar('paciente', id_paciente)
+        paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
     elif request.vars['agendamento'] == 'False':
         id_paciente = request.args(1) or redirect(URL(c='pacientes',
                                                       f='agendamentos'))
