@@ -167,7 +167,7 @@ def agendamento():
     form = SQLFORM.factory(Field('tipo_consulta',
                                  requires=IS_IN_SET([i['label']
                                                     for i in tipos_consultas])),
-                                 formstyle='bootstrap3_stacked')
+                           formstyle='bootstrap3_stacked')
     if form.process().accepted:
         tipo_consulta = form.vars.tipo_consulta
         tipo_consulta = [i['form'] for i in tipos_consultas

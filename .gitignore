@@ -5,7 +5,6 @@
 *.swp
 *.table
 *.sqlite
-cache/*
 errors/*
 sessions/*
 cache/*
