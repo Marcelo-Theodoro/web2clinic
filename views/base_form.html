@@ -1,18 +1,13 @@
-<!--Baixar o js faltando 
-https://github.com/sollenne/bootstrap-stopwatch
--->
+<!--fix #17 -->
 {{extend 'layout.html'}}
 <div class="col-md-2" >
-	<div class="thumbnail"  data-spy="affix" data-offset-top="100">
-	 <form name="clock"><br />
-       <input type="text" size="12" name="stwa" /><br />
-       <input type="button" name="theButton" onClick="stopwatch(this.value);" value="Start" />
-       <input type="button" value="Reset" onClick="resetIt();reset();" />
-       </form>
-		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Diagnostico</a></p>
-		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Prescição medica</a></p>
-		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Atestado</a></p>
-		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Consultas</a></p>
+	<div class="thumbnail" data-spy="affix">
+		<div class="col-md-12">
+			<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Diagnostico</a></p>
+			<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Prescição medica</a></p>
+			<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Atestado</a></p>			
+			<p><a href="{{=URL('consultas', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Consultas</a></p>
+		</div>
 	</div>
 </div>				
 <div class="col-md-10">
@@ -78,44 +73,3 @@ https://github.com/sollenne/bootstrap-stopwatch
 		</div>
 	</div>
 </div>
-<script language="JavaScript" type="text/javascript">
-<!--
-
-var sec = -1;
-var min = 0;
-var hour = 0;
-function stopwatch(text) {
-   sec++;
-  if (sec == 60) {
-   sec = 0;
-   min = min + 1; }
-  else {
-   min = min; }
-  if (min == 60) {
-   min = 0; 
-   hour += 1; }
-
-if (sec<=9) { sec = "0" + sec; }
-   document.clock.stwa.value = ((hour<=9) ? "0"+hour : hour) + " : " + ((min<=9) ? "0" + min : min) + " : " + sec;
-
-  if (text == "Start") { document.clock.theButton.value = "Stop "; }
-  if (text == "Stop ") { document.clock.theButton.value = "Start"; }
-
-  if (document.clock.theButton.value == "Start") {
-   window.clearTimeout(SD);
-   sec=sec-1;
-   return true; }
-SD=window.setTimeout("stopwatch();", 1000);
-}
-
-function resetIt() {
-  sec = -1;
-  min = 0;
-  hour = 0;
-  if (document.clock.theButton.value == "Stop ") {
-  document.clock.theButton.value = "Start"; }
-  window.clearTimeout(SD);
- }
-
-// -->
-</script>
