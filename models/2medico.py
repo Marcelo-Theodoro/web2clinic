@@ -9,6 +9,14 @@ cor = ['Branca', 'Negra', 'Parda', 'Indígena', 'Asiática']
 estadocivil = ['Casada', 'Solteira (sem união estável)', 'Solteira (com união estável)', 'Outra']
 sexo = ['Feminino', 'Masculino']
 
+# Configurações da clínica
+CC_nome_clinica = 'Clínica de urologia do Lucas'
+CC_nome_medico = 'Lucas Augusto de Morais'
+CC_especialidade = 'Urologista'
+CC_crm = '666.666.666-24'
+CC_telefone = '(14) 998361111'
+CC_endereco = 'Rua Getúlio Vargas, 560, centro.'
+
 
 db.define_table('pacientes',
                 Field('nome', requires=IS_NOT_EMPTY()),
