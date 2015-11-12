@@ -53,7 +53,6 @@ def index():
     total_pacientes = db(db.pacientes).count()
     total_agendamentos = db(db.agendamentos).count()
     total_consultas = db(db.consultas).count()
-
     itens = [i['form'] for i in tipos_consultas]
     lista = []
     for item in itens:
