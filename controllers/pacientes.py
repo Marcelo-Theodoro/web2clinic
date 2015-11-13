@@ -234,7 +234,7 @@ def consulta():
                          if i['form'] == tipo_consulta][0]
     except IndexError:
         raise HTTP(404)
-    form = SQLFORM(tipo_consulta['base'])
+    form = SQLFORM(tipo_consulta['base'], formstyle='bootstrap3_stacked')
     response.view = tipo_consulta['view_form']
     form.vars.id_paciente = paciente.id
     if form.process().accepted:
