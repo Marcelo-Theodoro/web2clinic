@@ -21,6 +21,11 @@ def buscar_atestado(id):
     return atestado
 
 
+def buscar_atestados(id):
+    atestado = db(db.atestados.id_paciente == id).select()
+    return atestado
+
+
 def buscar_consulta_paciente(id):
     consulta = db(db.consultas.id_paciente == id).select()
     return consulta
@@ -31,7 +36,8 @@ def buscar(base, id):
             'agendamento',
             'consulta',
             'consulta_paciente',
-            'atestado']
+            'atestado',
+            'atestados']
     if base not in bases:
         raise HTTP(403)
     try:
@@ -45,6 +51,8 @@ def buscar(base, id):
             dados = buscar_consulta_paciente(id)
         elif base == 'atestado':
             dados = buscar_atestado(id)
+        elif base == 'atestados':
+            dados = buscar_atestados(id)
         else:
             raise HTTP(404)
 
@@ -358,6 +366,13 @@ def atestado():
                                                   f='todas_consultas'))
     atestado = buscar('atestado', id_atestado)
     paciente = buscar('paciente', atestado.id_paciente)
+    return locals()
+
+def atestados():
+    id_paciente = request.args(0) or redirect(URL(c='pacientes',
+                                                  f='todas_consultas'))
+    paciente = buscar('paciente', id_paciente)
+    atestados = buscar('atestados', id_paciente)
     return locals()
 
 
