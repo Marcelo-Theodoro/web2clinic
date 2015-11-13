@@ -87,7 +87,7 @@ def editar_cadastro():
                                               client_side=True)
     paciente = buscar('paciente', id_paciente)
     db.pacientes.id.readable = False
-    form = SQLFORM(db.pacientes, paciente, upload=URL('download'))
+    form = SQLFORM(db.pacientes, paciente, upload=URL('download'), formstyle='bootstrap3_stacked')
     if form.process().accepted:
         redirect(URL(c='pacientes', f='paciente', args=id_paciente),
                  client_side=True)
@@ -149,7 +149,7 @@ def editar_agendamento():
                                                  client_side=True)
     agendamento = buscar('agendamento', id_agendamento)
     db.agendamentos.id.readable = False
-    form = SQLFORM(db.agendamentos, agendamento)
+    form = SQLFORM(db.agendamentos, agendamento, formstyle='bootstrap3_stacked')
     if form.process().accepted:
         redirect(URL(c='pacientes', f='agendamento', args=id_agendamento),
                  client_side=True)
