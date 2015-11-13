@@ -3,19 +3,22 @@
 
 def buscar_paciente(id):
     paciente = db(db.pacientes.id == id).select().first()
-    # paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
     return paciente
 
 
 def buscar_agendamento(id):
     agendamento = db(db.agendamentos.id == id).select().first()
-    # agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
     return agendamento
 
 
 def buscar_consulta(id):
     consulta = db(db.consultas.id == id).select().first()
     return consulta
+
+
+def buscar_atestado(id):
+    atestado = db(db.atestados.id == id).select().first()
+    return atestado
 
 
 def buscar_consulta_paciente(id):
@@ -27,7 +30,8 @@ def buscar(base, id):
     bases = ['paciente',
             'agendamento',
             'consulta',
-            'consulta_paciente']
+            'consulta_paciente',
+            'atestado']
     if base not in bases:
         raise HTTP(403)
     try:
@@ -39,6 +43,8 @@ def buscar(base, id):
             dados = buscar_consulta(id)
         elif base == 'consulta_paciente':
             dados = buscar_consulta_paciente(id)
+        elif base == 'atestado':
+            dados = buscar_atestado(id)
         else:
             raise HTTP(404)
 
@@ -331,6 +337,26 @@ def prontuario_consulta():
     formulario = db(ficha.id == consulta.id_form).select().first()
     response.view = [i['view_prontuario'] for i in tipos_consultas
                      if i['form'] == tipo_consulta][0]
+    return locals()
+
+
+def gerar_atestado():
+    id_paciente = request.args(0) or redirect(URL(c='pacientes',
+                                                  f='todas_consultas'))
+    paciente = buscar('paciente', id_paciente)
+    form = SQLFORM(db.atestados)
+    form.vars.id_paciente = paciente.id
+    if form.process().accepted:
+        id = form.vars.id
+        redirect(URL(c='pacientes', f='atestado', args=id), client_side=True)
+    return locals()
+
+
+def atestado():
+    id_atestado = request.args(0) or redirect(URL(c='pacientes',
+                                                  f='todas_consultas'))
+    atestado = buscar('atestado', id_atestado)
+    paciente = buscar('paciente', atestado.id_paciente)
     return locals()
 
 

@@ -63,3 +63,11 @@ db.define_table('consultas',
                 format='%(id_paciente)s %(tipo_consulta)s'
                 )
 
+
+db.define_table('atestados',
+                Field('id_paciente', 'reference pacientes',
+                      readable=False, writable=False),
+                Field('atestado', 'text'),
+                Field('data_criacao', type='datetime', default=request.now,
+                      requires=IS_DATE(format=('%d-%m-%Y'))),
+                )
