@@ -331,6 +331,7 @@ def prontuario_consulta():
     id_consulta = request.args(0) or redirect(URL(c='pacientes',
                                                   f='todas_consultas'))
     consulta = buscar('consulta', id_consulta)
+    paciente = buscar('paciente', consulta.id_paciente)
     tipo_consulta = consulta.tipo_consulta
     ficha = [i['base'] for i in tipos_consultas
              if i['form'] == tipo_consulta][0]
