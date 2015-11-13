@@ -1,21 +1,26 @@
 # -*- coding: utf-8 -*-
 
+
+# Opções para formulários
 ufs = ['SP', 'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
         'MT', 'MS', 'MG', 'PR', 'PB', 'PA', 'PE', 'PI', 'RJ', 'RN', 'RS',
           'RO', 'RR', 'SC', 'SE', 'TO']
-
 escolaridade = ['Nenhuma', '1º grau', '2º grau', 'Superior']
 cor = ['Branca', 'Negra', 'Parda', 'Indígena', 'Asiática']
-estadocivil = ['Casada', 'Solteira (sem união estável)', 'Solteira (com união estável)', 'Outra']
+estadocivil = ['Casada', 'Solteira (sem união estável)',
+               'Solteira (com união estável)', 'Outra']
 sexo = ['Feminino', 'Masculino']
 
+
 # Configurações da clínica
-CC_nome_clinica = 'Clínica de urologia do Lucas'
-CC_nome_medico = 'Lucas Augusto de Morais'
-CC_especialidade = 'Urologista'
-CC_crm = '666.666.666-24'
-CC_telefone = '(14) 998361111'
-CC_endereco = 'Rua Getúlio Vargas, 560, centro.'
+CC = dict(
+    nome_clinica = 'Clínica do X',
+    nome_medico = 'João X',
+    especialidade = 'Clínico Geral',
+    crm = '9999999999999',
+    telefone = '14 9999999',
+    endereco = 'R. Getúlio Vargas, 560, Centro - Ourinhos, SP, BRASIL.'
+)
 
 
 db.define_table('pacientes',
