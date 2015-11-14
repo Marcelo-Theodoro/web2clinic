@@ -907,5 +907,6 @@ db.define_table('retorno',
                 Field('id_paciente', 'reference pacientes',
                       readable=False, writable=False),
                 Field('texto', 'text'),
-                Field('data', type='date'),
+                Field('data', type='date',
+                      requires=IS_DATE(format='%d/%m/%Y')),
                 )

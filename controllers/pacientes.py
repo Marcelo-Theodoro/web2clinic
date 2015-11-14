@@ -31,13 +31,25 @@ def buscar_consulta_paciente(id):
     return consulta
 
 
+def buscar_prescricao(id):
+    prescricao = db(db.prescricoes.id == id).select().first()
+    return prescricao
+
+
+def buscar_prescricoes_paciente(id):
+    prescricoes = db(db.prescricoes.id_paciente == id).select()
+    return prescricoes
+
+
 def buscar(base, id):
     bases = ['paciente',
             'agendamento',
             'consulta',
             'consulta_paciente',
             'atestado',
-            'atestados']
+            'atestados',
+            'prescricao',
+            'prescricoes_paciente']
     if base not in bases:
         raise HTTP(403)
     try:
@@ -53,6 +65,10 @@ def buscar(base, id):
             dados = buscar_atestado(id)
         elif base == 'atestados':
             dados = buscar_atestados(id)
+        elif base == 'prescricao':
+            dados = buscar_prescricao(id)
+        elif base == 'prescricoes_paciente':
+            dados = buscar_prescricoes_paciente(id)
         else:
             raise HTTP(404)
 
@@ -368,11 +384,42 @@ def atestado():
     paciente = buscar('paciente', atestado.id_paciente)
     return locals()
 
+
 def atestados():
     id_paciente = request.args(0) or redirect(URL(c='pacientes',
                                                   f='todas_consultas'))
     paciente = buscar('paciente', id_paciente)
     atestados = buscar('atestados', id_paciente)
+    return locals()
+
+
+def gerar_prescricao():
+    id_paciente = request.args(0) or redirect(URL(c='pacientes',
+                                                  f='todas_consultas'))
+    paciente = buscar('paciente', id_paciente)
+    form = SQLFORM(db.prescricoes)
+    form.vars.id_paciente = paciente.id
+    if form.process().accepted:
+        id = form.vars.id
+        redirect(URL(c='pacientes', f='prescricao', args=id),
+                 client_side=True)
+    return locals()
+
+
+def prescricao():
+    id_prescricao = request.args(0) or redirect(URL(c='pacientes',
+                                                    f='todas_consultas'))
+    prescricao = buscar('prescricao', id_prescricao)
+    paciente = buscar('paciente', prescricao.id_paciente)
+    return locals()
+
+
+def prescricoes():
+    id_paciente = request.args(0) or redirect(URL(c='pacientes',
+                                                  f='todas_consultas'))
+    paciente = buscar('paciente', id_paciente)
+    prescricoes = buscar('prescricoes_paciente', paciente.id)
+    # prescricoes = db(db.prescricoes.id_paciente == paciente.id).select()
     return locals()
 
 

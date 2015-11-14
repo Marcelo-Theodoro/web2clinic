@@ -23,6 +23,9 @@ CC = dict(
 )
 
 
+remedios = ['remedio{0}'.format(n) for n in range(20)]
+
+
 db.define_table('pacientes',
                 Field('nome', requires=IS_NOT_EMPTY()),
                 Field('sexo', default='Feminino', requires=IS_IN_SET(sexo)),
@@ -76,3 +79,16 @@ db.define_table('atestados',
                 Field('data_criacao', type='datetime', default=request.now,
                       requires=IS_DATE(format=('%d-%m-%Y'))),
                 )
+
+db.define_table('prescricoes',
+                Field('id_paciente', 'reference pacientes',
+                      readable=False, writable=False),
+                # Field('id_consulta', 'reference consultas',
+                #       readable=False, writable=False),
+                Field('data_criacao', type='date', default=request.now,
+                      requires=IS_DATE(format='%d/%m/%Y')),
+                Field('texto', type='text'),
+                Field('remedios', requires=IS_IN_SET(remedios, multiple=True),
+                      widget=SQLFORM.widgets.checkboxes.widget),
+                )
+
