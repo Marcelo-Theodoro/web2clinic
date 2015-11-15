@@ -229,7 +229,8 @@ def agendamentos():
     lista = []
     for agendamento in agendamentos:
         paciente = buscar('paciente', agendamento.id_paciente)
-        agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
+        # TODO: Calendário para de funcionar:
+        # agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
         lista.append(dict({'dia': agendamento.dia,
                            'hora_inicio': agendamento.hora_inicio,
                            'hora_fim': agendamento.hora_fim,
