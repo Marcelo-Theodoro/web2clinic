@@ -271,6 +271,8 @@ def consulta():
     if form.process().accepted:
         id_form = form.vars.id
         id_insert = db.consultas.insert(id_paciente=paciente.id,
+                                        dia = request.now,
+                                        hora_inicio=request.now,
                                         hora_fim=request.now,
                                         tipo_consulta=tipo_consulta['form'],
                                         id_form=id_form)
