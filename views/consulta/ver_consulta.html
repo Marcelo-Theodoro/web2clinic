@@ -17,7 +17,7 @@
 				<th>{{=paciente.nome}}</th>
 				<th>{{=consulta.hora_fim}}</th>
 				<th>{{=consulta.tipo_consulta}}</th>
-				<th><a href="{{=URL('prontuario_consulta', args=id_consulta)}}" class="btn btn-default btn-sm btn-block" role="button">PRONTUÁRIO</a></th>
+				<th><a href="{{=URL(c='prontuario', f='prontuario_consulta', args=id_consulta)}}" class="btn btn-default btn-sm btn-block" role="button">PRONTUÁRIO</a></th>
 				<th><a href="#" class="btn btn-default btn-sm btn-block" role="button">EDITAR</a></th>
 				<th><a href="#" class="btn btn-default btn-sm btn-block" role="button">APAGAR</a></th>
 				<th><a href="#" class="btn btn-default btn-sm btn-block" role="button">Gerar documentos</a></th>
