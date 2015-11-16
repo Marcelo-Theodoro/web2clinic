@@ -1,0 +1,440 @@
+<!--ficha_clinica_de_anticoncepcao-->
+{{extend 'layout.html'}}
+<div class="clearfix">
+	<h3>Consulta Anticoncepção {{=consulta.hora_fim}}</h3>
+	<div class="thumbnail">
+		{{itens = ['queixa', 'hpma']}}
+		{{for item in itens:}}
+		{{if formulario[item]:}}
+		<div class="row">
+			<div class="col-sm-2 col-md-2 col-lg-1">
+				<strong>{{=item.capitalize()}}: </strong>
+			</div>
+			<div class="col-sm-10 col-md-10 col-lg-11">
+				{{=formulario[item]}}
+			</div>
+		</div>	
+		{{pass}}
+		{{pass}}
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> Antecedentes Familiares: </p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens = ['hipertensao_arterial_AF', 'diabetes_AF', 'cardiopatia_AF', 'cancer_AF']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				{{if item == 'cancer_AF':}}
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_AF','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario['tipo_cancer_AF']}}
+				</div>
+				{{else:}}
+				<div class="col-sm-12 col-lg-12"><strong>{{=item.replace('_AF','').replace('_',' ').capitalize()}}</strong></div>
+				{{pass}}
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> Antecedentes Pessois: </p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens = ['neurologico_AP', 'cardiovasculares_AP', 'hipertensao_AP', 'flebites_AP', 'trombose_venosa_AP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<strong>{{=item.replace('_AP','').replace('_',' ').capitalize()}}</strong>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Endocrinopatias / metabólicas</p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens = ['diabetes_AP', 'tireoide_AP', 'outras_AP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<strong>{{=item.replace('_AP','').replace('_',' ').capitalize()}}</strong>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Doenças gastro-intestinais</p>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Doenças sexualmente transmissíveis</p>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			{{itens = ['gonococcia_AP', 'sifilis_AP', 'hpv_AP', 'hiv_AP', 'outras_dst_AP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				{{if item == 'outras_dst_AP':}}
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_dst_AP','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario[item]}}
+				</div>
+				{{else:}}
+				<strong>{{=item.replace('_AP','').replace('_',' ').capitalize()}}</strong>
+				{{pass}}
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			{{itens = ['doencas_renais_AP', 'doencas_hematologicas_AP', 'anemia_AP', 'a_falciforme_AP', 'outras_doencas_AP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				{{if item == 'outras_doencas_AP':}}
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_doencas_AP','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario[item]}}
+				</div>
+				{{else:}}
+				<strong>{{=item.replace('_AP','').replace('_',' ').capitalize()}}</strong>
+				{{pass}}
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			{{itens = ['cancer_AP', 'cirurgias_anteriores_AP', 'alergias_AP', 'transfusao_AP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<strong>{{=item.replace('_AP','').replace('_',' ').capitalize()}}</strong>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Medicação Atual</p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens = ['tranquilizantes_AP', 'antidepressivos_AP', 'antibioticos_AP', 'outros_medicacao_atual_AP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				{{if item == 'outros_medicacao_atual_AP':}}
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_medicacao_atual_AP','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario[item]}}
+				</div>
+				{{else:}}
+				<strong>{{=item.replace('_AP','').replace('_',' ').capitalize()}}</strong>
+				{{pass}}
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> Antecedentes Menstruais: </p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens = ['menarca_AM', 'dum_AM', 'dismenorreia_AM', 'tpm_AM', 'ciclo_menstrual_AM']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				{{if item in ('menarca_AM', 'dum_AM','ciclo_menstrual_AM'):}}
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_AM','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario[item]}}
+				</div>
+				{{else:}}
+				<strong>{{=item.replace('_AM','').replace('_',' ').capitalize()}}</strong>
+				{{pass}}
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> Antecedentes Obstétricos: </p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens = ['gesta_AO', 'para_AO']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_AO','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario[item]}}
+				</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				<p> Abortamentos: </p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens = ['espontaneos_AO', 'provocados_AO', 'ultimo_aborto_AO', 'intercorrencias_AO']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_AO','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario[item]}}
+				</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-sm-12">
+				<p> Partos: </p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens = ['normais_AO', 'cesareas_AO', 'forcepes_AO', 'primeiro_parto_AO', 'ultimo_parto_AO']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_AO','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario[item]}}
+				</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		{{if formulario['aleitamento_AO']:}}
+		<div class="row">
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div class="col-sm-4 col-lg-3"><strong>Aleitamento:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario['aleitamento_AO']}}
+				</div>
+			</div>
+		</div>
+		{{pass}}
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> História Sexual: </p>
+			</div>
+		</div>
+		<div class="row">
+			{{if formulario['idade_primeira_relacao_HS']:}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4 col-lg-3"><strong>Idade da 1ª relação:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario['idade_primeira_relacao_HS']}}
+				</div>
+			</div>
+			{{pass}}
+
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4 col-lg-3"><strong>Nº de parceiros </strong></div>
+				{{itens = ['durante_ano_HS', 'ultimos_meses_HS']}}
+				{{for item in itens:}}
+				{{if formulario[item]:}}
+				<div class="col-sm-3 col-lg-3"><strong>{{=item.replace('_HS','').replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-1 col-lg-2">
+					{{=formulario[item]}}
+				</div>
+				{{pass}}
+				{{pass}}
+			</div>
+			{{if formulario['frequencia_relacoes_sexuais_HS']:}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4 col-lg-3"><strong>Frequência de relações sexuais :</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario['frequencia_relacoes_sexuais_HS']}}
+				</div>
+			</div>
+			{{pass}}
+			{{itens = ['orgamos_HS', 'dispareunia_HS', 'alergias_AP', 'coito_anal_HS', 'tabagismo_HS', 'etilismo_HS']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<strong>{{=item.replace('_HS','').replace('_',' ').capitalize()}}</strong>
+			</div>
+			{{pass}}
+			{{pass}}
+			{{if formulario['drogas_HS']:}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4 col-lg-3"><strong>Drogas:</strong></div>
+				<div class="col-sm-4 col-lg-4">
+					<div class="col-sm-4 col-lg-3"><strong>Qual:</strong></div>
+					<div class="col-sm-8 col-lg-9">{{=formulario['drogas_qual_HS']}}</div>
+				</div>
+				<div class="col-sm-4 col-lg-4">
+					<div class="col-sm-4 col-lg-3"><strong>Injetável:</strong></div>
+					<div class="col-sm-8 col-lg-9">{{=formulario['drogas_injetaveis_HS']}}</div>
+				</div>
+			</div>
+			{{pass}}
+		</div>
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Conhecimento / Atividades / Prática</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-3">
+				<p class="text-center">Conhece algum método ?</p>
+			</div>
+			<div class="col-sm-4 col-sm-offset-1">
+				<p class="text-center">Uso em algum momento</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3 col-sm-offset-3">
+				Espontâneo
+			</div>
+			<div class="col-sm-3 ">
+				Estimulado
+			</div>
+			<div class="col-sm-3 ">
+				A vida
+			</div>
+		</div>
+		{{itens = ['ritmo', 'diafragma', 'geleia', 'preservativo_masculino', 'camisinha_feminina', 'diu', 'pilula', 'injetavel', 'ligadura_tubaria', 'vasectomia' ]}}
+		{{ espontaneo = '_espontaneo_CAP'}}
+		{{ estimulado = '_estimulado_CAP'}}
+		{{ qualquermomento = '_uso_em_qualquer_momento_CAP'}}
+		{{for item in itens:}}
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-3"><strong>{{=item.replace('_',' ').capitalize()}}</strong></div> 
+				<div class="col-sm-3">
+					{{esp = item+espontaneo}}
+					{{if formulario[esp] == 'on':}}
+					Sim
+					{{else:}}
+					Não
+					{{pass}}
+				</div>
+				<div class="col-sm-3">
+					{{est = item+estimulado}}
+					{{if formulario[est] == 'on':}}
+					Sim
+					{{else:}}
+					Não
+					{{pass}}
+				</div>
+				<div class="col-sm-3">
+					{{qlqr = item+qualquermomento}}
+					{{if formulario[qlqr] == 'on':}}
+					Sim
+					{{else:}}
+					Não
+					{{pass}}
+				</div>
+			</div>
+		</div>
+		{{pass}}
+		<div class="row">
+			<div class="col-sm-2 col-md-2 col-lg-2"><strong>Qual? </strong></div>
+			<div class="col-sm-4">
+				{{=formulario['qual_CAP']}}
+			</div>
+			<div class="col-sm-2 col-md-2 col-lg-2"><strong>Quanto tempo?</strong></div>
+			<div class="col-sm-4">
+				{{=formulario['quanto_tempo_CAP']}}
+			</div>
+		</div>
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>Conclusão</p>
+			</div>
+		</div>
+		<div class="row">
+			{{itens =['metodo_escolha_pacientes', 'indicacao_medica', 'metodo_anticoncepcional']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4 col-lg-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-8 col-lg-9">
+					{{=formulario[item]}}
+				</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

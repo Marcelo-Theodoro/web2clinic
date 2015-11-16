@@ -1,0 +1,93 @@
+<!--ficha_de_anticoncepcao 0.1-->
+{{extend 'layout.html'}}
+<div class="clearfix">
+	<h3>Este é o template prontuario_anticoncepcao.html</h3>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> MAMAS</p>
+			</div>
+		</div>
+		{{itens = ['insp_dinamica_MAMAS', 'palpacao_MAMAS', 'expressao_MAMAS', 'axilas_MAMAS']}}
+		{{for item in itens:}}
+		{{if formulario[item]:}}
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4">
+					{{=item.replace('_MAMAS','').replace('_',' ').capitalize()}}:
+				</div>
+				<div class="col-sm-8">{{=formulario[item]}}</div>
+			</div>
+		</div>
+		<hr>
+		{{pass}}
+		{{pass}}
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> OGI TOQUE</p>
+			</div>
+		</div>
+		{{itens = ['vagina_TOQUE', 'colo_TOQUE', 'utero_TOQUE', 'an_d_TOQUE', 'an_e_TOQUE', 'reto_TOQUE',  'parametrios_TOQUE']}}
+		{{for item in itens:}}
+		{{if formulario[item]:}}
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4">
+					{{=item.replace('_TOQUE','').replace('_',' ').capitalize()}}:
+				</div>
+				<div class="col-sm-8">{{=formulario[item]}}</div>
+			</div>
+		</div>
+		<hr>
+		{{pass}}
+		{{pass}}
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p> OGE</p>
+			</div>
+		</div>
+		{{itens = ['pilificacao_OGE', 'labios_OGE', 'clitoris_OGE', 'ureta_OGE', 'gi_bartholin_OGE', 'himem_OGE',  'pva_OGE', 'pvp_OGE', 'perineo_OGE', 'perda_urina_OGE']}}
+		{{for item in itens:}}
+		{{if formulario[item]:}}
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4">
+					{{=item.replace('_OGE','').replace('_',' ').capitalize()}}:
+				</div>
+				<div class="col-sm-8">{{=formulario[item]}}</div>
+			</div>
+		</div>
+		<hr>
+		{{pass}}
+		{{pass}}
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>ESPECULAR</p>
+			</div>
+		</div>
+		{{itens = ['vagina_ESPECULAR', 'colo_ESPECULAR', 'cont_vaginal_ESPECULAR']}}
+		{{for item in itens:}}
+		{{if formulario[item]:}}
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-4">
+					{{=item.replace('_ESPECULAR','').replace('_',' ').capitalize()}}:
+				</div>
+				<div class="col-sm-8">{{=formulario[item]}}</div>
+			</div>
+		</div>
+		<hr>
+		{{pass}}
+		{{pass}}
+	</div>
+</div>
+=======
+<!--ficha_de_anticoncepcao-->
+<h1>Este é o template prontuario_anticoncepcao.html</h1>
+>>>>>>> origin/master
