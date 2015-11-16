@@ -8,7 +8,7 @@
 	<li>
 		<div class="timeline-badge warning"></div>
 		<div class="timeline-panel">
-			<div class="timeline-heading"><a href="{{=URL(c='pacientes', f='ver_consulta', args=row.id)}}">
+			<div class="timeline-heading"><a href="{{=URL(c='consulta', f='ver_consulta', args=row.id)}}">
 					<h4 class="timeline-title">{{=row.tipo_consulta}}</h4>
 			</div>
 			<div class="timeline-body">
@@ -19,7 +19,7 @@
 	{{else:}}
 	<li > 
 		<div class="timeline-badge danger"> </div>
-		<div class="timeline-panel"><a href="{{=URL(c='pacientes', f='ver_consulta', args=row.id)}}">
+		<div class="timeline-panel"><a href="{{=URL(c='consulta', f='ver_consulta', args=row.id)}}">
 			<div class="timeline-heading">
 				<h4 class="timeline-title">{{=row.tipo_consulta}}</h4>
 			</div>
