@@ -110,3 +110,10 @@ def ver_consulta():
                               if consulta.tipo_consulta == i['form']][0]
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     return locals()
+
+
+def apagar_consulta():
+    return locals()
+
+def editar_consulta():
+    return locals()

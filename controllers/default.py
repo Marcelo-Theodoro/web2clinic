@@ -12,4 +12,5 @@ def index():
             label = [i['label'] for i in tipos_consultas
                      if item == i['form']][0]
             lista.append({'label': label, 'qtd': qtd_consultas})
+    # TODO: Consultas/agendamentos por dia, consultas/agendamentos por mês.
     return locals()

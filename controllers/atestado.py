@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 def gerar_atestado():
+    # TODO: Definir texto por padrão #23
     id_paciente = request.args(0) or redirect(URL(c='paciente',
                                                   f='todas_consultas'))
     paciente = db(db.pacientes.id == id_paciente).select().first()
@@ -21,6 +22,7 @@ def atestado():
 
 
 def atestados():
+    # TODO: SQLFORM.grid -> paciente - dia do atestado
     id_paciente = request.args(0) or redirect(URL(c='paciente',
                                                   f='todas_consultas'))
     paciente = db(db.pacientes.id == id_paciente).select().first()

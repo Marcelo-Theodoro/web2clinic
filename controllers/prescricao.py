@@ -4,6 +4,8 @@ def gerar_prescricao():
     id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     paciente = db(db.pacientes.id == id_paciente).select().first()
+    if not paciente:
+        raise HTTP(404)
     form = SQLFORM(db.prescricoes)
     form.vars.id_paciente = paciente.id
     if form.process().accepted:
@@ -17,13 +19,36 @@ def prescricao():
     id_prescricao = request.args(0) or redirect(URL(c='consulta',
                                                     f='todas_consultas'))
     prescricao = db(db.prescricoes.id == id_prescricao).select().first()
+    if not prescricao:
+        raise HTTP(404)
     paciente = db(db.pacientes.id == prescricao.id_paciente)
     return locals()
 
 
 def prescricoes():
-    id_paciente = request.args(0) or redirect(URL(c='consulta',
-                                                  f='todas_consultas'))
-    paciente = db(db.pacientes.id == id_paciente).select().first()
-    prescricoes = db(db.prescricoes.id_paciente == paciente.id).select()
+    id_paciente = request.args(0)
+    if id_paciente:
+        paciente = db(db.pacientes.id == id_paciente).select().first()
+        if not paciente:
+            raise HTTP(404)
+    db.prescricoes.id_paciente.readable = True
+    haders = {'prescricoes.id_paciente': 'Paciente'}
+    links = [lambda row: A(SPAN('Visualizar',
+                                _class='icon magnifier icon-zoom-in\
+                                        glyphicon glyphicon-zoom-in'),
+                           _class='button btn btn-default',
+                           _href=URL(c='prescricao', f='prescricao',
+                                     args=[row.id]))]
+    grid = SQLFORM.grid(db.prescricoes.id_paciente == paciente.id
+                        if id_paciente else db.prescricoes,
+                        fields=[db.prescricoes.id_paciente,
+                                db.prescricoes.data_criacao],
+                        args=request.args[:1],
+                        csv=False,
+                        user_signature=False,
+                        headers=haders,
+                        details=False,
+                        links=links,
+                        editable=False,
+                        deletable=False)
     return locals()
