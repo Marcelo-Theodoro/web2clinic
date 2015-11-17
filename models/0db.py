@@ -6,7 +6,7 @@ from gluon.tools import Auth
 db = DAL('sqlite://storage.sqlite')
 
 
-response.formstyle = 'bootstrap3_inline'
+response.formstyle = 'bootstrap3_stacked'
 response.form_label_separator = ''
 
 

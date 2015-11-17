@@ -23,6 +23,6 @@ def atestado():
 def atestados():
     id_paciente = request.args(0) or redirect(URL(c='paciente',
                                                   f='todas_consultas'))
-    paciente = db(db.pacientes.id == id_paciente)
-    atestados = db(db.atestados.id_paciente == id_paciente)
+    paciente = db(db.pacientes.id == id_paciente).select().first()
+    atestados = db(db.atestados.id_paciente == id_paciente).select()
     return locals()
