@@ -1,15 +1,15 @@
 {{extend 'layout.html'}}
 <div class="hidden-print">
+	<div class="visible-xs">
+		<div class="col-xs-6">
+			<p><a onclick="myFunction()" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-print" aria-hidden="true">Imprimir</a></p>
+		</div>
+	</div>
 	<div class="hidden-xs col-md-2 col-sm-2 col-lg-2" >
 		<div class="thumbnail" data-spy="affix">
 			<div class="col-md-12 col-sm-12 col-lg-12">			
-				<p><a onclick="myFunction()" class="btn btn-default btn-sm btn-block" role="button">Imprimir</a></p>
+				<p><a onclick="myFunction()" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir</a></p>
 			</div>
-		</div>
-	</div>
-	<div class="visible-xs">
-		<div class="col-xs-6">
-			<p><a onclick="myFunction()" class="btn btn-default btn-sm btn-block" role="button">Imprimir</a></p>
 		</div>
 	</div>
 </div>			
@@ -39,7 +39,7 @@
 		</div>
 		<div class="row top-buffer">
 			<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
-				<p><strong>{{=atestado.data_criacao}}</strong></p>
+				<p><strong>{{=atestado.data_criacao.strftime('%d-%m-%Y')}}</strong></p>
 			</div>
 		</div>
 		<div class="row top-buffer">
