@@ -2,10 +2,16 @@
 {{extend 'layout.html'}}
 <div class="col-md-2">
 	<div class="thumbnail">
+		{{if paciente['image']:}}
 			<img src="{{=URL('download',args=paciente['image'])}}" class="img-thumbnail hidden-print" alt="Responsive image" />
+		{{else:}}
+			<img src="{{=URL('static','images/avatar.jpg')}}" class="img-thumbnail hidden-print" alt="Responsive image" />
+		{{pass}}
 		<div class="caption">
 			<h3>{{=paciente['nome']}}</h3>
 			<p><a href="{{=URL(c='consulta', f='consultas', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Consultas</a></p>
+			<p><a href="{{=URL(c='atestado', f='atestados', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Atestados</a></p>
+			<p><a href="{{=URL(c='prescricao', f='prescricoes', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Prescrições</a></p>
 		</div>
 	</div>
 </div>
