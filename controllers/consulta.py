@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 
 def consulta():
-    tipo_consulta = request.args(0) or redirect(URL(c='paciente',
-                                                    f='agendamentos'))
+    tipo_consulta = request.args(0) or redirect(URL(c='consulta',
+                                                    f='todas_consultas'))
     # TODO: gambiarra.start()
     if request.vars['agendamento'] == 'True':
-        id_agendamento = request.args(1) or redirect(URL(c='paciente',
-                                                         f='agendamentos'))
+        id_agendamento = request.args(1) or redirect(URL(c='consulta',
+                                                         f='todas_consultas'))
         agendamento = db(db.agendamentos.id == id_agendamento).select().first()
         id_paciente = agendamento.id_paciente
         paciente = db(db.pacientes.id == id_paciente).select().first()
         paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
     elif request.vars['agendamento'] == 'False':
-        id_paciente = request.args(1) or redirect(URL(c='paciente',
-                                                      f='agendamentos'))
+        id_paciente = request.args(1) or redirect(URL(c='consulta',
+                                                      f='todas_consultas'))
         paciente = db(db.pacientes.id == id_paciente).select().first()
     else:
         raise HTTP(404)
@@ -42,7 +42,7 @@ def consulta():
 
 
 def consultas():
-    id_paciente = request.args(0) or redirect(URL(c='paciente',
+    id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     paciente = db(db.pacientes.id == id_paciente).select().first()
     consultas = db(db.consultas.id_paciente == id_paciente).select()
@@ -65,7 +65,7 @@ def nova_consulta():
 
 
 def consultar():
-    id_paciente = request.args(0) or redirect(URL(c='paciente',
+    id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     paciente = db(db.pacientes.id == id_paciente).select().first()
     form = SQLFORM.factory(Field('tipo_consulta',
@@ -103,7 +103,7 @@ def todas_consultas():
 
 
 def ver_consulta():
-    id_consulta = request.args(0) or redirect(URL(c='paciente',
+    id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     consulta = db(db.consultas.id == id_consulta).select().first()
     consulta.tipo_consulta = [i['label'] for i in tipos_consultas
@@ -112,8 +112,22 @@ def ver_consulta():
     return locals()
 
 
-def apagar_consulta():
+def editar_consulta():
+    id_consulta = request.args(0) or redirect(URL(c='consulta',
+                                                  f='todas_consultas'))
     return locals()
 
-def editar_consulta():
+def apagar_consulta():
+    id_consulta = request.args(0) or redirect(URL(c='consulta',
+                                                  f='todas_consultas'))
+    consulta = db(db.consultas.id == id_consulta).select().first()
+    if not consulta:
+        raise HTTP(404)
+    form = SQLFORM.factory()
+    if form.process().accepted:
+        db(db.consultas.id == consulta.id).delete()
+        redirect(URL(c='consulta', f='todas_consultas'))
     return locals()
+
+
+
