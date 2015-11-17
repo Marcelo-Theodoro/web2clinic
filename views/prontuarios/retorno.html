@@ -1,1 +1,20 @@
-{{extend 'layout.html'}}
+{{extend 'base_pront.html'}}
+<div class="clearfix">
+	<h3>Retorno dia {{=consulta.hora_fim}}</h3>
+	<div class="thumbnail">
+		{{itens = ['texto', 'data']}}
+		{{for item in itens:}}
+		{{if formulario[item]:}}
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-2 col-p-2">
+					<strong>{{=item.capitalize()}}:</strong>
+				</div>
+				<div class="col-sm-10 col-p-10">{{=formulario[item]}}</div>
+			</div>
+		</div>
+		<hr>
+		{{pass}}
+		{{pass}}
+	</div>
+</div>
