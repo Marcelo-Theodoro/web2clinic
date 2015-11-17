@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 
 def gerar_atestado():
-    # TODO: Definir texto por padrão #23
     id_paciente = request.args(0) or redirect(URL(c='paciente',
                                                   f='todas_consultas'))
     paciente = db(db.pacientes.id == id_paciente).select().first()
     form = SQLFORM(db.atestados)
+    texto_atestado = '''
+    Texto pré-definido para o atestado do paciente {0}
+    '''.format(paciente.nome)
+    form.vars.atestado = texto_atestado
     form.vars.id_paciente = paciente.id
     if form.process().accepted:
         id = form.vars.id
