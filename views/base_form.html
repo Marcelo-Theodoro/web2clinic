@@ -1,66 +1,80 @@
 <!--fix #17 -->
 {{extend 'layout.html'}}
-<div class="col-md-2" >
+<div class="hidden-xs col-md-2 col-sm-2 col-lg-2" >
 	<div class="thumbnail" data-spy="affix">
-		<div class="col-md-12">
+		<div class="col-md-12 col-sm-12 col-lg-12">
 			<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Diagnostico</a></p>
 			<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Prescição medica</a></p>
 			<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Atestado</a></p>			
 			<p><a href="{{=URL('consultas', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Consultas</a></p>
 		</div>
 	</div>
-</div>				
-<div class="col-md-10">
+</div>
+<div class="visible-xs">
+	<div class="col-xs-6">
+		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Diagnostico</a></p>
+	</div>
+	<div class="col-xs-6">
+		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Prescição medica</a></p>
+	</div>
+	<div class="col-xs-6">
+		<p><a href="#" class="btn btn-default btn-sm btn-block" role="button">Atestado</a></p>			
+	</div>
+	<div class="col-xs-6">
+		<p><a href="{{=URL('consultas', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Consultas</a></p>
+	</div>
+</div>
+<div class="col-xs-12 col-md-10 col-sm-10 col-lg-10">
 	<div class="panel panel-success">
 		<div class="panel-heading">Dados Pessoais </div>
 		<div class="panel-body">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 col-sm-12 col-lg-12">
 					<p><h3><strong>Nome: </strong>{{=paciente['nome']}}</h3></p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 col-sm-6 col-lg-6">
 					<p><strong>Data de nascimento:</strong> {{=paciente['nascimento']}} </p>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 col-sm-6 col-lg-6">
 					<p><strong>CPF: </strong>{{=paciente['cpf']}}</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 col-sm-12 col-lg-12">
 					<p><strong>Endereço: </strong>{{=paciente['endereco']}}</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4 col-sm-4 col-lg-4">
 					<p><strong>Cidade: </strong>{{=paciente['cidade']}} </p>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 col-sm-4 col-lg-4">
 					<p><strong>UF: </strong>{{=paciente['uf']}}</p>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 col-sm-4 col-lg-4">
 					<p><strong>CEP: </strong>{{=paciente['cep']}}</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 col-sm-12 col-lg-12">
 					<p><strong>Telefone:</strong> {{=paciente['telefone']}}</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-4 col-sm-4 col-lg-4">
 					<p><strong>Escolaridade:</strong> {{=paciente['escolaridade']}}</p>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 col-sm-4 col-lg-4">
 					<p><strong>Estado civil:</strong> {{=paciente['estadocivil']}}</p>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 col-sm-4 col-lg-4">
 					<p><strong>Cor:</strong> {{=paciente['cor']}}</p>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-12 col-sm-12 col-lg-12">
 					<p><strong>Observações: </strong>{{=paciente['observacoes']}}</p>
 				</div>
 			</div>
