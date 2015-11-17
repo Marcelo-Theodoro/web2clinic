@@ -17,10 +17,28 @@
 				<th>{{=paciente.nome}}</th>
 				<th>{{=consulta.hora_fim}}</th>
 				<th>{{=consulta.tipo_consulta}}</th>
-				<th><a href="{{=URL(c='prontuario', f='prontuario_consulta', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">PRONTUÁRIO</a></th>
+				<th><a href="{{=URL(c='prontuario', f='prontuario_consulta', args=id_consulta)}}" class="btn btn-default btn-sm btn-block" role="button">PRONTUÁRIO</a></th>
 				<th><a href="{{=URL(c='consulta', f='editar_consulta', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">EDITAR</a></th>
 				<th><a href="{{=URL(c='consulta', f='apagar_consulta', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">APAGAR</a></th>
-				<th><a href="#" class="btn btn-default btn-sm btn-block" role="button">Gerar documentos</a></th>
+				<th><a href="#" class="btn btn-default btn-sm btn-block" role="button" data-toggle="modal" data-target="#ModalDocs">Gerar documentos</a></th>
 		</tbody>
 	</table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalDocs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Documentos</h4>
+      </div>
+      <div class="modal-body">
+      	<a href="{{=URL(c='atestado', f='gerar_atestado', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Atestado</a>
+		<a href="{{=URL(c='prescricao', f='gerar_prescricao',args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Prescrição</a>
+		<a href="#" class="btn btn-default btn-sm btn-block" role="button">Outros</a>
+      </div>
+    </div>
+  </div>
 </div>
