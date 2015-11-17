@@ -50,5 +50,6 @@ def prescricoes():
                         details=False,
                         links=links,
                         editable=False,
-                        deletable=False)
+                        deletable=False,
+                        create=False)
     return locals()

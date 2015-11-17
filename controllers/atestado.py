@@ -49,5 +49,6 @@ def atestados():
                         details=False,
                         links=links,
                         editable=False,
-                        deletable=False)
+                        deletable=False,
+                        create=Falseo)
     return locals()
