@@ -46,20 +46,23 @@ def agendamento():
                                                      f='agendamentos'),
                                                  client_side=True)
     agendamento = db(db.agendamentos.id == id_agendamento).select().first()
+    if not agendamento:
+        raise HTTP(404)
     agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
     id_paciente = agendamento.id_paciente
     paciente = db(db.pacientes.id == id_paciente).select().first()
+    if not paciente:
+        raise HTTP(404)
     form = SQLFORM.factory(Field('tipo_consulta',
                                  requires=IS_IN_SET([i['label']
-                                                    for i in tipos_consultas])),
-                           formstyle='bootstrap3_stacked')
+                                                    for i in tipos_consultas])))
     if form.process().accepted:
         tipo_consulta = form.vars.tipo_consulta
         tipo_consulta = [i['form'] for i in tipos_consultas
                          if i['label'] == tipo_consulta][0]
         redirect(URL(c='consulta', f='consulta',
-                     args=[tipo_consulta, id_agendamento],
-                     vars=dict(agendamento=True)),
+                     args=[tipo_consulta, paciente.id],
+                     vars=dict(agendamento=agendamento.id)),
                  client_side=True)
     return locals()
 
