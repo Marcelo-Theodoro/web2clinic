@@ -1,116 +1,90 @@
 {{extend 'layout.html'}}
 <div class="col-md-12">
 	<span>
-		<h3>Cadastrar novo paciente.</h3> <br />
+		{{if editar_paciente:}}
+			<h3>Editando informações de: {{=editar_paciente.nome}} </h3> <br />
+		{{else:}}
+			<h3>Cadastrar novo paciente.</h3> <br />
+		{{pass}}
 	</span>
 	<form action="#" enctype="multipart/form-data" method="post">
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Nome</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['nome']}}</label>
 				<div class="col-sm-6">
-					<input class="form-control string" name="nome" type="text" value="" />
+					{{=form.custom.widget['nome']}}
 					<span class="help-block"></span>
 				</div>
 			</div>	
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">CPF</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['cpf']}}</label>
 				<div class="col-sm-6">
-					<input class="form-control string" name="cpf" type="text" value="" />
+					{{=form.custom.widget['cpf']}}
 					<span class="help-block"></span>
 				</div>
 			</div>	
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Profissão</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['profissao']}}</label>
 				<div class="col-sm-6">
-					<input class="form-control string" name="profissão" type="text" value="" />
+					{{=form.custom.widget['profissao']}}
 					<span class="help-block"></span>
 				</div>
 			</div>	
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2" >Endereço</label>
+				<label class="control-label col-sm-2" >{{=form.custom.label['endereco']}}</label>
 				<div class="col-sm-6">
-					<input class="text form-control" name="endereco" ></input>
+					{{=form.custom.widget['endereco']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2" >Cidade</label>
+				<label class="control-label col-sm-2" >{{=form.custom.label['cidade']}}</label>
 				<div class="col-sm-6">
-					<input class="text form-control" name="cidade" ></input>
+					{{=form.custom.widget['cidade']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2" >UF</label>
+				<label class="control-label col-sm-2" >{{=form.custom.label['uf']}}</label>
 				<div class="col-sm-6">
-					<select class="generic-widget form-control" name="uf">
-						<option value=""></option>
-						<option value="SP">SP</option>
-						<option value="AC">AC</option>
-						<option value="AL">AL</option>
-						<option value="AP">AP</option>
-						<option value="AM">AM</option>
-						<option value="BA">BA</option>
-						<option value="CE">CE</option>
-						<option value="DF">DF</option>
-						<option value="ES">ES</option>
-						<option value="GO">GO</option>
-						<option value="MA">MA</option>
-						<option value="MT">MT</option>
-						<option value="MS">MS</option>
-						<option value="MG">MG</option>
-						<option value="PR">PR</option>
-						<option value="PB">PB</option>
-						<option value="PA">PA</option>
-						<option value="PE">PE</option>
-						<option value="PI">PI</option>
-						<option value="RJ">RJ</option>
-						<option value="RN">RN</option>
-						<option value="RS">RS</option>
-						<option value="RO">RO</option>
-						<option value="RR">RR</option>
-						<option value="SC">SC</option>
-						<option value="SE">SE</option>
-						<option value="TO">TO</option>
-					</select>
+					{{=form.custom.widget['uf']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2" >CEP</label>
+				<label class="control-label col-sm-2" >{{=form.custom.label['cpf']}}</label>
 				<div class="col-sm-6">
-					<input class="text form-control" name="cep" ></input>
-					<span class="help-block"></span>
-				</div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="form-group">
-				<label class="control-label col-sm-2">Telefone</label>
-				<div class="col-sm-6">
-					<input class="form-control string" name="telefone" type="text" value=""/>
+					{{=form.custom.widget['cep']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Data de nascimento</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['telefone']}}</label>
 				<div class="col-sm-6">
-					<input class="date form-control" name="nascimento" type="text" value="" />
+					{{=form.custom.widget['telefone']}}
+					<span class="help-block"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">{{=form.custom.label['nascimento']}}</label>
+				<div class="col-sm-6">
+					{{=form.custom.widget['nascimento']}}
 					<span class="help-block">
 					</span>
 				</div>
@@ -118,27 +92,18 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Sexo</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['sexo']}}</label>
 				<div class="col-sm-6">
-					<select class="generic-widget form-control" name="sexo">
-						<option value="Masculino">Masculino</option>
-						<option selected="selected "value="Feminino">Feminino</option>
-					</select>
+					{{=form.custom.widget['sexo']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Escolaridade</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['escolaridade']}}</label>
 				<div class="col-sm-6">
-					<select class="generic-widget form-control" name="escolaridade">
-						<option value=""></option>
-						<option value="Nenhuma">Nenhuma</option>
-						<option value="1º grau">1º grau</option>
-						<option value="2º grau">2º grau</option>
-						<option value="Superior">Superior</option>
-					</select>
+					{{=form.custom.widget['escolaridade']}}
 					<span class="help-block">
 					</span>
 				</div>
@@ -146,41 +111,27 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Estado Civil/União</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['estadocivil']}}</label>
 				<div class="col-sm-6">
-					<select class="generic-widget form-control" name="estadocivil">
-						<option value=""></option>
-						<option value="Casada">Casada</option>
-						<option value="Solteira (sem união estável)">Solteira (sem união estável)</option>
-						<option value="Solteira (com união estável)">Solteira (com união estável)</option>
-						<option value="Outra">Outra</option>
-					</select>
+					{{=form.custom.widget['estadocivil']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Cor/Raça</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['cor']}}</label>
 				<div class="col-sm-6">
-					<select class="generic-widget form-control" name="cor">
-						<option value=""></option>
-						<option value="Branca">Branca</option>
-						<option value="Negra">Negra</option>
-						<option value="Parda">Parda</option>
-						<option value="Indígena">Indígena</option>
-						<option value="Asiática">Asiática</option>
-					</select>
+					{{=form.custom.widget['cor']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
 		</div>
-		
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Foto</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['image']}}</label>
 				<div class="col-sm-6">
-					<input class="upload input-file" name="image" type="file" />
+					{{=form.custom.widget['image']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
@@ -188,9 +139,9 @@
 
 		<div class="row">
 			<div class="form-group" >
-				<label class="control-label col-sm-2" >Observações</label>
+				<label class="control-label col-sm-2" >{{=form.custom.label['observacoes']}}</label>
 				<div class="col-sm-6">
-					<textarea class="text form-control" cols="40" name="observacoes" rows="10"></textarea>
+					{{=form.custom.widget['observacoes']}}
 					<span class="help-block"></span>
 				</div>
 			</div>

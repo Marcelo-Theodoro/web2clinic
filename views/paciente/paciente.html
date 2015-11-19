@@ -66,7 +66,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<a href="{{=URL('editar_cadastro', args=paciente['id'])}}" class="btn btn-default" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil">Editar</span></a>
+					<a href="{{=URL('cadastro', vars={'editar': paciente['id']})}}" class="btn btn-default" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil">Editar</span></a>
 					<a href="{{=URL(c='agendamento', f='agendar', args=paciente['id'])}}" class="btn btn-default" role="button"><span class="icon plus icon-plus glyphicon glyphicon-plus">Agendar</span></a>
 				</div>
 			</div>
