@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-def cadastrar():
+def cadastro():
     form = SQLFORM(db.pacientes)
     if form.process().accepted:
         id = form.vars.id

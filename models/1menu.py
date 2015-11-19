@@ -7,7 +7,7 @@ response.menu = [
         ('Ver todos agendamentos', False, URL(c='agendamento', f='agendamentos')),
         ]),
     ('Pacientes', False, URL('#'), [
-            ('Novo cadastro', False, URL(c='paciente', f='cadastrar')), # alterar para novo_paciente
+            ('Novo cadastro', False, URL(c='paciente', f='cadastro')), # alterar para novo_paciente
             ('Todos cadastros', False, URL(c='paciente', f='pacientes')),
         ]),
     ('Consultas', False, URL('#'), [
