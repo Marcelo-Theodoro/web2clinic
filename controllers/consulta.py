@@ -47,28 +47,51 @@ def consulta():
         # Não tem agendamento.
         id_agendamento = False
 
-    form = SQLFORM(tipo_consulta['base'])
+    if request.vars['editar']:
+    # u = update
+        u_consulta_id = request.vars['editar']
+        u_consulta = db(db.consultas.id == u_consulta_id).select().first()
+        if str(u_consulta.id_paciente) != id_paciente:
+            # O agendamento não pertence ao mesmo paciente.
+            raise HTTP(404)
+        if not u_consulta:
+            # id recebido não corresponde a nenhuma consulta
+            raise HTTP(404)
+        u_tipo_consulta = [x['base'] for x in tipos_consultas
+                           if u_consulta.tipo_consulta == x['form']][0]
+        u_form_id = u_consulta.id_form
+        u_ficha = db(u_tipo_consulta.id == u_form_id).select().first()
+        if not u_ficha:
+            # Ficha não existes
+            raise HTTP(404)
+    else:
+        u_ficha = False
+
+
+    form = SQLFORM(tipo_consulta['base'] if not u_ficha
+                   else tipo_consulta['base'], record=u_ficha)
     response.view = tipo_consulta['view_form']
     form.vars.id_paciente = paciente.id
     if form.process().accepted:
-        id_form = form.vars.id
-        # Insere as informações no BD consultas
-        id_insert = db.consultas.insert(id_paciente=paciente.id,
-                                        dia = request.now,
-                                        hora_inicio=request.now,
-                                        hora_fim=request.now,
-                                        tipo_consulta=tipo_consulta['form'],
-                                        id_form=id_form)
-        if not id_insert:
-            # Houve um erro durante o insert
-            raise HTTP(500)
+        if not u_ficha:
+            id_form = form.vars.id
+            # Insere as informações no BD consultas
+            id_next = db.consultas.insert(id_paciente=paciente.id,
+                                          dia=request.now,
+                                          hora_inicio=request.now,
+                                          hora_fim=request.now,
+                                          tipo_consulta=tipo_consulta['form'],
+                                          id_form=id_form)
 
-        if id_agendamento:
-            # Se houver agendamento, então este bloco vai deleta-lo
-            # ao fim a consulta.
-            db(db.agendamentos.id == id_agendamento).delete()
+            if id_agendamento:
+                # Se houver agendamento, então este bloco vai deleta-lo
+                # ao fim a consulta.
+                db(db.agendamentos.id == id_agendamento).delete()
 
-        redirect(URL(c='consulta', f='ver_consulta', args=id_insert),
+        else:
+            id_next = u_consulta_id
+
+        redirect(URL(c='consulta', f='ver_consulta', args=id_next),
                  client_side=True)
     return locals()
 
@@ -136,8 +159,10 @@ def ver_consulta():
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     consulta = db(db.consultas.id == id_consulta).select().first()
-    consulta.tipo_consulta = [i['label'] for i in tipos_consultas
+    consulta.tipo_consulta = [i for i in tipos_consultas
                               if consulta.tipo_consulta == i['form']][0]
+    consulta.label = consulta.tipo_consulta['label']
+    consulta.form = consulta.tipo_consulta['form']
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     return locals()
 

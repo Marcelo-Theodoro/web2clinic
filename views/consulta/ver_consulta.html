@@ -16,9 +16,9 @@
 			<tr class="info">
 				<th>{{=paciente.nome}}</th>
 				<th>{{=consulta.hora_fim}}</th>
-				<th>{{=consulta.tipo_consulta}}</th>
+				<th>{{=consulta.label}}</th>
 				<th><a href="{{=URL(c='prontuario', f='prontuario_consulta', args=id_consulta)}}" class="btn btn-default btn-sm btn-block" role="button">PRONTUÁRIO</a></th>
-				<th><a href="{{=URL(c='consulta', f='editar_consulta', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">EDITAR</a></th>
+				<th><a href="{{=URL(c='consulta', f='consulta', args=[consulta.form, paciente.id], vars={'editar': consulta.id})}}" class="btn btn-default btn-sm btn-block" role="button">EDITAR</a></th>
 				<th><a href="{{=URL(c='consulta', f='apagar_consulta', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">APAGAR</a></th>
 				<th><a href="#" class="btn btn-default btn-sm btn-block" role="button" data-toggle="modal" data-target="#ModalDocs">Gerar documentos</a></th>
 		</tbody>
