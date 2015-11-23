@@ -3,7 +3,7 @@
 	<div class="thumbnail">
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Queixa</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['queixa']}}</label>
 				<div class="col-sm-10">
 					<textarea class="text form-control" cols="20" name="queixa" rows="5"></textarea>
 					<span class="help-block"></span>
@@ -12,7 +12,7 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">HPMA</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['hpma']}}</label>
 				<div class="col-sm-10">
 					<textarea class="text form-control" cols="20" name="hpma" rows="5"></textarea>
 					<span class="help-block"></span>
@@ -29,36 +29,36 @@
 			<div class="col-sm-11">
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Cardiovascular :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['cardiovascular_ISDA']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="cardiovascular_ISDA" type="text" value="" />
+							{{=form.custom.widget['cardiovascular_ISDA']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Gastrointestinal :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['gastrointestinal_ISDA']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="gastrointestinal_ISDA" type="text" value="" />
+							{{=form.custom.widget['gastrointestinal_ISDA']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Urinario :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['urinario_ISDA']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="urinario_ISDA" type="text" value="" />
+						{{=form.custom.widget['urinario_ISDA']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Respiratorio :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['respiratorio_ISDA']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="respiratorio_ISDA" type="text" value="" />
+							{{=form.custom.widget['respiratorio_ISDA']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
@@ -77,45 +77,45 @@
 			<div class="col-sm-11">
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Cardiovascular :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['cardiovascular_AF']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="cardiovascular_AF" type="text" value="" />
+							{{=form.custom.widget['cardiovascular_AF']}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-3">Endócrino/Metabólico :</label>
+						<label class="control-label col-sm-3">{{=form.custom.label['endocrino_metabolico_AF']}}</label>
 						<div class="col-sm-9">
-							<input class="form-control string" name="endocrino_metabolico_AF" type="text" value="" />
+							{{=form.custom.widget['endocrino_metabolico_AF']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Cancer :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['cancer_AF']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="cancer_AF" type="text" value="" />
+							{{=form.custom.widget['cancer_AF']}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Infecção :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['infeccao_AF']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="infeccao_AF" type="text" value="" />
+							{{=form.custom.widget['infeccao_AF']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Outros :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['outros_AF']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="outros_AF" type="text" value="" />
+							{{=form.custom.widget['outros_AF']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
@@ -133,54 +133,54 @@
 			<div class="col-sm-11">
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Clinicos :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['clinicos_AP']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="clinicos_AP" type="text" value="" />
+							{{=form.custom.widget['clinicos_AP']}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Cirurgias :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['cirurgias_AP']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="cirurgias_AP" type="text" value="" />
+							{{=form.custom.widget['cirurgias_AP']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Tabagismo :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['tabagismo_AP']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="tabagismo_AP" type="text" value="" />
+							{{=form.custom.widget['tabagismo_AP']}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Etilismo :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['etilismo_AP']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="etilismo_AP" type="text" value="" />
+							{{=form.custom.widget['etilismo_AP']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Medicacao :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['medicacao_AP']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="medicacao_AP" type="text" value="" />
+							{{=form.custom.widget['medicacao_AP']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Outros :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['outros_AP']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="outros_AP" type="text" value="" />
+							{{=form.custom.widget['outros_AP']}}				
 							<span class="help-block"></span>
 						</div>
 					</div>	
@@ -198,48 +198,32 @@
 			<div class="col-sm-11">
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-1">Menarca :</label>
+						{{itens = ['menarca_AM','ciclos_AM','dum_AM']}}
+						{{for item in itens:}}
+						<label class="control-label col-sm-1">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-3">
-							<input class="form-control string" name="menarca_AM" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
-						<label class="control-label col-sm-1">Ciclos :</label>
-						<div class="col-sm-3">
-							<input class="form-control string" name="ciclos_AM" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-1">dum :</label>
-						<div class="col-sm-3">
-							<input class="form-control string" name="dum_AM" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
+						{{pass}}
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Dismenorreia :</label>
-						<div class="col-sm-6">
-							<input class="form-control string" name="dismenorreia_AM" type="text" value="" />
+						{{itens = ['dismenorreia_AM', 'tpm_AM']}}
+						{{for item in itens:}}
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
+						<div class="col-sm-4">
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
-						<label class="control-label col-sm-1">tpm :</label>
-						<div class="col-sm-3">
-							<input class="form-control string" name="tpm_AM" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
+						{{pass}}
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Menopausa</label>
-						<label class="radio-inline">
-							<input  name="menopausa_AM" type="radio" value="Natural" /> Natural
-							<span class="help-block"></span>
-						</label>
-						<label class="radio-inline">
-							<input name="menopausa_AM" type="radio" value="Cirúrgica" /> Cirúrgica
-							<span class="help-block"></span>
-						</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['menopausa_AM']}}</label>
+						{{=form.custom.widget['menopausa_AM']}}
 					</div>
 				</div>
 			</div>
@@ -255,37 +239,21 @@
 			<div class="col-sm-11">
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Primeiro Coito :</label>
+						{{itens = ['primeiro_coito_AS', 'numero_parceiros_AS', 'libido_AS', 'orgasmos_AS']}}
+						{{for item in itens:}}
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-4">
-							<input class="form-control string" name="primeiro_coito_AS" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
-						<label class="control-label col-sm-2">Numero Parceiros :</label>
-						<div class="col-sm-4">
-							<input class="form-control string" name="numero_parceiros_AS" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
+						{{pass}}
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Libido :</label>
-						<div class="col-sm-4">
-							<input class="form-control string" name="libido_AS" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-2">Orgasmos :</label>
-						<div class="col-sm-4">
-							<input class="form-control string" name="orgasmos_AS" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Anticoncepcao :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['anticoncepcao_AS']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="anticoncepcao_AS" type="text" value="" />
+							{{=form.custom.widget['anticoncepcao_AS']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
@@ -301,29 +269,18 @@
 				<p>AG: </p>
 			</div>
 			<div class="col-sm-11">
+				{{itens = ['corrimento_AG', 'cirurgia_AG', 'cauterizacao_AG']}}
+				{{for item in itens:}}
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Corrimento :</label>
-						<div class="col-sm-4">
-							<input class="form-control string" name="corrimento_AG" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-2">Cirurgia :</label>
-						<div class="col-sm-4">
-							<input class="form-control string" name="cirurgia_AG" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Cauterizacao :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="cauterizacao_AG" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
 				</div>
+				{{pass}}
 			</div>
 		</div>
 	</div>
@@ -337,39 +294,28 @@
 			<div class="col-sm-11">
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-1">G :</label>
+						{{itens = ['g_AO', 'g_AO', 'a_AO', 'pnl_AO', 'pc_AO', 'pf_AO']}}
+						{{for item in itens:}}
+						<label class="control-label col-sm-1">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-1">
-							<input class="form-control string" name="g_AO" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
-						<label class="control-label col-sm-1">P :</label>
-						<div class="col-sm-1">
-							<input class="form-control string" name="p_AO" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-1">A :</label>
-						<div class="col-sm-1">
-							<input class="form-control string" name="a_AO" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-1">PNL :</label>
-						<div class="col-sm-1">
-							<input class="form-control string" name="PNL_AO" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-1">PC :</label>
-						<div class="col-sm-1">
-							<input class="form-control string" name="pc_AO" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-1">PF :</label>
-						<div class="col-sm-1">
-							<input class="form-control string" name="pf_AO" type="text" value="" />
+						{{pass}}
+					</div>
+				</div>
+				{{itens = ['primeiro_parto_AO', 'ultimo_parto_AO', 'peso_rn_maior_AO', 'amamentacao_AO', 'puerperio_AO']}}
+				{{for item in itens:}}
+				<div class="row">
+					<div class="form-group">
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
+						<div class="col-sm-10">
+							<input class="form-control string" name="{{=item}}" type="text" value="" />
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
-				Falta
+				{{pass}}
 			</div>
 		</div>
 	</div>
@@ -383,61 +329,45 @@
 			<div class="col-sm-11">
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-1">Peso :</label>
+						{{itens = ['peso_EXAME', 'alt_EXAME', 'pa_EXAME', 'imc_EXAME']}}
+						{{for item in itens:}}
+						<label class="control-label col-sm-1">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-2">
-							<input class="form-control string" name="peso_EXAME" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
-						<label class="control-label col-sm-1">Alt :</label>
-						<div class="col-sm-2">
-							<input class="form-control string" name="alt_EXAME" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-1">PA :</label>
-						<div class="col-sm-2">
-							<input class="form-control string" name="pa_EXAME" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-						<label class="control-label col-sm-1">IMC :</label>
-						<div class="col-sm-2">
-							<input class="form-control string" name="imc_EXAME" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
+						{{pass}}
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Ap cardiovascular :</label>
+						{{itens = ['ap_cardiovascular_EXAME', 'ap_respiratorio_EXAME']}}
+						{{for item in itens:}}
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-4">
-							<input class="form-control string" name="ap_cardiovascular_EXAME" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
-						<label class="control-label col-sm-2">Ap respiratorio :</label>
-						<div class="col-sm-4">
-							<input class="form-control string" name="ap_respiratorio_EXAME" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
+						{{pass}}
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Mmii :</label>
+						{{itens = ['mmii_EXAME', 'outros_EXAME']}}
+						{{for item in itens:}}
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-4">
-							<input class="form-control string" name="mmii_EXAME" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
-						<label class="control-label col-sm-2">Outros :</label>
-						<div class="col-sm-4">
-							<input class="form-control string" name="outros_EXAME" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
+						{{pass}}
 					</div>	
 				</div>
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Abdome :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label['abdome_EXAME']}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="abdome_EXAME" type="text" value="" />
+							{{=form.custom.widget['abdome_EXAME']}}
 							<span class="help-block"></span>
 						</div>
 					</div>	
@@ -453,51 +383,18 @@
 				<p>MAMAS: </p>
 			</div>
 			<div class="col-sm-11">
+				{{itens = ['insp_estatica_MAMAS', 'insp_dinamica_MAMAS', 'palpacao_MAMAS', 'expressao_MAMAS', 'axilas_MAMAS']}}
+				{{for item in itens:}}
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Insp estatica :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="insp_estatica_MAMAS" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Insp dinamica :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="insp_dinamica_MAMAS" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Palpacao :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="palpacao_MAMAS" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Expressao :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="expressao_MAMAS" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Axilas :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="axilas_MAMAS" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
+				{{pass}}
 			</div>
 		</div>
 	</div>
@@ -509,96 +406,18 @@
 				<p>OGE: </p>
 			</div>
 			<div class="col-sm-11">
+				{{itens = ['pilificacao_OGE', 'labios_OGE', 'clitoris_OGE', 'ureta_OGE', 'gl_bartholin_OGE', 'himen_OGE', 'procidencia_pva_OGE', 'procidencia_pvp_OGE', 'perineo', 'perda_urina']}}
+				{{for item in itens:}}
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Pilificacao :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="pilificacao_OGE" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Labios :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="labios_OGE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Clitoris :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="clitoris_OGE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Ureta :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="ureta_OGE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Gl bartholin :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="gl_bartholin_OGE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Himen :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="himen_OGE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Procidencia PVA :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="procidencia_pva_OGE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Procidencia PVP :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="procidencia_pvp_OGE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Perineo :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="perineo" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Perda urina :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="perda_urina" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
+				{{pass}}
 			</div>
 		</div>
 	</div>
@@ -610,69 +429,18 @@
 				<p>OGI TOQUE: </p>
 			</div>
 			<div class="col-sm-11">
+				{{itens = ['vagina_OGI_TOQUE', 'colo_OGI_TOQUE', 'utero_OGI_TOQUE', 'an_d_OGI_TOQUE', 'na_e_OGI_TOQUE', 'parametrios_OGI_TOQUE']}}
+				{{for item in itens:}}
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Vagina :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="vagina_OGI_TOQUE" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Colo :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="colo_OGI_TOQUE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Utero :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="utero_OGI_TOQUE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">AN D :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="an_d_OGI_TOQUE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">NA E :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="na_e_OGI_TOQUE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Parametrios :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="parametrios_OGI_TOQUE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Reto :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="reto_OGI_TOQUE" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
+				{{pass}}
 			</div>
 		</div>
 	</div>
@@ -684,33 +452,18 @@
 				<p>ESPECULAR: </p>
 			</div>
 			<div class="col-sm-11">
+				{{itens = ['vagina_ESPECULAR', 'colo_ESPECULAR', 'cont_vaginal_ESPECULAR']}}
+				{{for item in itens:}}
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Vagina :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="vagina_ESPECULAR" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Colo :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="colo_ESPECULAR" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Cont vaginal :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="cont_vaginal_ESPECULAR" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
+				{{pass}}
 			</div>
 		</div>
 	</div>
@@ -722,51 +475,18 @@
 				<p>OUTROS EXAMES: </p>
 			</div>
 			<div class="col-sm-11">
+				{{itens = ['tracao_colo_OUTROS_EXAMES', 'histerometria_OUTROS_EXAMES', 'diagnostico_clinico_OUTROS_EXAMES', 'exames_solicitados_OUTROS_EXAMES', 'conduta_OUTROS_EXAMES']}}
+				{{for item in itens:}}
 				<div class="row">
 					<div class="form-group">
-						<label class="control-label col-sm-2">Tracao colo :</label>
+						<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 						<div class="col-sm-10">
-							<input class="form-control string" name="tracao_colo_OUTROS_EXAMES" type="text" value="" />
+							{{=form.custom.widget[item]}}
 							<span class="help-block"></span>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Histerometria :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="histerometria_OUTROS_EXAMES" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>	
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Diagnostico clinico :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="diagnostico_clinico_OUTROS_EXAMES" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Exames solicitados :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="exames_solicitados_OUTROS_EXAMES" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group">
-						<label class="control-label col-sm-2">Conduta :</label>
-						<div class="col-sm-10">
-							<input class="form-control string" name="conduta_OUTROS_EXAMES" type="text" value="" />
-							<span class="help-block"></span>
-						</div>
-					</div>
-				</div>
+				{{pass}}
 			</div>
 		</div>
 	</div>

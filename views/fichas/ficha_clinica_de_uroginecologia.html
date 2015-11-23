@@ -3,9 +3,9 @@
 	<div class="thumbnail">
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Queixa e Duração:</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['queixa_duracao_QD']}}</label>
 				<div class="col-sm-10">
-					<textarea class="text form-control" cols="20" name="queixa_duracao_QD" rows="2"></textarea>
+				{{=form.custom.widget['queixa_duracao_QD']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
@@ -16,12 +16,7 @@
 				<label class="control-label col-sm-8">
 					<div class="col-sm-4">Tratamento:</div> 
 					<div class="col-sm-8">
-						  <select class="generic-widget form-control" name="perda_esforcos_QD">
-						  		{{itens =['Não', 'Mínimos esforços', 'Médios esforços', 'Grandes esforços']}}
-								{{for item in itens:}}
-                                <option value="{{=item}}">{{=item}}</option>
-                                {{pass}}
-                            </select>
+						{{=form.custom.widget['perda_esforcos_QD']}}
 						<span class="help-block"></span>
 					</div>
 				</label>
@@ -33,9 +28,9 @@
 				{{itens = ['perda_urina_constante_QD', 'incontinencia_urgencia_QD', 'esvaziamento_incompleto_QD', 'n_miccao_noite_QD', 'n_miccao_dia_QD', 'dusria_QD', 'urgencia_miccional_QD', 'enurese_noturna_QD', 'hematuria_QD', 'polaciuria_QD']}}
 				{{for item in itens:}}
 				<label class="control-label col-sm-6 col-xs-12">
-					<div class="col-sm-4">{{=item.replace('_QD','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-4">{{=form.custom.label[item]}}</div> 
 					<div class="col-sm-8">
-						<input class="boolean" name="{{=item}}" type="checkbox" value="on">
+						{{=form.custom.widget[item]}}
 						<span class="help-block"></span>
 					</div>
 				</label>
@@ -47,9 +42,9 @@
 	<div class="thumbnail">
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-12">Antecendestes Cirúrgicos Urinários</label>
+				<label class="control-label col-sm-12">{{=form.custom.label['antecedentes_cirurgicos_urinarios_QD']}}</label>
 				<div class="col-sm-12">
-					<textarea class="text form-control" cols="20" name="antecedentes_cirurgicos_urinarios_QD" rows="5"></textarea>
+					{{=form.custom.widget['antecedentes_cirurgicos_urinarios_QD']}}
 					<span class="help-block"></span>
 				</div>
 			</div>
@@ -65,83 +60,53 @@
 		<div class="row">
 			<div class="form-group">
 				<label class="control-label col-sm-12">
-					<div class="col-sm-4">Vulva:</div> 
+					<div class="col-sm-4">{{=form.custom.label['vulva_EFE']}}:</div> 
 					<div class="col-sm-8">
-						  <select class="generic-widget form-control" name="vulva_EFE">
-						  		{{itens = [' ','NL', 'Atrofia', 'Dermatite']}}
-								{{for item in itens:}}
-                                <option value="{{=item}}">{{=item}}</option>
-                                {{pass}}
-                            </select>
+						  {{=form.custom.widget['vulva_EFE']}}
 						<span class="help-block"></span>
 					</div>
 				</label>
 				<label class="control-label col-sm-12">
-					<div class="col-sm-4">Procidência de PVA:</div> 
+					<div class="col-sm-4">{{=form.custom.label['procidencia_pva_EFE']}}:</div> 
 					<div class="col-sm-8">
-						  <select class="generic-widget form-control" name="procidencia_pva_EFE">
-						  		{{itens = [' ','Ausente', 'Não atinge o intróito vaginal ao esforço', 'Atinge o intróito vaginal ao esforço', 'Ultrapassa o intróito vaginal ao esforço', 'Ultrapassa o intróito vaginal no repouso']}}
-								{{for item in itens:}}
-                                <option value="{{=item}}">{{=item}}</option>
-                                {{pass}}
-                            </select>
+						 {{=form.custom.widget['procidencia_pva_EFE']}}
 						<span class="help-block"></span>
 					</div>
 				</label>
 				<label class="control-label col-sm-12">
-					<div class="col-sm-4">Procidência de PVP:</div> 
+					<div class="col-sm-4">{{=form.custom.label['procidencia_pvp_EFE']}}:</div> 
 					<div class="col-sm-8">
-						  <select class="generic-widget form-control" name="procidencia_pvp_EFE">
-						  		{{itens = [' ','Discreta', 'Moderada', 'Acentuada']}}
-								{{for item in itens:}}
-                                <option value="{{=item}}">{{=item}}</option>
-                                {{pass}}
-                            </select>
+						 {{=form.custom.widget['procidencia_pvp_EFE']}}
 						<span class="help-block"></span>
 					</div>
 				</label>
 				<label class="control-label col-sm-12">
-					<div class="col-sm-4">Perda de urina:</div> 
+					<div class="col-sm-4">{{=form.custom.label['perda_urina_EFE']}}:</div> 
 					<div class="col-sm-8">
-						  <select class="generic-widget form-control" name="perda_urina_EFE">
-						  		{{itens = [' ','Não', 'Posição ginecológica', 'Posição ortostática', 'Pequena quantidade', 'Grande quantidade']}}
-								{{for item in itens:}}
-                                <option value="{{=item}}">{{=item}}</option>
-                                {{pass}}
-                            </select>
+						{{=form.custom.widget['perda_urina_EFE']}}
 						<span class="help-block"></span>
 					</div>
 				</label>
 				<label class="control-label col-sm-12">
-					<div class="col-sm-4">Rotura perineal:</div> 
+					<div class="col-sm-4">{{=form.custom.label['rotura_perineal_EFE']}}:</div> 
 					<div class="col-sm-8">
-						  <select class="generic-widget form-control" name="rotura_perineal_EFE">
-						  		{{itens = [' ','Ausente', '1º grau', '2º grau', '3º grau']}}
-								{{for item in itens:}}
-                                <option value="{{=item}}">{{=item}}</option>
-                                {{pass}}
-                            </select>
+						 {{=form.custom.widget['rotura_perineal_EFE']}}
 						<span class="help-block"></span>
 					</div>
 				</label>
 				<label class="control-label col-sm-12">
-					<div class="col-sm-4">Prolapso uterino:</div> 
+					<div class="col-sm-4">{{=form.custom.label['prolapso_uterino_EFE']}}:</div> 
 					<div class="col-sm-8">
-						  <select class="generic-widget form-control" name="prolapso_uterino_EFE">
-						  		{{itens = [' ','Ausente', '1º grau', '2º grau', '3º grau']}}
-								{{for item in itens:}}
-                                <option value="{{=item}}">{{=item}}</option>
-                                {{pass}}
-                            </select>
+						{{=form.custom.widget['prolapso_uterino_EFE']}}
 						<span class="help-block"></span>
 					</div>
 				</label>
 				{{itens = ['sensibilidade_perineal_EFE', 'reflexo_anal_EFE', 'reflexo_bulbocavernoso_EFE', 'teste_cotonete_EFE']}}
 				{{for item in itens:}}
 				<label class="control-label col-sm-12">
-					<div class="col-sm-4">{{=item.replace('_EFE','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-4">{{=form.custom.label[item]}}</div> 
 					<div class="col-sm-8">
-						<input class="form-control string" name="{{=item}}" type="text" value="" />
+						{{=form.custom.widget[item]}}
 						<span class="help-block"></span>
 					</div>
 				</label>
@@ -160,9 +125,9 @@
 				{{itens = ['urinal_um_ES', 'urocultura_ES']}}
 				{{for item in itens:}}
 				<label class="control-label col-sm-12">
-					<div class="col-sm-4">{{=item.replace('_ES','').replace('_',' ').replace('um','1').capitalize()}}</div> 
+					<div class="col-sm-4">{{=form.custom.label[item]}}</div> 
 					<div class="col-sm-8">
-						<input class="form-control string" name="{{=item}}" type="text" value="" />
+						{{=form.custom.widget[item]}}
 						<span class="help-block"></span>
 					</div>
 				</label>
@@ -176,9 +141,9 @@
 				{{itens = ['repouso_ES', 'esforco_ES', 'mobilidade_ES']}}
 				{{for item in itens:}}
 				<label class="control-label col-sm-6">
-					<div class="col-sm-4">{{=item.replace('_ES','').replace('_',' ').capitalize()}}</div> 
+					<div class="col-sm-4">{{=form.custom.label[item]}}</div> 
 					<div class="col-sm-8">
-						<input class="form-control string" name="{{=item}}" type="text" value="" />
+						{{=form.custom.widget[item]}}
 						<span class="help-block"></span>
 					</div>
 				</label>
@@ -192,9 +157,9 @@
 				{{itens = ['fluxo_medio_ES', 'fluxo_maximo_ES', 'vol_urinario_ES', 'residuo_ES', 'cv_primeiro_desejo_ES', 'cv_maxima_ES', 'perda_urina_ES', 'contracao_nao_inibida_ES', 'pressao_perda_ES', 'pmfu_ES', 'cfu_ES']}}
 				{{for item in itens:}}
 				<label class="control-label col-sm-6">
-					<div class="col-sm-4">{{=item.replace('_ES','').replace('_',' ').replace('primeiro','1º').replace('ao','ão').capitalize()}}</div> 
+					<div class="col-sm-4">{{=form.custom.label[item]}}</div> 
 					<div class="col-sm-8">
-						<input class="form-control string" name="{{=item}}" type="text" value="" />
+						{{=form.custom.widget[item]}}
 						<span class="help-block"></span>
 					</div>
 				</label>
@@ -206,9 +171,9 @@
 		<hr>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=item.replace('_ES','').replace('_',' ').capitalize()}}</label>
+				<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 				<div class="col-sm-10">
-					<textarea class="text form-control" cols="20" name="{{=item}}" rows="2"></textarea>
+					{{=form.custom.widget[item]}}
 					<span class="help-block"></span>
 				</div>
 			</div>
@@ -221,9 +186,9 @@
 		{{for item in itens:}}
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=item.capitalize()}}</label>
+				<label class="control-label col-sm-2">{{=form.custom.label[item]}}</label>
 				<div class="col-sm-10">
-					<textarea class="text form-control" cols="20" name="{{=item}}" rows="2"></textarea>
+					{{=form.custom.widget[item]}}
 					<span class="help-block"></span>
 				</div>
 			</div>
@@ -232,9 +197,9 @@
 		<div class="row">
 			<div class="form-group">
 				<label class="control-label col-sm-6">
-					<div class="col-sm-4">Data</div> 
+					<div class="col-sm-4">{{=form.custom.label['data_ES']}}</div> 
 					<div class="col-sm-8">
-						<input class="form-control string" name="data_ES" type="text" value="" />
+						{{=form.custom.widget['data_ES']}}
 						<span class="help-block"></span>
 					</div>
 				</label>
@@ -245,9 +210,9 @@
 	<div class="thumbnail">
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Observações</label>
+				<label class="control-label col-sm-2">{{=form.custom.label['observacoes']}}</label>
 				<div class="col-sm-10">
-					<textarea class="text form-control" cols="20" name="observacoes" rows="5"></textarea>
+					{{=form.custom.widget['observacoes']}}
 					<span class="help-block"></span>
 				</div>
 			</div>

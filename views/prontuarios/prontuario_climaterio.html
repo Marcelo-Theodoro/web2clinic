@@ -7,8 +7,8 @@
 	{{for item in itens:}}
 	{{if formulario[item]:}}
 	<div class="row">
-        <div class="col-sm-2 col-lg-1"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-        <div class="col-sm-10 col-lg-11">
+        <div class="col-sm-2 col-md-2 col-lg-2 col-p-2"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+        <div class="col-sm-10 col-md-10 col-lg-10 col-p-10">
         	{{=formulario[item]}}
         </div>
     </div>
@@ -17,16 +17,16 @@
 </div>
 <div class="thumbnail">
 	<div class="row">
-		<div class="col-sm-1">
-			<p>ANTECEDENTES PESSOAIS: </p>
+		<div class="col-sm-2 col-md-2 col-lg-2 col-p-3">
+			<p>Antecedentes Pessoais: </p>
 		</div>
-		<div class="col-sm-11">
+		<div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
 			{{itens = ['hipertensao', 'tireoidopatia', 'tromboflebite', 'gastriste_colocistopatia', 'doenca_cardio_cerebrovascular', 'nefropatia', 'hepatopatia', 'cirugia', 'cancer', 'tabagismo', 'etilismo', 'medicacao_em_uso', 'neuro_psquiatrico', 'atividade_fisica']}}
 			{{for item in itens:}}
 			{{if formulario[item]:}}
 			<div class="row">
-				<div class="col-sm-2 col-lg-1"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-10 col-lg-11">
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
 					{{texto = '_texto'}}
 					{{texto = item+texto}}
 					{{=formulario[texto]}}
@@ -40,15 +40,15 @@
 </div>
 <div class="thumbnail">
         <div class="row">
-            <div class="col-sm-1">
-                <p>ANTECEDENTES FAMILIARES: </p>
+            <div class="col-sm-2 col-md-2 col-lg-2 col-p-3">
+                <p>Antecedentes Familiares: </p>
             </div>
-            <div class="col-sm-11">
+            <div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
             {{itens = ['cancer_de_mama', 'cancer_de_utero', 'cancer_de_ovario', 'cancer_de_colon', 'osteoporose', 'cardio_cerebrovascular', 'outros_AF']}}
 			<div class="row">
 				{{for item in itens:}}
 				{{if formulario[item]:}}
-				<div class="col-sm-6 col-lg-6"><strong>{{=item.replace('_',' ').capitalize()}}</strong></div>
+				<div class="col-sm-6 col-md-6 col-lg-6 col-p-6"><strong>{{=item.replace('_',' ').capitalize()}}</strong></div>
 				{{pass}}
 				{{pass}}
 			</div>
@@ -57,24 +57,24 @@
 </div>
 <div class="thumbnail">
         <div class="row">
-            <div class="col-sm-1">
+            <div class="col-sm-2 col-md-2 col-lg-2 col-p-3">
                 <p>Antecedentes Tocoginecologicos: </p>
             </div>
-            <div class="col-sm-11">
+            <div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
             {{itens = ['menarca', 'ciclos_regulares', 'atividade_sexual', 'dum', 'g_AT', 'p_AT', 'pnl_AT', 'pc_AT', 'pf_AT', 'idade_menopausa', 'tempo_menopausa', 'tipo_menopausa', 'histerectomia', 'ooforectoma_bilateral']}}
             {{for item in itens:}}
 			{{if formulario[item]:}}
 			<div class="row">
-				<div class="col-sm-2 col-lg-1"><strong>{{=item.replace('_',' ').replace('AT',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-3"><strong>{{=item.replace('_',' ').replace('AT',' ').capitalize()}}:</strong></div>
 				{{if item in ('menarca', 'ciclos_regulares', 'atividade_sexual'):}}
-				<div class="col-sm-10 col-lg-11">
+				<div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
 					{{texto = '_texto'}}
 					{{texto = item+texto}}
 					{{=formulario[texto]}}
 				</div>
 				{{elif item in ('histerectomia', 'ooforectoma_bilateral'):}}
 				{{else:}}
-				<div class="col-sm-10 col-lg-11">
+				<div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
 					{{=formulario[item]}}
 				</div>
 				{{pass}}
@@ -87,16 +87,16 @@
 </div>
 <div class="thumbnail">
 	<div class="row">
-		<div class="col-sm-1">
+		<div class="col-sm-2 col-md-2 col-lg-2 col-p-3">
 			<p>Uso prévio de Hormônios: </p>
 		</div>
-		<div class="col-sm-11">
+		<div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
 			{{itens = ['pipula', 'reposicao_hormonal']}}
 			{{for item in itens:}}
 			{{if formulario[item]:}}
 			<div class="row">
-				<div class="col-sm-2 col-lg-1"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-10 col-lg-11">
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-2"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-10 col-md-10 col-lg-10 col-p-10">
 					{{texto = '_texto'}}
 					{{texto = item+texto}}
 					{{=formulario[texto]}}
@@ -109,16 +109,16 @@
 </div>
 <div class="thumbnail">
 	<div class="row">
-		<div class="col-sm-1">
+		<div class="col-sm-2 col-md-2 col-lg-2 col-p-3">
 			<p>Exame fisico geral e Ginecológico: </p>
 		</div>
-		<div class="col-sm-11">
+		<div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
 			<div class="row">
 				{{itens = ['peso', 'altura', 'pa', 'imc']}}
                 {{for item in itens:}}
                 {{if formulario[item]:}}
-                <div class="col-sm-1 col-lg-1"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-2 col-lg-2">
+                <div class="col-sm-1 col-md-1 col-lg-1 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-3">
 					{{=formulario[item]}}
 				</div>
 				{{pass}}
@@ -126,12 +126,12 @@
 			</div>
 			<hr>
 			<div class="row">
-				<div class="col-sm-3 col-lg-3">MAMAS:</div>
+				<div class="col-sm-3 col-md-3 col-lg-3 col-p-3">MAMAS:</div>
 				{{itens = ['MAMAS_inspecao', 'MAMAS_palpacao', 'MAMAS_axila']}}
             	{{for item in itens:}}
             	{{if formulario[item]:}}
-                <div class="col-sm-1 col-lg-1"><strong>{{=item.replace('MAMAS_','').capitalize()}}:</strong></div>
-				<div class="col-sm-2 col-lg-2">
+                <div class="col-sm-1 col-md-1 col-lg-1 col-p-3"><strong>{{=item.replace('MAMAS_','').capitalize()}}:</strong></div>
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-2">
 					{{=formulario[item]}}
 				</div>
 				{{pass}}
@@ -142,8 +142,8 @@
 			{{for item in itens:}}
             {{if formulario[item]:}}
 			<div class="row">
-                <div class="col-sm-3 col-lg-2"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-9 col-lg-10">
+                <div class="col-sm-3 col-md-3 col-lg-3 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-9 col-md-9 col-lg-9 col-p-9">
 					{{=formulario[item]}}
 				</div>
 			</div>
@@ -154,94 +154,129 @@
 </div>
 <div class="thumbnail">
     <div class="row">
-        <div class="col-sm-1">
+        <div class="col-sm-2 col-md-2 col-lg-2 col-p-3">
             <p>Exames Complementares </p>
         </div>
-	    <div class="col-sm-11">
+	    <div class="col-sm-10 col-md-10 col-lg-10 col-p-9">
 			{{item = 'teste_progesterona'}}
             {{if formulario[item]:}}
             <div class="row">
-				<div class="col-sm-2 col-lg-1"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-8 col-lg-9">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">
 					{{=formulario[item]}}
 				</div>
-				<div class="col-sm-2 col-lg-2">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">
 					{{texto = '_data'}}
 					{{texto = item+texto}}
 					{{=formulario[texto]}}
 				</div>
 			</div>
 			{{pass}}
+			<hr>
+			<div class="visible-print">
+				{{itens = ['colpocitologia_oncologica', 'im', 'im_data', 'mamografia', 'mamografia_data', 'glicemia', 'colesterou_total', 'hdl', 'ldl', 'triglicerides']}}
+				{{for item in itens:}}
+            	{{if formulario[item]:}}
+            	<div class="row">
+            	<div class="col-p-4"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-p-8">
+					{{=formulario[item]}}
+				</div>
+				</div>
+				{{pass}}
+				{{pass}}
+			</div>
+			<div class="hidden-print">
 			<div class="row">
 				{{itens = ['colpocitologia_oncologica', 'im', 'im_data']}}
 				{{for item in itens:}}
             	{{if formulario[item]:}}
-            	<div class="col-sm-2 col-lg-2"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-2 col-lg-2">
+            	<div class="col-sm-2 col-md-2 col-lg-2 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-9">
 					{{=formulario[item]}}
 				</div>
+
 				{{pass}}
 				{{pass}}
 			</div>
+			<hr>
 			<div class="row">
 				{{itens = ['mamografia', 'mamografia_data', 'glicemia']}}
 				{{for item in itens:}}
             	{{if formulario[item]:}}
-            	<div class="col-sm-2 col-lg-2"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-2 col-lg-2">
+            	<div class="col-sm-2 col-md-2 col-lg-2 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-9">
 					{{=formulario[item]}}
 				</div>
 				{{pass}}
 				{{pass}}
 			</div>
+			<hr>
 			<div class="row">
-				{{itens = ['colesterou_total', 'hdl', 'ldl' , 'triglicerides']}}
+				{{itens = ['colesterou_total', 'hdl', 'ldl']}}
 				{{for item in itens:}}
             	{{if formulario[item]:}}
-            	<div class="col-sm-1 col-lg-1"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-2 col-lg-2">
+            	<div class="col-sm-2 col-md-2 col-lg-2 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-9">
 					{{=formulario[item]}}
 				</div>
 				{{pass}}
 				{{pass}}
 			</div>
+			<hr>
 			<div class="row">
+				{{itens = ['triglicerides']}}
+				{{for item in itens:}}
+            	{{if formulario[item]:}}
+            	<div class="col-sm-2 col-md-2 col-lg-2 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-2 col-md-2 col-lg-2 col-p-9">
+					{{=formulario[item]}}
+				</div>
+				{{pass}}
+				{{pass}}
+			</div>
+		</div>
+			<hr>
+			
 				{{itens = ['ultra_sonografia_transvaginal', 'densitometria_ossea' , 'dosagens_hormonais']}}
 				{{for item in itens:}}
             	{{if formulario[item]:}}
-            	<div class="col-sm-3 col-lg-2"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-6 col-lg-7">
+            	<div class="row">
+            	<div class="col-sm-3 col-md-3 col-lg-3 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
 					{{=formulario[item]}}
 				</div>
-				<div class="col-sm-3 col-lg-3">
+				<div class="col-sm-3 col-md-3 col-lg-3 col-p-3">
 					{{data = '_data'}}
 					{{data = item+data}}
 					{{=formulario[data]}}
 				</div>
+				</div>
 				{{pass}}
 				{{pass}}
-			</div>
 			<div class="row">
 				{{item = 'consulta_outro_especialista'}}
             	{{if formulario[item]:}}
-            	<div class="col-sm-3 col-lg-2"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-9 col-lg-10">
+            	<div class="col-sm-3 col-md-3 col-lg-3 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-9 col-md-9 col-lg-9 col-p-9">
 					{{texto = 'consulta_outro_especialista_texto'}}
 					{{=formulario[texto]}}
 				</div>
 				{{pass}}
 			</div>
-			<div class="row">
+			
 				{{itens = ['diagnostico_clinico', 'orientacao_terapeutica' ]}}
 				{{for item in itens:}}
             	{{if formulario[item]:}}
-            	<div class="col-sm-3 col-lg-2"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
-				<div class="col-sm-9 col-lg-10">
+            	<div class="row">
+            	<div class="col-sm-3 col-md-3 col-lg-3 col-p-3"><strong>{{=item.replace('_',' ').capitalize()}}:</strong></div>
+				<div class="col-sm-9 col-md-9 col-lg-9 col-p-9">
 					{{=formulario[item]}}
+				</div>
 				</div>
 				{{pass}}
 				{{pass}}
-			</div>
+			
 		</div>
 	</div>
 </div>
