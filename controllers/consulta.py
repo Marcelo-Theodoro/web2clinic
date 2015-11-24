@@ -48,11 +48,11 @@ def consulta():
         id_agendamento = False
 
     if request.vars['editar']:
-    # u = update
+        # u -> update
         u_consulta_id = request.vars['editar']
         u_consulta = db(db.consultas.id == u_consulta_id).select().first()
         if str(u_consulta.id_paciente) != id_paciente:
-            # O agendamento não pertence ao mesmo paciente.
+            # A consulta não pertence ao mesmo paciente.
             raise HTTP(404)
         if not u_consulta:
             # id recebido não corresponde a nenhuma consulta
@@ -62,7 +62,7 @@ def consulta():
         u_form_id = u_consulta.id_form
         u_ficha = db(u_tipo_consulta.id == u_form_id).select().first()
         if not u_ficha:
-            # Ficha não existes
+            # Ficha não existe
             raise HTTP(404)
     else:
         u_ficha = False

@@ -1,3 +1,5 @@
+# TODO: Estes models são grandes demais pra ficarem sendo carregados em toda página.
+# Criar um módulo separado para cada uma das tabelas e chamar apenas quando for usado.
 
 db.define_table('ficha_clinica_mulher',
              Field('id_paciente', 'reference pacientes',
