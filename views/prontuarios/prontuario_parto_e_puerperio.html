@@ -4,7 +4,7 @@
 	<h3>Este é o template prontuario_parto_e_puerperio.html</h3>
 	<div class="thumbnail">
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
 				<p> Parto</p>
 			</div>
 		</div>
@@ -12,11 +12,11 @@
 			{{itens = ['data_P', 'local_P']}}
 			{{for item in itens:}}
 			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4 col-md-4 col-lg-4">
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">
 					<strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}: </strong>
 				</div>
-				<div class="col-sm-8 col-md-8 col-lg-8">
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">
 					{{=formulario[item]}}
 				</div>
 			</div>
@@ -25,9 +25,9 @@
 		</div>
 		{{if formulario['nivel_atencao_P']:}}
 		<div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-6">
-				<div class="col-sm-4">Nivel de atenção:</div> 
-				<div class="col-sm-8">{{=formulario['nivel_atencao_P']}}
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6 col-sm-offset-6 col-md-offset-6 col-lg-offset-6 col-p-offset-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">Nivel de atenção:</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['nivel_atencao_P']}}
 				</div>
 			</div>
 		</div>
@@ -35,24 +35,24 @@
 		<hr>
 		<div class="row">
 			{{if formulario['idade_gestacional_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Idade gestacional:</div> 
-				<div class="col-sm-8">{{=formulario['idade_gestacional_P']}} Semanas</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">Idade gestacional:</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['idade_gestacional_P']}} Semanas</div>
 			</div>
 			{{pass}}
 			{{if formulario['inicio_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Inicio:</div> 
-				<div class="col-sm-8">{{=formulario['inicio_P']}}</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">Inicio:</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['inicio_P']}}</div>
 			</div>
 			{{pass}}
 		</div>
 		<hr>
 		<div class="row">
 			{{if formulario['tipo_parto_P']:}}
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Tipo de Parto:</div> 
-				<div class="col-sm-8">{{=formulario['tipo_parto_P']}}</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">Tipo de Parto:</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['tipo_parto_P']}}</div>
 			</div>
 			{{pass}}
 		</div>
@@ -61,7 +61,7 @@
 			{{itens = ['episiotomia_P', 'laceracao_P', 'delivramento_espontaneo_P', 'curagem_P', 'mae_rh_P', 'imunoglobulina_P']}}
 			{{for item in itens:}}
 			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
 				<strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}</strong>
 			</div>
 			{{pass}}
@@ -70,15 +70,15 @@
 		<hr>
 		<div class="row">
 			{{if formulario['responsavel_parto_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Responsável pelo parto:</div> 
-				<div class="col-sm-8">{{=formulario['responsavel_parto_P']}}</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">Responsável pelo parto:</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['responsavel_parto_P']}}</div>
 			</div>
 			{{pass}}
 			{{if formulario['responsavel_outro_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Outro:</div> 
-				<div class="col-sm-8">{{=formulario['responsavel_outro_P']}}</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">Outro:</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['responsavel_outro_P']}}</div>
 			</div>
 			{{pass}}
 		</div>
@@ -87,19 +87,15 @@
 			{{itens = ['morte_fetal_P', 'morte_feta_gestacao_P', 'morte_feta_parto_P', 'morte_feta_ignorado_P']}}
 			{{for item in itens:}}
 			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				{{if item == 'morte_fetal_P':}}
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
 				<strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}</strong>
-				{{else:}}
-				<strong>{{=item.replace('morte_feta_','').replace('_P','').replace('_',' ').capitalize()}}</strong>
-				{{pass}}
 			</div>
 			{{pass}}
 			{{pass}}
 			{{if formulario['morte_feta_causa_P']:}}
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Causa:</div> 
-				<div class="col-sm-8">{{=formulario['morte_feta_causa_P']}}</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">Causa:</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['morte_feta_causa_P']}}</div>
 			</div>
 			{{pass}}
 		</div>
@@ -108,9 +104,9 @@
 		{{for item in itens:}}
 		{{if formulario[item]:}}
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario[item]}}</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}}</div>
 			</div>
 		</div>
 		{{pass}}
@@ -118,7 +114,7 @@
 	</div>
 	<div class="thumbnail">
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
 				<p> Recém-Nascido</p>
 			</div>
 		</div>
@@ -126,12 +122,12 @@
 		{{for item in itens:}}
 		{{if formulario[item]:}}
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
 				{{if item == 'reanimacao_P':}}
 				<strong>Reanimação: Sim</strong>
 				{{else:}}
-				<div class="col-sm-4">{{=item.replace('_RN','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario[item]}}</div>
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_RN','').replace('_',' ').capitalize()}}</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}}</div>
 				{{pass}}
 			</div>
 		</div>
@@ -140,29 +136,29 @@
 		{{pass}}
 		<div class="row">
 			{{if formulario['vdrl_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
 				<strong>VDRL: Sim</strong>
 			</div>
 			{{pass}}
 			{{if formulario['tipagem_sanguinea_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario['tipagem_sanguinea_P']}}</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['tipagem_sanguinea_P']}}</div>
 			</div>
 			{{pass}}
 		</div>
 		<hr>
 		<div class="row">
 			{{if formulario['peso_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Peso:</div> 
-				<div class="col-sm-8">{{=formulario['peso_P']}}</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>Peso:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['peso_P']}}</div>
 			</div>
 			{{pass}}
 			{{if formulario['idade_exame_fisico_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Idade do exame físico: </div> 
-				<div class="col-sm-8">{{=formulario['idade_exame_fisico_P']}} semanas</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>Idade do exame físico: </strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['idade_exame_fisico_P']}} semanas</div>
 			</div>
 			{{pass}}
 		</div>
@@ -171,9 +167,9 @@
 		{{for item in itens:}}
 		{{if formulario[item]:}}
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario[item]}}</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}}</div>
 			</div>
 		</div>
 		<hr>
@@ -183,9 +179,9 @@
 			{{itens = ['estatura_P', 'perimetro_cefalico_P']}}
 			{{for item in itens:}}
 			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario[item]}} cm</div>
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}} cm</div>
 			</div>
 			{{pass}}
 			{{pass}}
@@ -193,9 +189,9 @@
 		<hr>
 		{{if formulario['achados_anormais_P']:}}
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Achados anormais:</div> 
-				<div class="col-sm-8">{{=formulario['achados_anormais_P']}}</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>Achados anormais:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['achados_anormais_P']}}</div>
 			</div>
 		</div>
 		{{pass}}
@@ -203,447 +199,158 @@
 	<div class="thumbnail">
 		{{if formulario['alojamento_conjunto_P']:}}
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
 				<strong>Alojamento conjunto</strong>
 			</div>
 		</div>
 		{{pass}}
 		<hr>
 		<div class="row">
-			<div class="col-sm-12">Patologias intercorrentes:</div> 
-		</div>
-		<div class="row">
-			{{itens = ['patologias_intercorrentes_memb_hialina_P', 'patologias_intercorrentes_hemorragia_P', 'patologias_intercorrentes_anomalia_congenita_P', 'patologias_intercorrentes_aspiracao_meconial_P', 'patologias_intercorrentes_hiperbilirrubinemia_P', 'patologias_intercorrentes_apneia_P', 'patologias_intercorrentes_outras_sindromes_P', 'patologias_intercorrentes_convuncao_P' ]}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<strong>{{=item.replace('patologias_intercorrentes_','').replace('_P','').replace('_',' ').capitalize()}}</strong>
-			</div>
-			{{pass}}
-			{{pass}}
-			{{if formulario['patologias_intercorrentes_outras_P']:}}
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Outras:</div> 
-				<div class="col-sm-8">{{=formulario['patologias_intercorrentes_outras_P']}}</div>
-			</div>
-			{{pass}}
-		</div>
-		<hr>
-		{{if formulario['alta_rn_P']:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Alta RN:</div> 
-				<div class="col-sm-8">{{=formulario['alta_rn_P']}}</div>
-			</div>
-		</div>
-		<hr>
-		{{pass}}
-		<div class="row">
-			<div class="col-sm-12">Óbito</div> 
-		</div>
-		<div class="row">
-			{{itens = ['idadei_alta_P', 'transferencias_P', 'transferencias_dias_P']}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}:</div>
-				<div class="col-sm-8">{{=formulario[item]}}</div>
-			</div>
-			{{pass}}
-			{{pass}}
-		</div>
-		<hr>
-		<div class="row">
-			<div class="col-sm-4 col-md-4 col-lg-4">Idade óbito:</div>
-			{{itens = ['idade_obito_dias_P', 'idade_obito_dias_P']}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div class="col-sm-4">{{=item.replace('idade_obito_','').replace('_P','').replace('_',' ').capitalize()}}:</div>
-				<div class="col-sm-8">{{=formulario[item]}}</div>
-			</div>
-			{{pass}}
-			{{pass}}
-		</div>
-		<hr>
-		{{itens = ['causa_obito_P', 'sexo_P', 'alimentacao_P']}}
-		{{for item in itens:}}
-		{{if formulario[item]:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">
-					{{if item == 'alimentacao_P':}}
-					Tratamento:
-					{{else:}}
-					{{=item.replace('_P','').replace('_',' ').capitalize()}}:
-					{{pass}}
-				</div>
-				<div class="col-sm-8">{{=formulario[item]}}</div>
-			</div>
-		</div>
-		<hr>
-		{{pass}}
-		{{pass}}
-	</div>
-	<div class="thumbnail">
-		<div class="row">
-			<div class="col-sm-8">
-				<p> Consulta de Puerpério</p>
-			</div>
-			{{if formulario['data_CP']:}}
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div class="col-sm-4">
-					Data:
-				</div>
-				<div class="col-sm-8">{{=formulario['data_CP']}}</div>
-			</div>
-			{{pass}}
-		</div>
-		{{if formulario['queixas_CP']:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">
-					Queixas:
-				</div>
-				<div class="col-sm-8">{{=formulario['queixas_CP']}}</div>
-			</div>
-		</div>
-		{{pass}}
-		<hr>
-		<div class="row">
-			{{itens = ['pa_CP', 'estado_geral_CP', 'mucosa_CP']}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div class="col-sm-4">
-					{{=item.replace('_CP','').replace('_',' ').capitalize()}}:
-				</div>
-				<div class="col-sm-8">{{=formulario[item]}}</div>
-			</div>
-			{{pass}}
-			{{pass}}
-		</div>
-		<hr>
-		{{itens = ['mamas_CP', 'abdome_CP', 'exame_ginecologico_CP']}}
-		{{for item in itens:}}
-		{{if formulario[item]:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">
-					{{=item.replace('_CP','').replace('_',' ').capitalize()}}:
-				</div>
-				<div class="col-sm-8">{{=formulario[item]}}</div>
-			</div>
-		</div>
-		<hr>
-		{{pass}}
-		{{pass}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">Anticoncepção</div>
-			{{itens = ['aleitamento_materno_CP', 'barreira_CP', 'diu_CP', 'hormonal_oral_CP', 'hormonal_injetavel_CP', 'comportamental_CP', 'cirurgico_CP', 'nenhum_CP']}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				{{=item.replace('_CP','').replace('_',' ').capitalize()}}:
-			</div>
-			{{pass}}
-			{{pass}}
-		</div>
-		<hr>
-		{{if formulario['orientacao_CP']:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">
-					Orientação/Conduta:
-				</div>
-				<div class="col-sm-8">{{=formulario['orientacao_CP']}}</div>
-			</div>
-		</div>
-		{{pass}}
-	</div>
-</div>
-=======
-<!-- ficha_clinica_parto_e_puerperio -->
-{{extend 'layout.html'}}
-<div class="clearfix">
-	<h3>Este é o template prontuario_parto_e_puerperio.html</h3>
-	<div class="thumbnail">
-		<div class="row">
-			<div class="col-sm-12">
-				<p> Parto</p>
-			</div>
-		</div>
-		<div class="row">
-			{{itens = ['data_P', 'local_P']}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4 col-md-4 col-lg-4">
-					<strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}: </strong>
-				</div>
-				<div class="col-sm-8 col-md-8 col-lg-8">
-					{{=formulario[item]}}
-				</div>
-			</div>
-			{{pass}}
-			{{pass}}
-		</div>
-		{{if formulario['nivel_atencao_P']:}}
-		<div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-6">
-				<div class="col-sm-4">Nivel de atenção:</div> 
-				<div class="col-sm-8">{{=formulario['nivel_atencao_P']}}
-				</div>
-			</div>
-		</div>
-		{{pass}}
-		<hr>
-		<div class="row">
-			{{if formulario['idade_gestacional_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Idade gestacional:</div> 
-				<div class="col-sm-8">{{=formulario['idade_gestacional_P']}} Semanas</div>
-			</div>
-			{{pass}}
-			{{if formulario['inicio_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Inicio:</div> 
-				<div class="col-sm-8">{{=formulario['inicio_P']}}</div>
-			</div>
-			{{pass}}
-		</div>
-		<hr>
-		<div class="row">
-			{{if formulario['tipo_parto_P']:}}
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Tipo de Parto:</div> 
-				<div class="col-sm-8">{{=formulario['tipo_parto_P']}}</div>
-			</div>
-			{{pass}}
-		</div>
-		<hr>
-		<div class="row">
-			{{itens = ['episiotomia_P', 'laceracao_P', 'delivramento_espontaneo_P', 'curagem_P', 'mae_rh_P', 'imunoglobulina_P']}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}</strong>
-			</div>
-			{{pass}}
-			{{pass}}
-		</div>
-		<hr>
-		<div class="row">
-			{{if formulario['responsavel_parto_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Responsável pelo parto:</div> 
-				<div class="col-sm-8">{{=formulario['responsavel_parto_P']}}</div>
-			</div>
-			{{pass}}
-			{{if formulario['responsavel_outro_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Outro:</div> 
-				<div class="col-sm-8">{{=formulario['responsavel_outro_P']}}</div>
-			</div>
-			{{pass}}
-		</div>
-		<hr>
-		<div class="row">
-			{{itens = ['morte_fetal_P', 'gestacao_P', 'parto_P', 'ignorado_P']}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}</strong>
-			</div>
-			{{pass}}
-			{{pass}}
-			{{if formulario['morte_feta_causa_P']:}}
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Causa:</div> 
-				<div class="col-sm-8">{{=formulario['morte_feta_causa_P']}}</div>
-			</div>
-			{{pass}}
-		</div>
-		<hr>
-		{{itens = ['medicaocoes_parto_P', 'intercorrencias_parto_P']}}
-		{{for item in itens:}}
-		{{if formulario[item]:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario[item]}}</div>
-			</div>
-		</div>
-		{{pass}}
-		{{pass}}
-	</div>
-	<div class="thumbnail">
-		<div class="row">
-			<div class="col-sm-12">
-				<p> Recém-Nascido</p>
-			</div>
-		</div>
-		{{itens = ['sexo_RN', 'apgar_RN', 'reanimacao_P']}}
-		{{for item in itens:}}
-		{{if formulario[item]:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				{{if item == 'reanimacao_P':}}
-				<strong>Reanimação: Sim</strong>
-				{{else:}}
-				<div class="col-sm-4">{{=item.replace('_RN','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario[item]}}</div>
-				{{pass}}
-			</div>
-		</div>
-		<hr>
-		{{pass}}
-		{{pass}}
-		<div class="row">
-			{{if formulario['vdrl_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<strong>VDRL: Sim</strong>
-			</div>
-			{{pass}}
-			{{if formulario['tipagem_sanguinea_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario['tipagem_sanguinea_P']}}</div>
-			</div>
-			{{pass}}
-		</div>
-		<hr>
-		<div class="row">
-			{{if formulario['peso_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Peso:</div> 
-				<div class="col-sm-8">{{=formulario['peso_P']}}</div>
-			</div>
-			{{pass}}
-			{{if formulario['idade_exame_fisico_P']:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">Idade do exame físico: </div> 
-				<div class="col-sm-8">{{=formulario['idade_exame_fisico_P']}} semanas</div>
-			</div>
-			{{pass}}
-		</div>
-		<hr>
-		{{itens = ['peso_idade_gestacional_P', 'exame_fisico_P', 'exame_neurologico_P']}}
-		{{for item in itens:}}
-		{{if formulario[item]:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario[item]}}</div>
-			</div>
-		</div>
-		<hr>
-		{{pass}}
-		{{pass}}
-		<div class="row">
-			{{itens = ['estatura_P', 'perimetro_cefalico_P']}}
-			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}</div> 
-				<div class="col-sm-8">{{=formulario[item]}} cm</div>
-			</div>
-			{{pass}}
-			{{pass}}
-		</div>
-		<hr>
-		{{if formulario['achados_anormais_P']:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Achados anormais:</div> 
-				<div class="col-sm-8">{{=formulario['achados_anormais_P']}}</div>
-			</div>
-		</div>
-		{{pass}}
-	</div>
-	<div class="thumbnail">
-		{{if formulario['alojamento_conjunto_P']:}}
-		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<strong>Alojamento conjunto</strong>
-			</div>
-		</div>
-		{{pass}}
-		<hr>
-		<div class="row">
-			<div class="col-sm-12">Patologias intercorrentes:</div> 
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">Patologias intercorrentes:</div> 
 		</div>
 		<div class="row">
 			{{itens = ['memb_hialina', 'hemorragia', 'anomalia_congenita', 'aspiracao_meconial', 'hiperbilirrubinemia', 'apneia', 'outras_sindromes', 'convuncao' ]}}
+			{{pato = 'patologias_intercorrentes_'}}
+			{{p = '_P'}}
 			{{for item in itens:}}
-			{{if formulario[item]:}}
-			<div class="col-sm-6 col-md-6 col-lg-6">
+			{{if formulario[pato+item+p]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
 				<strong>{{=item.replace('_',' ').capitalize()}}</strong>
 			</div>
 			{{pass}}
 			{{pass}}
 			{{if formulario['patologias_intercorrentes_outras_P']:}}
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Outras:</div> 
-				<div class="col-sm-8">{{=formulario['patologias_intercorrentes_outras_P']}}</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>Outras:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['patologias_intercorrentes_outras_P']}}</div>
 			</div>
 			{{pass}}
 		</div>
 		<hr>
 		{{if formulario['alta_rn_P']:}}
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div class="col-sm-4">Alta RN:</div> 
-				<div class="col-sm-8">{{=formulario['alta_rn_P']}}</div>
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">Alta RN:</div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['alta_rn_P']}}</div>
 			</div>
 		</div>
 		<hr>
 		{{pass}}
 		<div class="row">
-			<div class="col-sm-12">Óbito</div> 
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">Óbito</div> 
 		</div>
 		<div class="row">
-			{{itens = ['idade_alta_P', 'transferencias_P', 'transferencias_dias_P']}}
+			{{itens = ['idadei_alta_P', 'transferencias_P', 'transferencias_dias_P']}}
 			{{for item in itens:}}
 			{{if formulario[item]:}}
-			<div class="col-sm-4 col-md-4 col-lg-4">
-				<div class="col-sm-4">{{=item.replace('_P','').replace('_',' ').capitalize()}}:</div> 
-				<div class="col-sm-8">{{=formulario[item]}}</div>
+			<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">
+				<div class="col-sm-8 col-md-4 col-lg-4 col-p-8"><strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}:</strong></div> 
+				<div class="col-sm-4 col-md-8 col-lg-8 col-p-4">{{=formulario[item]}}</div>
 			</div>
 			{{pass}}
 			{{pass}}
 		</div>
-
-
-
-
-
-
-
-
-
-
-
+		<hr>
+		<div class="row">
+			{{itens = ['idade_obito_dias_P', 'idade_obito_horas_P']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-4 col-md-4 col-lg-4 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}}</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			{{itens = ['causa_obito_P']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}}</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<hr>
+		<div class="row">
+			{{itens = ['sexo_P', 'alimentacao_P']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-8"><strong>{{=item.replace('_P','').replace('_',' ').capitalize()}}:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-4">{{=formulario[item]}}</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-8 col-md-8 col-lg-8 col-p-8"><strong>Consulta de Puerpério</strong></div>
+			{{if formulario['data_CP']:}}
+			<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">
+			<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>Data:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario['data_CP']}}</div>
+			</div>
+			{{pass}}
+		</div>
+		<div class="row">
+			{{itens = ['queixas_CP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_CP','').replace('_',' ').capitalize()}}:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}}</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<div class="row">
+			{{itens = ['pa_CP', 'estado_geral_CP', 'mucosa_CP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-8"><strong>{{=item.replace('_CP','').replace('_',' ').capitalize()}}:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-4">{{=formulario[item]}}</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<div class="row">
+			{{itens = ['mamas_CP', 'abdome_CP', 'exame_ginecologico_CP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_CP','').replace('_',' ').capitalize()}}:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}}</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12"><strong>Anticoncepção:</strong></div>
+			{{itens = ['aleitamento_materno_CP', 'barreira_CP', 'diu_CP', 'hormonal_oral_CP', 'hormonal_injetavel_CP', 'comportamental_CP', 'cirurgico_CP', 'nenhum_CP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-6 col-md-6 col-lg-6 col-p-6">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4">{{=item.replace('_CP','').replace('_',' ').capitalize()}}</div> 
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+		<div class="row">
+			{{itens = ['orientacao_CP']}}
+			{{for item in itens:}}
+			{{if formulario[item]:}}
+			<div class="col-sm-12 col-md-12 col-lg-12 col-p-12">
+				<div class="col-sm-4 col-md-4 col-lg-4 col-p-4"><strong>{{=item.replace('_CP','').replace('_',' ').capitalize()}}:</strong></div> 
+				<div class="col-sm-8 col-md-8 col-lg-8 col-p-8">{{=formulario[item]}}</div>
+			</div>
+			{{pass}}
+			{{pass}}
+		</div>
+	</div>
 </div>
->>>>>>> origin/master

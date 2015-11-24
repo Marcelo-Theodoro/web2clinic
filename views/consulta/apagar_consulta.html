@@ -1,7 +1,12 @@
 {{extend 'layout.html'}}
-Are you sure you want to do this, boy? This action cannot be undone!
-</br>
+<h1> Tem certeza que gostaria de deletar esta consulta? </h1><br />
+
+<div class="row">
+	<div class="col-md-12">
+		<p><strong>Paciente:</strong> <a href="{{=URL(c='paciente', f='paciente', args=consulta.id_paciente)}}">{{=consulta['id_paciente']}}</a></p>
+		<p><strong>Dia:</strong> {{=consulta['dia']}}</p>
+		<p><strong>Tipo:</strong> {{=consulta['tipo_consulta']}}</p>
+	</div>
+</div>
+<br />
 {{=form}}
-</br>
-</br>
-infos da consulta: {{=consulta}}

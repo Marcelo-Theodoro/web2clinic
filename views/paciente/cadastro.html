@@ -1,5 +1,5 @@
 {{extend 'layout.html'}}
-<div class="col-md-12">
+<div class="col-sm-12 col-md-12 col-lg-12">
 	<span>
 		{{if editar_paciente:}}
 			<h3>Editando informações de: {{=editar_paciente.nome}} </h3> <br />
@@ -10,8 +10,8 @@
 	<form action="#" enctype="multipart/form-data" method="post">
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['nome']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['nome']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['nome']}}
 					<span class="help-block"></span>
 				</div>
@@ -19,8 +19,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['cpf']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['cpf']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['cpf']}}
 					<span class="help-block"></span>
 				</div>
@@ -28,8 +28,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['profissao']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['profissao']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['profissao']}}
 					<span class="help-block"></span>
 				</div>
@@ -37,8 +37,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2" >{{=form.custom.label['endereco']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2" >{{=form.custom.label['endereco']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['endereco']}}
 					<span class="help-block"></span>
 				</div>
@@ -46,8 +46,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2" >{{=form.custom.label['cidade']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2" >{{=form.custom.label['cidade']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['cidade']}}
 					<span class="help-block"></span>
 				</div>
@@ -55,8 +55,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2" >{{=form.custom.label['uf']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2" >{{=form.custom.label['uf']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['uf']}}
 					<span class="help-block"></span>
 				</div>
@@ -64,8 +64,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2" >{{=form.custom.label['cpf']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2" >{{=form.custom.label['cpf']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['cep']}}
 					<span class="help-block"></span>
 				</div>
@@ -73,8 +73,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['telefone']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['telefone']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['telefone']}}
 					<span class="help-block"></span>
 				</div>
@@ -82,8 +82,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['nascimento']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['nascimento']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['nascimento']}}
 					<span class="help-block">
 					</span>
@@ -92,8 +92,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['sexo']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['sexo']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['sexo']}}
 					<span class="help-block"></span>
 				</div>
@@ -101,8 +101,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['escolaridade']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['escolaridade']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['escolaridade']}}
 					<span class="help-block">
 					</span>
@@ -111,8 +111,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['estadocivil']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['estadocivil']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['estadocivil']}}
 					<span class="help-block"></span>
 				</div>
@@ -120,8 +120,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['cor']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['cor']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['cor']}}
 					<span class="help-block"></span>
 				</div>
@@ -129,8 +129,8 @@
 		</div>
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{=form.custom.label['image']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['image']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['image']}}
 					<span class="help-block"></span>
 				</div>
@@ -139,8 +139,8 @@
 
 		<div class="row">
 			<div class="form-group" >
-				<label class="control-label col-sm-2" >{{=form.custom.label['observacoes']}}</label>
-				<div class="col-sm-6">
+				<label class="control-label col-sm-2 col-md-2 col-lg-2" >{{=form.custom.label['observacoes']}}</label>
+				<div class="col-sm-10 col-md-10 col-lg-6">
 					{{=form.custom.widget['observacoes']}}
 					<span class="help-block"></span>
 				</div>
