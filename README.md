@@ -1,1 +1,0 @@
-# SISTEMA MÉDICO #
