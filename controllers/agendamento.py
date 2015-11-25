@@ -93,8 +93,12 @@ def agendamentos():
     lista = []
     for agendamento in agendamentos:
         paciente = db(db.pacientes.id == agendamento.id_paciente).select().first()
+        # armazena o valor no formato iso para uso de um js.
+        agendamento.dia_iso = agendamento.dia
+        # Representação no padrão hue br.
         agendamento.dia = agendamento.dia.strftime('%d/%m/%Y')
         lista.append(dict({'dia': agendamento.dia,
+                           'dia_iso': agendamento.dia_iso,
                            'hora_inicio': agendamento.hora_inicio,
                            'hora_fim': agendamento.hora_fim,
                            'id_paciente': paciente.id,

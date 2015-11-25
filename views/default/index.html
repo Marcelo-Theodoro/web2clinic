@@ -5,7 +5,7 @@
 	<div class="col-sm-6 col-md-6 col-lg-6">
 		<div class="panel panel-default">
 			 <div class="panel-heading">
-			 	Total de consultas/por tipo
+			 	Total de Agendamentos e Consultas
 			 </div>
 			 <div class="panel-body">
 			 	<div id="graph-bar-tipo"></div>
@@ -67,15 +67,14 @@
 //graficos
 Morris.Bar({
   element: 'graph-bar-tipo',
-  
+
   data: [
-  	{{for dict in lista:}}
-    {x: '{{=dict['label']}}', y:{{=dict['qtd']}}},
-    {{pass}}
+    {x: '{{=data.strftime('%d/%m/%Y')}}', a:{{=qtd_agendamentos_dia}}, c:{{=qtd_consultas_dia}}},
+    {x: '{{=mes}}', a:{{=qtd_agendamentos_mes}}, c:{{=qtd_consultas_mes}}},
   ],
   xkey: 'x',
-  ykeys: ['y'],
-  labels: ['Qtd de consultas'],
+  ykeys: ['a', 'c'],
+  labels: ['Agendamentos', 'Consultas'],
   gridTextSize: 8,
   resize: true
 });

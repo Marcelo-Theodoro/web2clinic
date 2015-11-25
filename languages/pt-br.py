@@ -7,6 +7,7 @@
 '%(nrows)s records found': '%(nrows)s registros encontrados',
 '%d-%m-%Y': '%d-%m-%Y',
 '%d/%m/%Y': '%d/%m/%Y',
+'%d/%m/%Y %H:%M:%S': '%d/%m/%Y %H:%M:%S',
 '%s %%{row} deleted': '%s linhas apagadas',
 '%s %%{row} updated': '%s linhas atualizadas',
 '%s selected': '%s selecionado',

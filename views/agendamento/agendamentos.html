@@ -23,6 +23,7 @@
 				right: 'month,agendaWeek,agendaDay'
 			},
 			lang: 'pt-br',
+			defaultView: 'agendaDay',
 			selectable: false,
 			selectHelper: false,
 			select: function(start, end) {
@@ -44,8 +45,8 @@
 			{{for item in lista:}}
 		{
 			title: '{{=item['nome']}}',
-			start: '{{=item['dia']}}T{{=item['hora_inicio']}}',
-			end: '{{=item['dia']}}T{{=item['hora_fim']}}',
+			start: '{{=item['dia_iso']}}T{{=item['hora_inicio']}}',
+			end: '{{=item['dia_iso']}}T{{=item['hora_fim']}}',
 			url: '{{=URL('agendamento', args=item['id_agendamento'])}}'
 		},
 		{{pass}}
