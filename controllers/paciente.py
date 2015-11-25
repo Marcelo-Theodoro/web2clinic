@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
+@auth.requires_login()
 def cadastro():
     if request.vars['editar']:
         editar_id = request.vars['editar']
@@ -24,6 +25,7 @@ def cadastro():
     return locals()
 
 
+@auth.requires_login()
 def paciente():
     id_paciente = request.args(0) or redirect(URL(c='paciente',
                                                     f='pacientes'),
@@ -34,6 +36,7 @@ def paciente():
     return locals()
 
 
+@auth.requires_login()
 def pacientes():
     links = [lambda row: A(SPAN('Visualizar',
                                 _class='icon magnifier icon-zoom-in\
@@ -54,5 +57,6 @@ def pacientes():
                         editable=False, deletable=True)
     return locals()
 
+@auth.requires_login()
 def download():
     return response.download(request, db)

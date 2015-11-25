@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+@auth.requires_login()
 def gerar_prescricao():
     id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
@@ -15,6 +16,7 @@ def gerar_prescricao():
     return locals()
 
 
+@auth.requires_login()
 def prescricao():
     id_prescricao = request.args(0) or redirect(URL(c='consulta',
                                                     f='todas_consultas'))
@@ -25,6 +27,7 @@ def prescricao():
     return locals()
 
 
+@auth.requires_login()
 def prescricoes():
     id_paciente = request.args(0)
     if id_paciente:

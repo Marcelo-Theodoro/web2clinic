@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+@auth.requires_login()
 def novo_agendamento():
     links = [lambda row: A(SPAN('Agendar',
                                 _class='icon plus icon-plus\
@@ -14,6 +15,7 @@ def novo_agendamento():
     return locals()
 
 
+@auth.requires_login()
 def agendar():
     id_paciente = request.args(0) or redirect(URL(c='agendamento',
                                                   f='novo_agendamento'),
@@ -28,6 +30,7 @@ def agendar():
     return locals()
 
 
+@auth.requires_login()
 def editar_agendamento():
     id_agendamento = request.args(0) or redirect(URL(c='agendamento',
                                                      f='agendamentos'),
@@ -41,6 +44,7 @@ def editar_agendamento():
     return locals()
 
 
+@auth.requires_login()
 def agendamento():
     id_agendamento = request.args(0) or redirect(URL(c='agendamento',
                                                      f='agendamentos'),
@@ -67,6 +71,7 @@ def agendamento():
     return locals()
 
 
+@auth.requires_login()
 def apagar_agendamento():
     id_agendamento = request.args(0) or redirect(URL(c='agendamento',
                                                      f='agendamentos'),
@@ -82,6 +87,7 @@ def apagar_agendamento():
     return locals()
 
 
+@auth.requires_login()
 def agendamentos():
     agendamentos = db(db.agendamentos).select()
     lista = []

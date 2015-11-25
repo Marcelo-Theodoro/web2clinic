@@ -11,7 +11,7 @@ response.form_label_separator = ''
 
 
 auth = Auth(db)
-auth.settings.actions_disabled.append('register')
+# auth.settings.actions_disabled.append('register')
 auth.settings.actions_disabled.append('request_reset_password')
 auth.settings.actions_disabled.append('reset_password')
 auth.settings.actions_disabled.append('retrieve_password')

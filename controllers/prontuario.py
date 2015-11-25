@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+@auth.requires_login()
 def prontuario_consulta():
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))

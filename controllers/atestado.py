@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+@auth.requires_login()
 def gerar_atestado():
     id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
@@ -16,6 +17,7 @@ def gerar_atestado():
     return locals()
 
 
+@auth.requires_login()
 def atestado():
     id_atestado = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
@@ -24,6 +26,7 @@ def atestado():
     return locals()
 
 
+@auth.requires_login()
 def atestados():
     id_paciente = request.args(0)
     if id_paciente:

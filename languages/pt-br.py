@@ -287,6 +287,7 @@
 'User Ativo': 'User Ativo',
 'User ID': 'ID do Usuário',
 'User Voice': 'Opinião dos usuários',
+'Username': 'Username',
 'Value not allowed': 'Valor não permitido',
 'Videos': 'Vídeos',
 'View': 'Visualização',

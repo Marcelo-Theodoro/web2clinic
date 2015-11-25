@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+@auth.requires_login()
 def consulta():
     '''
     Página de consulta, onde os formulários são preenchidos.
@@ -96,6 +97,7 @@ def consulta():
     return locals()
 
 
+@auth.requires_login()
 def consultas():
     id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
@@ -108,6 +110,7 @@ def consultas():
     return locals()
 
 
+@auth.requires_login()
 def nova_consulta():
     links = [lambda row: A('Iniciar consulta', _class='button btn\
                                                        btn-default',
@@ -120,6 +123,7 @@ def nova_consulta():
     return locals()
 
 
+@auth.requires_login()
 def consultar():
     id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
@@ -136,6 +140,7 @@ def consultar():
     return locals()
 
 
+@auth.requires_login()
 def todas_consultas():
     links = [lambda row: A('Ver consulta', _class='button btn btn-default',
                            _href=URL(c='consulta', f='ver_consulta',
@@ -156,6 +161,7 @@ def todas_consultas():
     return locals()
 
 
+@auth.requires_login()
 def ver_consulta():
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
@@ -169,6 +175,7 @@ def ver_consulta():
     return locals()
 
 
+@auth.requires_login()
 def apagar_consulta():
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
@@ -181,6 +188,5 @@ def apagar_consulta():
         db(db.consultas.id == consulta.id).delete()
         redirect(URL(c='consulta', f='todas_consultas'))
     return locals()
-
 
 

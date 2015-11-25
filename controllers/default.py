@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 # TODO: agendamentos por dia, agendamentos por mês, consultas hoje, consultas neste mês
 
+def user():
+    return dict(form=auth())
+
+@auth.requires_login()
 def index():
     from datetime import datetime
     data = datetime.now().date()
@@ -37,3 +41,4 @@ def index():
                      if item == i['form']][0]
             lista.append({'label': label, 'qtd': qtd_consultas})
     return locals()
+
