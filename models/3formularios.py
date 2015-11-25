@@ -911,5 +911,6 @@ db.define_table('retorno',
                       readable=False, writable=False),
                 Field('texto', 'text'),
                 Field('data', type='date', default=request.now,
-                      requires=IS_DATE(format='%d-%m-%Y')),
+                      requires=IS_DATE(format='%d-%m-%Y'),
+                      readable=False, writable=False),
                 )

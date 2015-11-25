@@ -102,6 +102,7 @@ def consultas():
     paciente = db(db.pacientes.id == id_paciente).select().first()
     consultas = db(db.consultas.id_paciente == id_paciente).select()
     for consulta in consultas:
+        consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
         consulta.tipo_consulta = [i['label'] for i in tipos_consultas
                                   if consulta.tipo_consulta == i['form']][0]
     return locals()
@@ -148,7 +149,7 @@ def todas_consultas():
     form = SQLFORM.grid(db.consultas,
                         fields=[db.consultas.id_paciente,
                                 db.consultas.tipo_consulta,
-                                db.consultas.hora_fim],
+                                db.consultas.dia],
                         csv=False, editable=False, deletable=False,
                         details=False, create=False, links=links,
                         headers=haders)
@@ -163,6 +164,7 @@ def ver_consulta():
                               if consulta.tipo_consulta == i['form']][0]
     consulta.label = consulta.tipo_consulta['label']
     consulta.form = consulta.tipo_consulta['form']
+    consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     return locals()
 
@@ -173,6 +175,7 @@ def apagar_consulta():
     consulta = db(db.consultas.id == id_consulta).select().first()
     if not consulta:
         raise HTTP(404)
+    consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
     form = SQLFORM.factory()
     if form.process().accepted:
         db(db.consultas.id == consulta.id).delete()

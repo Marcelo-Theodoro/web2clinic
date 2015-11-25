@@ -30,7 +30,7 @@ def paciente():
                                               client_side=True)
     paciente = db(db.pacientes.id == id_paciente).select().first()
     if paciente.nascimento:
-        paciente.nascimento = paciente.nascimento.strftime('%d-%m-%Y')
+        paciente.nascimento = paciente.nascimento.strftime('%d/%m/%Y')
     return locals()
 
 

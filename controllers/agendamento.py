@@ -34,7 +34,7 @@ def editar_agendamento():
                                                  client_side=True)
     agendamento = db(db.agendamentos.id == id_agendamento).select().first()
     db.agendamentos.id.readable = False
-    form = SQLFORM(db.agendamentos, agendamento, formstyle='bootstrap3_stacked')
+    form = SQLFORM(db.agendamentos, record=agendamento)
     if form.process().accepted:
         redirect(URL(c='agendamento', f='agendamento', args=id_agendamento),
                  client_side=True)
@@ -48,7 +48,7 @@ def agendamento():
     agendamento = db(db.agendamentos.id == id_agendamento).select().first()
     if not agendamento:
         raise HTTP(404)
-    agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
+    agendamento.dia = agendamento.dia.strftime('%d/%m/%Y')
     id_paciente = agendamento.id_paciente
     paciente = db(db.pacientes.id == id_paciente).select().first()
     if not paciente:
@@ -72,7 +72,7 @@ def apagar_agendamento():
                                                      f='agendamentos'),
                                                  client_side=True)
     agendamento = db(db.agendamentos.id == id_agendamento).select().first()
-    agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
+    agendamento.dia = agendamento.dia.strftime('%d/%m/%Y')
     id_paciente = agendamento.id_paciente
     paciente = db(db.pacientes.id == id_paciente).select().first()
     form = SQLFORM.factory()
@@ -87,8 +87,7 @@ def agendamentos():
     lista = []
     for agendamento in agendamentos:
         paciente = db(db.pacientes.id == agendamento.id_paciente).select().first()
-        # TODO: Calendário para de funcionar:
-        # agendamento.dia = agendamento.dia.strftime('%d-%m-%Y')
+        agendamento.dia = agendamento.dia.strftime('%d/%m/%Y')
         lista.append(dict({'dia': agendamento.dia,
                            'hora_inicio': agendamento.hora_inicio,
                            'hora_fim': agendamento.hora_fim,

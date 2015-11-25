@@ -4,7 +4,7 @@
 <ul class="timeline">
 {{for row in consultas:}}
 
-	{{if row.tipo_consulta == 'Retorno':}}	
+	{{if row.tipo_consulta == 'Retorno':}}
 	<li>
 		<div class="timeline-badge warning"></div>
 		<div class="timeline-panel">
@@ -12,33 +12,23 @@
 					<h4 class="timeline-title">{{=row.tipo_consulta}}</h4>
 			</div>
 			<div class="timeline-body">
-				<p>Data da consulta {{=row.hora_fim}}</p>
+				<p>Data da consulta: {{=row.dia}}</p>
 			</div>
 		</div>
 	</li>
 	{{else:}}
-	<li > 
+	<li >
 		<div class="timeline-badge danger"> </div>
 		<div class="timeline-panel"><a href="{{=URL(c='consulta', f='ver_consulta', args=row.id)}}">
 			<div class="timeline-heading">
 				<h4 class="timeline-title">{{=row.tipo_consulta}}</h4>
 			</div>
 			<div class="timeline-body">
-				<p>Data da consulta {{=row.hora_fim}}</p>
+				<p>Data da consulta: {{=row.dia}}</p>
 			</div>
 			</a>
 		</div>
-		
 	</li>
 	{{pass}}
-	
 {{pass}}
 </ul>
-
-<!-- 
-ID da consulta: {{=row.id}}<br />
-Tipo de consulta: {{=row.tipo_consulta}}<br />
-ID do paciente: {{=row.id_paciente}}<br />
-Data e hora fim da consulta: {{=row.hora_fim}}<br />
-_________________
-{{pass}} -->

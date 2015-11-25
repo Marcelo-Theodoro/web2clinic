@@ -15,7 +15,7 @@
 		<tbody>
 			<tr class="info">
 				<th>{{=paciente.nome}}</th>
-				<th>{{=consulta.hora_fim}}</th>
+				<th>{{=consulta.dia}}</th>
 				<th>{{=consulta.label}}</th>
 				<th><a href="{{=URL(c='prontuario', f='prontuario_consulta', args=id_consulta)}}" class="btn btn-default btn-sm btn-block" role="button">PRONTUÁRIO</a></th>
 				<th><a href="{{=URL(c='consulta', f='consulta', args=[consulta.form, paciente.id], vars={'editar': consulta.id})}}" class="btn btn-default btn-sm btn-block" role="button">EDITAR</a></th>
