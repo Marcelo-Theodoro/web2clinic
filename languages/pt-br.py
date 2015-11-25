@@ -242,6 +242,7 @@
 'Request reset password': 'Solicitar reset da senha',
 'Reset Password key': 'Resetar chave de senha',
 'Resources': 'Recursos',
+'Retrieve Username': 'Retrieve Username',
 'Role': 'Papel',
 'Rows in Table': 'Linhas na tabela',
 'Rows selected': 'Linhas selecionadas',
