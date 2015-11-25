@@ -86,9 +86,11 @@ db.define_table('prescricoes',
                 Field('id_paciente', 'reference pacientes',
                       readable=False, writable=False),
                 Field('data_criacao', type='date', default=request.now,
-                      requires=IS_DATE(format='%d/%m/%Y')),
+                      requires=IS_DATE(format='%d/%m/%Y'),
+                      label='Data de criação'),
                 Field('texto', type='text'),
                 Field('remedios', requires=IS_IN_SET(remedios, multiple=True),
-                      widget=SQLFORM.widgets.checkboxes.widget),
+                      widget=SQLFORM.widgets.checkboxes.widget,
+                      label='Remédios'),
                 )
 
