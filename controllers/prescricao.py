@@ -2,13 +2,15 @@
 
 @auth.requires_login()
 def gerar_prescricao():
-    id_paciente = request.args(0) or redirect(URL(c='consulta',
+    id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
-    paciente = db(db.pacientes.id == id_paciente).select().first()
-    if not paciente:
+    consulta = db(db.consultas.id == id_consulta).select().first()
+    if not consulta:
         raise HTTP(404)
+    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     form = SQLFORM(db.prescricoes)
     form.vars.id_paciente = paciente.id
+    form.vars.id_consulta = consulta.id
     if form.process().accepted:
         id = form.vars.id
         redirect(URL(c='prescricao', f='prescricao', args=id),

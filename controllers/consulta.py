@@ -166,6 +166,8 @@ def ver_consulta():
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     consulta = db(db.consultas.id == id_consulta).select().first()
+    if not consulta:
+        raise HTTP(404)
     consulta.tipo_consulta = [i for i in tipos_consultas
                               if consulta.tipo_consulta == i['form']][0]
     consulta.label = consulta.tipo_consulta['label']
@@ -185,6 +187,11 @@ def apagar_consulta():
     consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
     form = SQLFORM.factory()
     if form.process().accepted:
+        # Deleta prescrições associadas a consulta
+        db(db.prescricoes.id_consulta == consulta.id).delete()
+        # Deleta atestados associadas a consulta
+        db(db.atestados.id_consulta == consulta.id).delete()
+        # Delete a consulta
         db(db.consultas.id == consulta.id).delete()
         redirect(URL(c='consulta', f='todas_consultas'))
     return locals()
