@@ -119,7 +119,7 @@ def nova_consulta():
     grid = SQLFORM.grid(db.pacientes,
                         fields=[db.pacientes.nome, db.pacientes.cpf],
                         links=links, csv=False, editable=False,
-                        deletable=False, details=False, create=False)
+                        deletable=False, details=False, create=False, paginate=10)
     return locals()
 
 
@@ -157,7 +157,7 @@ def todas_consultas():
                                 db.consultas.dia],
                         csv=False, editable=False, deletable=False,
                         details=False, create=False, links=links,
-                        headers=haders)
+                        headers=haders, paginate=10)
     return locals()
 
 
