@@ -56,7 +56,7 @@ def pacientes():
                         fields=[db.pacientes.nome, db.pacientes.nascimento,
                                 db.pacientes.sexo],
                         csv=False, links=links, details=False, create=False,
-                        editable=False, deletable=True)
+                        editable=False, deletable=True, paginate=10)
     return locals()
 
 @auth.requires_login()
