@@ -125,6 +125,7 @@
 'Estado civil': 'Estado civil',
 'Estado Civil': 'Estado Civil',
 'Estadocivil': 'Estadocivil',
+'Exames': 'Exames',
 'export as csv file': 'exportar como um arquivo csv',
 'Export:': 'Exportar: ',
 'FAQ': 'Perguntas frequentes',

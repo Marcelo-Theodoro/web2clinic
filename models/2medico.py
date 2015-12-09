@@ -84,6 +84,16 @@ db.define_table('atestados',
                       requires=IS_DATE(format=('%d/%m/%Y'))),
                 )
 
+db.define_table('exames',
+                Field('id_paciente', 'reference pacientes',
+                      readable=False, writable=False),
+                Field('id_consulta', 'reference consultas',
+                      readable=False, writable=False),
+                Field('exames', 'text'),
+                Field('data_criacao', type='datetime', default=request.now,
+                      requires=IS_DATE(format=('%d/%m/%Y'))),
+                )
+
 db.define_table('prescricoes',
                 Field('id_paciente', 'reference pacientes',
                       readable=False, writable=False),

@@ -11,7 +11,8 @@ def novo_agendamento():
     grid = SQLFORM.grid(db.pacientes,
                         fields=[db.pacientes.nome, db.pacientes.cpf],
                         links=links, csv=False, editable=False,
-                        deletable=False, details=False, create=False, paginate=10)
+                        deletable=False, details=False, create=False,
+                        paginate=10)
     return locals()
 
 
