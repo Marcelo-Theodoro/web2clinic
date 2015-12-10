@@ -186,12 +186,16 @@ def apagar_consulta():
     if not consulta:
         raise HTTP(404)
     consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
+    consulta.tipo_consulta = ''.join(i['label'] for i in tipos_consultas
+                                     if i['form'] == consulta.tipo_consulta)
     form = SQLFORM.factory()
     if form.process().accepted:
         # Deleta prescrições associadas a consulta
         db(db.prescricoes.id_consulta == consulta.id).delete()
-        # Deleta atestados associadas a consulta
+        # Deleta atestados associados a consulta
         db(db.atestados.id_consulta == consulta.id).delete()
+        # Deleta exames associados a consulta
+        db(db.exames.id_consulta == consulta.id).delete()
         # Delete a consulta
         db(db.consultas.id == consulta.id).delete()
         redirect(URL(c='consulta', f='todas_consultas'))

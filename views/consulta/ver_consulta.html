@@ -37,7 +37,7 @@
       <div class="modal-body">
       	<a href="{{=URL(c='atestado', f='gerar_atestado', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">Atestado</a>
 		<a href="{{=URL(c='prescricao', f='gerar_prescricao', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">Prescrição</a>
-		<a href="#" class="btn btn-default btn-sm btn-block" role="button">Outros</a>
+		<a href="{{=URL(c='exames', f='gerar_exame', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">Exames</a>
       </div>
     </div>
   </div>
