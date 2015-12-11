@@ -12,20 +12,6 @@ estadocivil = ['Casada', 'Solteira (sem união estável)',
 sexo = ['Feminino', 'Masculino']
 
 
-# Configurações da clínica
-CC = dict(
-    nome_clinica = 'Clínica do X',
-    nome_medico = 'João X',
-    especialidade = 'Clínico Geral',
-    crm = '9999999999999',
-    telefone = '14 9999999',
-    endereco = 'R. Getúlio Vargas, 560, Centro - Ourinhos, SP, BRASIL.'
-)
-
-
-remedios = ['remedio{0}'.format(n) for n in range(20)]
-
-
 db.define_table('pacientes',
                 Field('nome', label='Nome', requires=IS_NOT_EMPTY()),
                 Field('sexo', label='Sexo', default='Feminino', requires=IS_IN_SET(sexo)),
@@ -103,8 +89,6 @@ db.define_table('prescricoes',
                       requires=IS_DATE(format='%d/%m/%Y'),
                       label='Data de criação'),
                 Field('texto', type='text'),
-                Field('remedios', requires=IS_IN_SET(remedios, multiple=True),
-                      widget=SQLFORM.widgets.checkboxes.widget,
-                      label='Remédios'),
+                Field('remedios', label='Remédios'),
                 )
 

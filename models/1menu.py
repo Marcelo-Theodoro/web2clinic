@@ -15,7 +15,12 @@ if auth.user:
                 ('Nova consulta', False, URL(c='consulta', f='nova_consulta')),
                 ('Todas consultas', False, URL(c='consulta', f='todas_consultas')),
             ]),
+        ('Admin', False, URL('#'), [
+                ('Medicamentos', False, URL(c='admin', f='medicamentos')),
+                ('Exames', False, URL(c='admin', f='exames')),
+            ]),
     ]
 
 
-if "auth" in locals(): auth.wikimenu()
+if "auth" in locals():
+    auth.wikimenu()

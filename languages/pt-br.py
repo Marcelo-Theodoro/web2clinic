@@ -129,6 +129,7 @@
 'export as csv file': 'exportar como um arquivo csv',
 'Export:': 'Exportar: ',
 'FAQ': 'Perguntas frequentes',
+'Fichas': 'Fichas',
 'file': 'Arquivo',
 'file ## download': 'file ',
 'First name': 'Nome',
