@@ -32,6 +32,7 @@ def consulta():
     if not paciente:
         # Paciente não existe.
         raise HTTP(404)
+    paciente.nascimento = paciente.nascimento.strftime(format='%d/%m/%Y')
 
     if request.vars['agendamento']:
         # Caso exista essa variável, quer dizer que existe um agendamento
