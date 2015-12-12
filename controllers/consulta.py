@@ -176,6 +176,9 @@ def ver_consulta():
     consulta.form = consulta.tipo_consulta['form']
     consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
+    atestados = db(db.atestados.id_consulta == consulta.id).select()
+    exames = db(db.exames.id_consulta == consulta.id).select()
+    prescricoes = db(db.prescricoes.id_consulta == consulta.id).select()
     return locals()
 
 
