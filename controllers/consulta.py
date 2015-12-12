@@ -190,6 +190,10 @@ def apagar_consulta():
                                      if i['form'] == consulta.tipo_consulta)
     form = SQLFORM.factory()
     if form.process().accepted:
+        # Deleta a ficha associada
+        base_consulta = [i['base'] for i in tipos_consultas
+                        if i['label'] == consulta.tipo_consulta][0]
+        db(base_consulta.id == consulta.id_form).delete()
         # Deleta prescrições associadas a consulta
         db(db.prescricoes.id_consulta == consulta.id).delete()
         # Deleta atestados associados a consulta
