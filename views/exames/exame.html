@@ -1,7 +1,60 @@
 {{extend 'layout.html'}}
-{{=exame}}
-</br>
-</br>
-</br>
-</br>
-{{=paciente.nome}}
+<div class="hidden-print">
+	<div class="visible-xs">
+		<div class="col-xs-6">
+			<p><a onclick="myFunction()" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-print" aria-hidden="true">Imprimir</a></p>
+		</div>
+	</div>
+	<div class="hidden-xs col-md-2 col-sm-2 col-lg-2" >
+		<div class="thumbnail" data-spy="affix">
+			<div class="col-md-12 col-sm-12 col-lg-12">			
+				<p><a onclick="myFunction()" class="btn btn-default btn-sm btn-block" role="button"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir</a></p>
+			</div>
+		</div>
+	</div>
+</div>			
+<div class="col-xs-12 col-md-10 col-sm-10 col-lg-10 col-p-12">
+		<div class="row">
+			<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4 col-p-4"></div>
+			<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4 col-p-4 col-xs-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-offset-4 col-p-offset-4">
+				<address>
+					<strong>{{=CC['nome_clinica']}}</strong><br>
+					{{=CC['endereco']}}<br>
+					Telefone: {{=CC['telefone']}}
+				</address>
+			</div>
+		</div>
+		<div class="row top-buffer">
+			<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
+			<h4><strong>Exames Solicitados</strong></h4>
+			</div>
+		</div>
+		<div class="row top-buffer">
+			<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10">
+				<p>{{=exame['exames']}}<p>
+			</div>
+			<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+
+		</div>
+		<div class="row top-buffer">
+			<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
+				<p><strong>{{=exame['data_criacao'].strftime('%d/%m/%Y')}}</strong></p>
+			</div>
+		</div>
+		<div class="row top-buffer">
+			<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
+				<address>
+					<strong>________________________</strong><br>
+					<strong>{{=CC['nome_medico']}}</strong><br>
+					<strong>{{=CC['especialidade']}}</strong><br>
+					<strong>{{=CC['crm']}}</strong><br>
+				</address>
+			</div>
+		</div>
+</div>
+<script>
+function myFunction() {
+	window.print();
+}
+</script>
