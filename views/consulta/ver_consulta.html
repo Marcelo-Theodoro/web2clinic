@@ -70,7 +70,7 @@
 	      <div id="collapse3" class="panel-collapse collapse">
 	        <ul class="list-group">
 	        	{{for exame in exames:}}
-	         		<a href="{{=URL(c='exames', f='exame', args=exame.id)}}" class="list-group-item">Exames solicitaodos no dia: {{=exame.data_criacao}}</a>
+	         		<a href="{{=URL(c='exames', f='exame', args=exame.id)}}" class="list-group-item">Exames solicitaodos no dia: {{=exame.data_criacao.strftime(format='%d/%m/%Y')}}</a>
 	          	{{pass}}
 	        </ul>
 	      </div>
