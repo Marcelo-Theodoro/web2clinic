@@ -2,33 +2,17 @@
 
 <h4> Histórico de consultas </h4>
 <ul class="timeline">
-{{for row in consultas:}}
-
-	{{if row.tipo_consulta == 'Retorno':}}
-	<li>
-		<div class="timeline-badge warning"></div>
-		<div class="timeline-panel">
-			<div class="timeline-heading"><a href="{{=URL(c='consulta', f='ver_consulta', args=row.id)}}">
-					<h4 class="timeline-title">{{=row.tipo_consulta}}</h4>
-			</div>
-			<div class="timeline-body">
-				<p>Data da consulta: {{=row.dia}}</p>
-			</div>
-		</div>
-	</li>
-	{{else:}}
+{{for consulta in consultas:}}
 	<li >
 		<div class="timeline-badge danger"> </div>
-		<div class="timeline-panel"><a href="{{=URL(c='consulta', f='ver_consulta', args=row.id)}}">
+		<div class="timeline-panel"><a href="{{=URL(c='consulta', f='ver_consulta', args=consulta.id)}}">
 			<div class="timeline-heading">
-				<h4 class="timeline-title">{{=row.tipo_consulta}}</h4>
 			</div>
 			<div class="timeline-body">
-				<p>Data da consulta: {{=row.dia}}</p>
+				<p>Data da consulta: {{=consulta.dia}}</p>
 			</div>
 			</a>
 		</div>
 	</li>
-	{{pass}}
 {{pass}}
 </ul>

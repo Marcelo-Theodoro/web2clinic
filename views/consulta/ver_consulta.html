@@ -7,8 +7,6 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<p><strong>Nome:</strong> <a href="{{=URL('paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
-		<p><strong>Dia:</strong> {{=consulta.dia}}</p>
-		<p><strong>Consulta Tipo: </strong>{{=consulta.label}}</p>
 	</div>
 </div>
 <div class="row">
@@ -16,7 +14,6 @@
 		<a href="{{=URL(c='prontuario', f='prontuario_consulta', args=id_consulta)}}" class="btn btn-default btn-sm btn-block" role="button">PRONTUÁRIO</a>
 	</div>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-		<a href="{{=URL(c='consulta', f='consulta', args=[consulta.form, paciente.id], vars={'editar': consulta.id})}}" class="btn btn-default btn-sm btn-block" role="button">EDITAR</a>
 	</div>
 	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
 		<a href="{{=URL(c='consulta', f='apagar_consulta', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">APAGAR</a>

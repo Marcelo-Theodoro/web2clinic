@@ -54,9 +54,16 @@ db.define_table('consultas',
                 Field('dia', type='date', requires=IS_DATE(format='%d/%m/%Y')),
                 Field('hora_inicio', requires=IS_TIME()),  # TODO
                 Field('hora_fim', requires=IS_TIME()),
+                )
+
+
+db.define_table('fichas',
+                Field('id_paciente', 'reference pacientes',
+                    readable=False, writable=False),
+                Field('id_consulta', 'reference consultas',
+                      readable=False, writable=False),
                 Field('tipo_consulta'),
                 Field('id_form'),
-                format='%(id_paciente)s %(tipo_consulta)s'
                 )
 
 
@@ -70,6 +77,7 @@ db.define_table('atestados',
                       requires=IS_DATE(format=('%d/%m/%Y'))),
                 )
 
+
 db.define_table('exames',
                 Field('id_paciente', 'reference pacientes',
                       readable=False, writable=False),
@@ -80,6 +88,7 @@ db.define_table('exames',
                 Field('texto', type='text'),
                 Field('exames', readable=False, writable=False),
                 )
+
 
 db.define_table('prescricoes',
                 Field('id_paciente', 'reference pacientes',
