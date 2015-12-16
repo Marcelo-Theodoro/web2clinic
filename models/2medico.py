@@ -75,9 +75,10 @@ db.define_table('exames',
                       readable=False, writable=False),
                 Field('id_consulta', 'reference consultas',
                       readable=False, writable=False),
-                Field('exames', 'text'),
                 Field('data_criacao', type='datetime', default=request.now,
                       requires=IS_DATE(format=('%d/%m/%Y'))),
+                Field('texto', type='text'),
+                Field('exames', readable=False, writable=False),
                 )
 
 db.define_table('prescricoes',
@@ -86,9 +87,8 @@ db.define_table('prescricoes',
                 Field('id_consulta', 'reference consultas',
                       readable=False, writable=False),
                 Field('data_criacao', type='date', default=request.now,
-                      requires=IS_DATE(format='%d/%m/%Y'),
-                      label='Data de criação'),
+                      requires=IS_DATE(format='%d/%m/%Y')),
                 Field('texto', type='text'),
-                Field('remedios', label='Remédios'),
+                Field('medicamentos', readable=False, writable=False),
                 )
 
