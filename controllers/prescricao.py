@@ -26,7 +26,7 @@ def prescricao():
     prescricao = db(db.prescricoes.id == id_prescricao).select().first()
     if not prescricao:
         raise HTTP(404)
-    paciente = db(db.pacientes.id == prescricao.id_paciente)
+    paciente = db(db.pacientes.id == prescricao.id_paciente).select().first()
     return locals()
 
 

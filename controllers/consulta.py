@@ -149,21 +149,24 @@ def ver_consulta():
 
 @auth.requires_login()
 def apagar_consulta():
-    # NÃO ESTÁ OK
+    #  OK
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     consulta = db(db.consultas.id == id_consulta).select().first()
     if not consulta:
         raise HTTP(404)
     consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
-    consulta.tipo_consulta = ''.join(i['label'] for i in tipos_consultas
-                                     if i['form'] == consulta.tipo_consulta)
+    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
+    fichas = db(db.fichas.id_consulta == consulta.id).select()
     form = SQLFORM.factory()
     if form.process().accepted:
-        # Deleta a ficha associada
-        base_consulta = [i['base'] for i in tipos_consultas
-                        if i['label'] == consulta.tipo_consulta][0]
-        db(base_consulta.id == consulta.id_form).delete()
+        # Deletas as fichas associadas
+        for ficha in fichas:
+            base_consulta = [i['base'] for i in tipos_consultas
+                            if i['form'] == ficha.tipo_consulta][0]
+            db(base_consulta.id == ficha.id_form).delete()
+        # Deleta os registros das fichas
+        db(db.fichas.id_consulta == consulta.id).delete()
         # Deleta prescrições associadas a consulta
         db(db.prescricoes.id_consulta == consulta.id).delete()
         # Deleta atestados associados a consulta
