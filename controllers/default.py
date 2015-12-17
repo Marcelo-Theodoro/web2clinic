@@ -35,7 +35,7 @@ def index():
     itens = [i['form'] for i in tipos_consultas]
     lista = []
     for item in itens:
-        qtd_consultas = len(db(db.consultas.tipo_consulta == item).select())
+        qtd_consultas = len(db(db.fichas.tipo_consulta == item).select())
         if qtd_consultas:
             label = [i['label'] for i in tipos_consultas
                      if item == i['form']][0]
