@@ -86,7 +86,10 @@ db.define_table('exames',
                 Field('data_criacao', type='datetime', default=request.now,
                       requires=IS_DATE(format=('%d/%m/%Y'))),
                 Field('texto', type='text'),
-                Field('exames', readable=False, writable=False),
+                Field('exames',
+                      requires=IS_IN_DB(db, db.lista_medicamentos.nome,
+                                        multiple=True),
+                      widget=SQLFORM.widgets.checkboxes.widget),
                 )
 
 
@@ -98,6 +101,9 @@ db.define_table('prescricoes',
                 Field('data_criacao', type='date', default=request.now,
                       requires=IS_DATE(format='%d/%m/%Y')),
                 Field('texto', type='text'),
-                Field('medicamentos', readable=False, writable=False),
+                Field('medicamentos',
+                      requires=IS_IN_DB(db, db.lista_medicamentos.nome,
+                                        multiple=True),
+                      widget=SQLFORM.widgets.checkboxes.widget),
                 )
 

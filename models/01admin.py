@@ -20,6 +20,7 @@ db.define_table('lista_medicamentos',
                       requires=IS_EMPTY_OR(IS_IN_SET([i['form'] for i in tipos_consultas],
                                                      multiple=True)),
                       widget=SQLFORM.widgets.checkboxes.widget),
+                format='%(nome)s'
                 )
 
 db.define_table('lista_exames',
@@ -28,4 +29,5 @@ db.define_table('lista_exames',
                       requires=IS_EMPTY_OR(IS_IN_SET([i['form'] for i in tipos_consultas],
                                                      multiple=True)),
                       widget=SQLFORM.widgets.checkboxes.widget),
+                format='%(nome)s'
                 )

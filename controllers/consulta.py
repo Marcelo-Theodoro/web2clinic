@@ -1,70 +1,95 @@
 # -*- coding: utf-8 -*-
+# Transformar um agendamento em uma consulta? Maybe.
+# Ou então, a consulta ser criada antes de dar o submit na primeira ficha.
+# Dessa maneira é possível, por exemplo, que o usuário crie um atestado antes
+# da ficha, ou só solicite um exame.
+
 
 @auth.requires_login()
 def consulta():
-    # Falta a edição
+    # Tipo de consulta deve ser o primeiro args na URL
     tipo_consulta = request.args(0) or redirect(URL(c='consulta',
                                                     f='todas_consultas'))
+    # Seguido pelo ID do paciente
     id_paciente = request.args(1) or redirect(URL(c='consulta',
                                                  f='todas_consultas'))
-    # Trata o tipo de consulta
+
+    # Usando o args(0), busca um dict com todas as infos do
+    # tipo de consulta em questão
     tipo_consulta = [i for i in tipos_consultas
                      if tipo_consulta == i['form']][0]
     # Busca paciente
     paciente = db(db.pacientes.id == id_paciente).select().first()
     paciente.nascimento = paciente.nascimento.strftime(format='%d/%m/%Y')
-    # Trata agendamento
+    # Se houver a váriável "agendamento" na URL
     if request.vars['agendamento']:
+        # Busca o agendamento e guarda em "agendamento"
         id_agendamento = request.vars['agendamento']
         agendamento = db(db.agendamentos.id == id_agendamento).select().first()
     else:
         id_agendamento = False
-    # Trata edição
-    if request.vars['editar']:
-        u_consulta_id = request.vars['editar']
-        u_consulta = db(db.consultas.id == u_consulta_id).select().first()
-        u_tipo_consulta = [x['base'] for x in tipos_consultas
-                           if u_consulta.tipo_consulta == x['form']][0]
-        u_form_id = u_consulta.id_form
-        u_ficha = db(u_tipo_consulta.id == u_form_id).select().first()
-    else:
-        u_ficha = False
-
-    # Cria form, verifica se é edição
-    form = SQLFORM(tipo_consulta['base'] if not u_ficha
-                   else tipo_consulta['base'], record=u_ficha)
+    # Cria o form
+    base = eval(tipo_consulta['base'])
+    form = SQLFORM(base)
     # Selecionar a view para edição
     response.view = tipo_consulta['view_form']
     # Inputa o ID do paciente no form
     form.vars.id_paciente = paciente.id
+
     if form.process().accepted:
-        # Caso não seja edição de ficha é criada uma nova consulta
-        if not u_ficha:
-            id_form = form.vars.id
-            # Cria a consulta
-            id_consulta = db.consultas.insert(id_paciente=paciente.id,
-                                          dia=request.now,
-                                          hora_inicio=request.now,
-                                          hora_fim=request.now)
-            # Cria o registro da ficha
-            id_ficha = db.fichas.insert(id_paciente=paciente.id,
-                                        id_consulta=id_consulta,
-                                        tipo_consulta = tipo_consulta['form'],
-                                        id_form=id_form)
-            # Se houver agendamento, deleta
-            if id_agendamento:
-                db(db.agendamentos.id == id_agendamento).delete()
-        else:
-            # Caso SEJA edição de ficha
-            id_consulta = u_consulta_id
+        id_form = form.vars.id
+         # Faz o registro da consulta
+        id_consulta = db.consultas.insert(id_paciente=paciente.id,
+                                      dia=request.now,
+                                      hora_inicio=request.now,
+                                      hora_fim=request.now)
+        # Faz o registro da ficha
+        id_ficha = db.fichas.insert(id_paciente=paciente.id,
+                                    id_consulta=id_consulta,
+                                    tipo_consulta = tipo_consulta['form'],
+                                    id_form=id_form)
+        # Se houver agendamento, deleta
+        if id_agendamento:
+            db(db.agendamentos.id == id_agendamento).delete()
         redirect(URL(c='consulta', f='ver_consulta', args=id_consulta),
+                 client_side=True)
+    return locals()
+
+def editar_ficha():
+    # Falta os html's e testar
+    tipo_consulta = request.args(0) or redirect(URL(c='consulta',
+                                                    f='todas_consultas'))
+    id_consulta = request.args(1) or redirect(URL(c='consulta',
+                                                  f='todas_consultas'))
+    ficha_id = request.vars['editar'] or redirect(URL(c='consulta',
+                                                        f='todas_consultas'))
+    # Busca o dicionário para o tipo de consulta selecionado em args(0)
+    tipo_consulta = [i for i in tipos_consultas
+                     if i == tipos_consultas][0]
+    # Busca a consulta
+    consulta = db(db.consultas.id == id_consulta).select().first()
+    # Busca o paciente
+    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
+    paciente.nascimento = paciente.nascimento.strftime(format='%d/%m/%Y')
+    # Define a base usando o dict.
+    base = eval(tipo_consulta['base'])
+    # Busca a ficha que vai ser atualizada
+    ficha = db(u_base.id == u_ficha_id).select().first()
+    # Cria o form para update da ficha
+    form = SQLFORM(tipo_consulta['base'], update=ficha)
+    # Selecionar a view para edição
+    response.view = tipo_consulta['view_form']
+    # Inputa o ID do paciente no form
+    form.vars.id_paciente = paciente.id
+
+    if form.process().accepted:
+        redirect(URL(c='consulta', f='ver_consulta', args=consulta.id),
                  client_side=True)
     return locals()
 
 
 @auth.requires_login()
 def consultas():
-    # Ok
     id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     paciente = db(db.pacientes.id == id_paciente).select().first()
@@ -76,7 +101,6 @@ def consultas():
 
 @auth.requires_login()
 def nova_consulta():
-    # ok
     links = [lambda row: A('Iniciar consulta', _class='button btn\
                                                        btn-default',
                            _href=URL(c='consulta', f='consultar',
@@ -91,7 +115,6 @@ def nova_consulta():
 
 @auth.requires_login()
 def consultar():
-    # ok
     id_paciente = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     paciente = db(db.pacientes.id == id_paciente).select().first()
@@ -109,7 +132,6 @@ def consultar():
 
 @auth.requires_login()
 def todas_consultas():
-    # ok
     links = [lambda row: A('Ver consulta', _class='button btn btn-default',
                            _href=URL(c='consulta', f='ver_consulta',
                                      args=[row.id]))]
@@ -126,7 +148,6 @@ def todas_consultas():
 
 @auth.requires_login()
 def ver_consulta():
-    # ok
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     consulta = db(db.consultas.id == id_consulta).select().first()
@@ -149,7 +170,6 @@ def ver_consulta():
 
 @auth.requires_login()
 def apagar_consulta():
-    #  OK
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     consulta = db(db.consultas.id == id_consulta).select().first()
