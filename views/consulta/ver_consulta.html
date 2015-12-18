@@ -6,34 +6,22 @@
 </div>
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<p><strong>Nome:</strong> <a href="{{=URL('paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
+		<h4><strong>Paciente:</strong> <a href="{{=URL('paciente', args=paciente.id)}}" class="text-danger">{{=paciente.nome}}</a></h4>
 	</div>
-</div>
-<div class="row">
-	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-		<a href="{{=URL(c='prontuario', f='prontuario_consulta', args=id_consulta)}}" class="btn btn-default btn-sm btn-block" role="button">PRONTUÁRIO</a>
-	</div>
-	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-	</div>
-	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-		<a href="{{=URL(c='consulta', f='apagar_consulta', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">APAGAR</a>
-	</div>
-	<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-		<a href="#" class="btn btn-default btn-sm btn-block" role="button" data-toggle="modal" data-target="#ModalDocs">Gerar documentos</a>
-	</div>
-</div>
-<div class="row">
-	<h3> Documentos Salvos </h3>
 </div>
 <div class="row">
 	<div class="panel-group">
 	    <div class="panel panel-info">
-	      <div class="panel-heading">
-	        <h4 class="panel-title">
-	          <a data-toggle="collapse" href="#collapse1">Atestados</a>
-	          <span class="badge pull-right">{{=len(atestados)}}</span>
-	        </h4>
-	      </div>
+		    <div class="panel-heading">
+		    	<div class="pull-right">
+			        <a href="{{=URL(c='atestado', f='gerar_atestado', args=consulta.id)}}" class="btn btn-info btn-xs">Adicionar</a>
+			        <a data-toggle="collapse" href="#collapse1" class="btn btn-info btn-xs">Listar</a>
+			        <span class="badge">{{=len(atestados)}}</span>
+      			</div>
+			        <h4 class="panel-title">
+			        	Atestados</a>
+			        </h4>
+		    </div>
 	      <div id="collapse1" class="panel-collapse collapse">
 	        <ul class="list-group">
 	        	{{for atestado in atestados:}}
@@ -42,32 +30,60 @@
 	        </ul>
 	      </div>
 	    </div>
+	    
 	    <div class="panel panel-info">
 	      <div class="panel-heading">
+	      	<div class="pull-right">
+			        <a href="{{=URL(c='exames', f='gerar_exame', args=consulta.id)}}" class="btn btn-info btn-xs">Adicionar</a>
+			        <a data-toggle="collapse" href="#collapse2" class="btn btn-info btn-xs">Listar</a>
+			        <span class="badge">{{=len(exames)}}</span>
+      		</div>
 	        <h4 class="panel-title">
-	          <a data-toggle="collapse" href="#collapse2">Prescrições</a>
-	          <span class="badge pull-right">{{=len(prescricoes)}}</span>
+	          Exames
 	        </h4>
 	      </div>
 	      <div id="collapse2" class="panel-collapse collapse">
 	        <ul class="list-group">
-	        	{{for prescricao in prescricoes:}}
-	          		<a href="{{=URL(c='prescricao', f='prescricao', args=prescricao.id)}}" class="list-group-item">Prescrição do dia: {{=prescricao.data_criacao.strftime(format='%d/%m/%Y')}}</a>
+	        	{{for exame in exames:}}
+	         		<a href="{{=URL(c='exames', f='exame', args=exame.id)}}" class="list-group-item">Exames solicitaodos no dia: {{=exame.data_criacao.strftime(format='%d/%m/%Y')}}</a>
 	          	{{pass}}
 	        </ul>
 	      </div>
 	    </div>
 	    <div class="panel panel-info">
 	      <div class="panel-heading">
+	      	<div class="pull-right">
+			        <a href="#" class="btn btn-info btn-xs" data-toggle="modal" data-target="#Fichas">Adicionar</a>
+			        <a data-toggle="collapse" href="#collapse3" class="btn btn-info btn-xs">Listar</a>
+			        <span class="badge">{{=len(fichas)}}</span>
+      			</div>
 	        <h4 class="panel-title">
-	          <a data-toggle="collapse" href="#collapse3">Exames</a>
-	          <span class="badge pull-right">{{=len(exames)}}</span>
+	          Fichas
 	        </h4>
 	      </div>
 	      <div id="collapse3" class="panel-collapse collapse">
 	        <ul class="list-group">
-	        	{{for exame in exames:}}
-	         		<a href="{{=URL(c='exames', f='exame', args=exame.id)}}" class="list-group-item">Exames solicitaodos no dia: {{=exame.data_criacao.strftime(format='%d/%m/%Y')}}</a>
+	        	{{for ficha in fichas:}}
+	         		<a href="#" class="list-group-item">{{=ficha.label}}</a>
+	          	{{pass}}
+	        </ul>
+	      </div>
+	    </div>
+	    <div class="panel panel-info">
+	      <div class="panel-heading">
+	      	<div class="pull-right">
+			    <a href="{{=URL(c='prescricao', f='gerar_prescricao', args=consulta.id)}}" class="btn btn-info btn-xs">Adicionar</a>
+			    <a data-toggle="collapse" href="#collapse4" class="btn btn-info btn-xs">Listar</a>
+			    <span class="badge">{{=len(prescricoes)}}</span>
+      		</div>
+	        <h4 class="panel-title">
+	          <a>Prescrições</a>
+	        </h4>
+	      </div>
+	      <div id="collapse4" class="panel-collapse collapse">
+	        <ul class="list-group">
+	        	{{for prescricao in prescricoes:}}
+	          		<a href="{{=URL(c='prescricao', f='prescricao', args=prescricao.id)}}" class="list-group-item">Prescrição do dia: {{=prescricao.data_criacao.strftime(format='%d/%m/%Y')}}</a>
 	          	{{pass}}
 	        </ul>
 	      </div>
@@ -76,17 +92,19 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="ModalDocs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="Fichas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Documentos</h4>
+        <h4 class="modal-title" id="myModalLabel">Fichas</h4>
       </div>
       <div class="modal-body">
-      	<a href="{{=URL(c='atestado', f='gerar_atestado', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">Atestado</a>
-		<a href="{{=URL(c='prescricao', f='gerar_prescricao', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">Prescrição</a>
-		<a href="{{=URL(c='exames', f='gerar_exame', args=consulta.id)}}" class="btn btn-default btn-sm btn-block" role="button">Exames</a>
+      	<ul>
+	      	{{for ficha in tipos_consultas:}}
+	      		<li><a href="#" class="text-muted">{{=ficha['label']}}</a>
+	      	{{pass}}
+	      </ul>
       </div>
     </div>
   </div>
