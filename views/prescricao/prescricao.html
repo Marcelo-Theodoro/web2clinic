@@ -1,4 +1,3 @@
- <!-- Precisa ser atualizado isso aqui -->
 {{extend 'layout.html'}}
 <div class="hidden-print">
 	<div class="visible-xs">
@@ -31,7 +30,7 @@
 		</div>
 	</div>
 	<ul>
-		{{for remedio in prescricao.remedios.split('|'):}}
+		{{for remedio in prescricao.medicamentos.split('|'):}}
 		{{if remedio:}}
 		<div class="row top-buffer">
 			<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
@@ -53,7 +52,7 @@
 	{{pass}}
 	<div class="row top-buffer">
 		<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
-			<p><strong>{{=prescricao.data_criacao.strftime('%d-%m-%Y')}}</strong></p>
+			<p><strong>{{=prescricao.data_criacao.strftime('%d/%m/%Y')}}</strong></p>
 		</div>
 	</div>
 	<div class="row top-buffer">
