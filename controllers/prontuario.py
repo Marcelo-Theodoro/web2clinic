@@ -1,20 +1,33 @@
 # -*- coding: utf-8 -*-
 
-@auth.requires_login()
-def prontuario_consulta():
-    id_consulta = request.args(0) or redirect(URL(c='consulta',
-                                                  f='todas_consultas'))
-    consulta = db(db.consultas.id == id_consulta).select().first()
-    if not consulta:
+def ficha():
+    import re
+    id_ficha = request.args(0) or redirect(URL(c='consulta',
+                                               f='todas_consultas'))
+    ficha = db(db.fichas.id == id_ficha).select().first()
+    if not ficha:
         raise HTTP(404)
-    consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
-    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
-    paciente.nascimento = paciente.nascimento.strftime(format='%d/%m/%Y')
-    tipo_consulta = consulta.tipo_consulta
-    ficha = [i['base'] for i in tipos_consultas
-             if i['form'] == tipo_consulta][0]
-    formulario = db(ficha.id == consulta.id_form).select().first()
-    response.view = [i['view_prontuario'] for i in tipos_consultas
-                     if i['form'] == tipo_consulta][0]
+    paciente = db(db.pacientes.id == ficha.id_paciente).select().first()
+    paciente.nascimento = paciente.nascimento.strftime('%d/%m/%Y')
+    consulta = db(db.consultas.id == ficha.id_consulta).select().first()
+    consulta.dia = consulta.dia.strftime('%d/%m/%Y')
+    tipo_consulta = [i for i in tipos_consultas
+                     if i['form'] == ficha.tipo_consulta][0]
+    if re.match('db.ficha_([a-z]+|_+[a-z]+)|db.retorno', tipo_consulta['base']):
+        base = eval(tipo_consulta['base'])
+    else:
+        raise HTTP(403)
+    formulario = db(base.id == ficha.id_form).select().first()
+    response.view = tipo_consulta['view_prontuario']
     return locals()
+
+
+
+
+
+
+
+
+
+
 

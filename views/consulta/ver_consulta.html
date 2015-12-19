@@ -64,7 +64,7 @@
 	      <div id="collapse3" class="panel-collapse collapse">
 	        <ul class="list-group">
 	        	{{for ficha in fichas:}}
-	         		<a href="#" class="list-group-item">{{=ficha.label}}</a>
+				<a href="{{=URL(c='prontuario', f='ficha', args=ficha.id)}}" class="list-group-item">{{=ficha.label}}</a>
 	          	{{pass}}
 	        </ul>
 	      </div>
@@ -102,7 +102,7 @@
       <div class="modal-body">
       	<ul>
 	      	{{for ficha in tipos_consultas:}}
-	      		<li><a href="#" class="text-muted">{{=ficha['label']}}</a>
+			<li><a href="{{=URL(c='consulta', f='nova_ficha', args=[ficha['form'], consulta.id])}}" class="text-muted">{{=ficha['label']}}</a>
 	      	{{pass}}
 	      </ul>
       </div>

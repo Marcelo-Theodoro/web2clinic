@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-# Transformar um agendamento em uma consulta? Maybe.
-# Ou então, a consulta ser criada antes de dar o submit na primeira ficha.
-# Dessa maneira é possível, por exemplo, que o usuário crie um atestado antes
-# da ficha, ou só solicite um exame.
-
 
 @auth.requires_login()
 def nova_ficha():
