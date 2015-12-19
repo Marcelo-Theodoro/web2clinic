@@ -30,16 +30,19 @@
 			</div>
 		</div>
 		<div class="row top-buffer">
-			<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-			<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10">
-				<p>{{=exame['exames']}}<p>
-			</div>
-			<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-
+			{{for exames in exame.exames.split('|'):}}
+				{{if exames:}}
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10">
+					<p>{{=exames}}<p>
+				</div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				{{pass}}
+			{{pass}}
 		</div>
 		<div class="row top-buffer">
 			<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
-				<p><strong>{{=exame['data_criacao'].strftime('%d/%m/%Y')}}</strong></p>
+				<p><strong>{{=exame.data_criacao.strftime('%d/%m/%Y')}}</strong></p>
 			</div>
 		</div>
 		<div class="row top-buffer">
