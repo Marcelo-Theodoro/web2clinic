@@ -87,11 +87,10 @@ db.define_table('exames',
                       requires=IS_DATE(format=('%d/%m/%Y'))),
                 Field('texto', type='text'),
                 Field('exames',
-                      requires=IS_IN_DB(db, db.lista_medicamentos.nome,
+                      requires=IS_IN_DB(db, db.lista_exames.nome,
                                         multiple=True),
                       widget=SQLFORM.widgets.checkboxes.widget),
                 )
-
 
 db.define_table('prescricoes',
                 Field('id_paciente', 'reference pacientes',
