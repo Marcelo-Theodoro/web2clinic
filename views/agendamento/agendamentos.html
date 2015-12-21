@@ -7,9 +7,9 @@
 	<div class="col-md-5 col-lg-5">
 		<div class="list-group">
 			<a href="#" class="list-group-item active">Todos os Agendamentos </a>
-		{{for item in lista:}}
-<a class="list-group-item" href="{{=URL('agendamento', args=item['id_agendamento'])}}">{{=item['nome']}} - {{=item['dia']}}</a>
-{{pass}}
+			{{for item in lista:}}
+				<a class="list-group-item" href="#" data-toggle="modal" data-target="#age{{=item['id_agendamento']}}">{{=item['nome']}} - {{=item['dia']}}</a>
+			{{pass}}
 		</div>
 	</div>
 	
@@ -55,3 +55,31 @@
 	});
 </script>
 <!-- /Calendar -->
+
+<!-- Modal -->
+{{for item in lista:}}
+<div class="modal fade" id="age{{=item['id_agendamento']}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Agendamento</h4>
+			</div>
+			<div class="modal-body">
+				<ul>
+					<p><strong>Nome:</strong> <a href="{{=URL('paciente', args=item['id_paciente'])}}">{{=item['nome']}}</a></p>
+					<p><strong>Hora início:</strong>{{=item['hora_inicio']}}</p>
+					<p><strong>Hora fim:</strong>{{=item['hora_fim']}}</p>
+				</ul>
+				
+			</div>
+			<div class="modal-footer">
+				<a href="{{=URL(c='consulta', f='consultar', args=item['id_paciente'])}}" class="btn btn-primary btn-xs" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil"> Iniciar</span></a>
+				<a href="{{=URL(c='agendamento', f='editar_agendamento', args=item['id_agendamento'])}}" class="btn btn-default btn-xs" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil"> Editar</span></a>
+				<a href="{{=URL(c='agendamento', f='apagar_agendamento', args=item['id_agendamento'])}}" class="btn btn-default btn-xs" role="button"><span class="icon plus icon-plus glyphicon glyphicon-plus"> Apagar</span></a>
+			</div>
+		</div>
+	</div>
+</div>
+{{pass}}
+
