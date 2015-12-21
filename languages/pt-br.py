@@ -190,6 +190,7 @@
 'lost password?': 'esqueceu sua senha?',
 'Main Menu': 'Menu Principal',
 'Manage Cache': 'Gerenciar Cache',
+'Medicamentos': 'Medicamentos',
 'Menu Model': 'Modelo de Menu',
 'My Sites': 'Meus sites',
 'Name': 'Nome',

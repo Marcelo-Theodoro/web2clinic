@@ -27,6 +27,15 @@ def prescricao():
     if not prescricao:
         raise HTTP(404)
     paciente = db(db.pacientes.id == prescricao.id_paciente).select().first()
+
+    prescricao.medicamentos = filter(None, prescricao.medicamentos.split('|'))
+    lista = []
+    for medicamento in prescricao.medicamentos:
+        nome = medicamento
+        med = db(db.lista_medicamentos.nome == nome).select().first()
+        texto = med.texto
+        lista.append({'nome': nome, 'texto': texto})
+    prescricao.medicamentos = lista
     return locals()
 
 
