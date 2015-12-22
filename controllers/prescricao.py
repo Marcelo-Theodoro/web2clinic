@@ -9,6 +9,7 @@ def gerar_prescricao():
         raise HTTP(404)
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     lista_medicamentos = db(db.lista_medicamentos).select()
+    return lista_medicamentos
     form = SQLFORM(db.prescricoes)
     form.vars.id_paciente = paciente.id
     form.vars.id_consulta = consulta.id

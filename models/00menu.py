@@ -16,8 +16,10 @@ if auth.user:
                 ('Todas consultas', False, URL(c='consulta', f='todas_consultas')),
             ]),
         ('Admin', False, URL('#'), [
-                ('Medicamentos', False, URL(c='admin', f='medicamentos')),
-                ('Exames', False, URL(c='admin', f='exames')),
+                ('Cadastrar medicamento', False, URL(c='admin', f='cadastrar_medicamento')),
+                ('Todos medicamentos', False, URL(c='admin', f='medicamentos')),
+                ('Cadastrar exame', False, URL(c='admin', f='cadastrar_exame')),
+                ('Todos exames', False, URL(c='admin', f='exames')),
             ]),
     ]
 
