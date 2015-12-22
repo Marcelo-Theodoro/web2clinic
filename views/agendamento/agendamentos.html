@@ -1,15 +1,7 @@
 {{extend 'layout.html'}}
 <div class="row">
-	<div class="col-md-6 col-lg-6">
+	<div class="col-sm-12 col-md-12 col-lg-12">
 		<div class="calendario" id='calendar'>
-		</div>
-	</div>
-	<div class="col-md-5 col-lg-5">
-		<div class="list-group">
-			<a href="#" class="list-group-item active">Todos os Agendamentos </a>
-			{{for item in lista:}}
-				<a class="list-group-item" href="{{=URL(c='agendamento', f='agendamento', args=item['id_agendamento'])}}">{{=item['nome']}} - {{=item['dia']}}</a>
-			{{pass}}
 		</div>
 	</div>
 	
@@ -22,8 +14,16 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
+			height: 600,
+			businessHours: {
+				start: "08:00:00",
+				end: "18:00:00",
+			dow: [ 1, 2, 3, 4, 5]
+			},
+			minTime: "08:00:00",
+			maxTime: "18:00:00",
 			lang: 'pt-br',
-			defaultView: 'agendaDay',
+			defaultView: 'agendaWeek',
 			selectable: false,
 			selectHelper: false,
 			select: function(start, end) {
@@ -54,4 +54,4 @@
 		});
 	});
 </script>
-<!-- /Calendar -->
+<!-- /Calend-->
