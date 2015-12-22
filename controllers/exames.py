@@ -11,6 +11,11 @@ def gerar_exame():
     if not paciente:
         raise HTTP(404)
     lista_exames = db(db.lista_exames).select()
+    for exame in lista_exames:
+        if exame.fichas:
+            exame.fichas = exame.fichas.replace('|', ' ')
+        else:
+            exame.fichas = ''
     form = SQLFORM(db.exames)
     form.vars.id_paciente = paciente.id
     form.vars.id_consulta = consulta.id

@@ -9,10 +9,17 @@ def gerar_prescricao():
         raise HTTP(404)
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     lista_medicamentos = db(db.lista_medicamentos).select()
-    return lista_medicamentos
+    for medicamento in lista_medicamentos:
+        if medicamento.fichas:
+            medicamento.fichas = medicamento.fichas.replace('|', ' ')
+        else:
+            medicamento.fichas = ''
+    if not lista_medicamentos:
+        lista_medicamentos = []
     form = SQLFORM(db.prescricoes)
     form.vars.id_paciente = paciente.id
     form.vars.id_consulta = consulta.id
+
     if form.process().accepted:
         id = form.vars.id
         redirect(URL(c='prescricao', f='prescricao', args=id),
