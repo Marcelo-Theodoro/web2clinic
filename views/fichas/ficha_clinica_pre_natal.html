@@ -1,2 +1,200 @@
 {{extend 'base_form.html'}}
-{{=form}}
+<form action="#" enctype="multipart/form-data" method="post">
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">Antecedentes:</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">AF:</div>
+			{{itens = ['AF_hipertencao_arterial_A', 'AF_diabetes_A', 'AF_gemelidade_A', 'AF_malformacao_A']}}
+			<div class="row">
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-md-3 col-lg-3">
+						<div class="col-sm-8 col-md-8 col-lg-8">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+			{{pass}}
+			</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['AF_outros_A']}}:</label>
+					<div class="col-sm-10 col-md-10 col-lg-10">
+						{{=form.custom.widget['AF_outros_A']}}
+						<span class="help-block"></span>
+					</div>
+				</div>
+			<div class="col-sm-12 col-md-12 col-lg-12">AP:</div>
+			{{itens = ['AP_hipertencao_arterial_A', 'AP_diabetes_A', 'AP_cir_pelvica_A', 'AP_cardiopatia_A', 'AP_infc_urinaria_A', 'AP_malformacao_A']}}
+			<div class="row">
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-3 col-md-2 col-lg-2">
+						<div class="col-sm-8 col-md-8 col-lg-8">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-4 col-md-4 col-lg-4">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+			{{pass}}
+			</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2 col-md-2 col-lg-2">{{=form.custom.label['AP_outros_A']}}:</label>
+					<div class="col-sm-10 col-md-10 col-lg-10">
+						{{=form.custom.widget['AP_outros_A']}}
+						<span class="help-block"></span>
+					</div>
+				</div>
+		</div>
+	</div>
+	<hr>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">Antecedentes Obstétricos:</div>
+		</div>
+		<div class="row">
+			{{itens = ['gestacao_AO', 'parto_AO', 'abortos_AO', 'ectopicas_AO', 'gemelares_AO', 'abortamentos_AO', 'espontaneos_AO', 'provocados_AO', 'com_curetagem_AO', 'partos_vaginais_AO', 'partos_cesarios_AO', 'nascidos_vivos_AO', 'nascidos_mortos_AO', 'filhos_vivos_atuais_AO', 'obitos_primeira_semana_AO', 'obitos_apos_primeira_semana_AO', 'causa_obitos_AO', 'peso_rn_AO', 'data_ultima_gestacao_AO', 'amamentacao_AO', 'amamentacao_duracao_AO', 'amamentacao_causa_insucesso_AO', 'intercorrencias_gestacoes_anteriores_AO']}}
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-6 col-md-4 col-lg-4">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+			{{pass}}
+			</div>
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">Gestação Atual:</div>
+		</div>
+		<div class="row">
+			{{itens = ['dum_GA', 'dpp_GA', 'duvida_GA', 'duvida_qual_GA']}}
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-6 col-md-3 col-lg-3">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+			{{pass}}
+		</div>
+		<div class="row">
+			{{itens = ['grupo_sanguineo_GA', 'sensibilizada_GA', 'vacinacao_anti_tetanica', 'doses_previas', 'ultima_dose_maior_cinco_anos_GA']}}
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-6 col-md-6 col-lg-6">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+			{{pass}}
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">Data prevista vacinações:</div>
+			<div class="row">
+			{{itens = ['data_prevista_vacinacoes_um_texto_GA', 'data_prevista_vacinacoes_um_GA']}}
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-6 col-md-6 col-lg-6">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+			{{pass}}
+			</div>
+			<div class="row">
+			{{itens = ['data_prevista_vacinacoes_dois_texto_GA', 'data_prevista_vacinacoes_dois_GA']}}
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-6 col-md-6 col-lg-6">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+			{{pass}}
+			</div>
+			<div class="row">
+			{{itens = ['data_prevista_vacinacoes_tres_texto_GA','data_prevista_vacinacoes_tres_GA']}}
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-6 col-md-6 col-lg-6">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+			{{pass}}
+			</div>
+			<div class="row">
+				{{itens = ['fumo_GA', 'famo_quantos_GA', 'alcool_GA', 'alcool_frequencia_GA', 'intercorrencias_primeira_consulta_GA']}}
+				{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-6 col-md-6 col-lg-6">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+				{{pass}}
+			</div>
+		</div>
+	</div>
+	<div class="thumbnail">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">Exame Dísico:</div>
+		</div>
+		<div class="row">
+			{{itens = ['peso_primeira_consulta_ED', 'peso_previo_ED', 'estatura_ED', 'ex_clinico_normal_ED', 'ex_mamas_normal_ED', 'ex_ginecologico_normal_ED']}}
+			{{for item in itens:}}
+				<div class="form-group">
+					<label class="control-label col-sm-12 col-md-4 col-lg-4">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label[item]}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget[item]}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+				{{pass}}
+				<div class="form-group">
+					<label class="control-label col-sm-12 col-md-12 col-lg-12">
+						<div class="col-sm-4 col-md-4 col-lg-4">{{=form.custom.label['achados_alterados_exames_ED']}}</div> 
+						<div class="col-sm-8 col-md-8 col-lg-8">
+							{{=form.custom.widget['achados_alterados_exames_ED']}}
+							<span class="help-block"></span>
+						</div>
+					</label>
+				</div>
+		</div>
+	</div>
+	<div class="row">
+    	<div class="form-group">
+       		<div class="col-sm-2 col-md-2 col-lg-2">
+           		<input class="btn btn-primary" type="submit" value="Gravar informações" />
+        	</div>
+   		</div>
+	</div>
+{{=form.hidden_fields()}}
+</form>
