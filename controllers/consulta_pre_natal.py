@@ -10,6 +10,7 @@ def nova_ficha():
     numero_pre_natal = len(pre_natal_anteriores) + 1
     form = SQLFORM(db.ficha_pre_natal_evolucao)
     form.vars.id_ficha = consulta.id
+    form.vars.consulta_numero = numero_pre_natal
     if form.process().accepted:
         id = form.vars.id
         redirect(URL(c='consulta_pre_natal', f='ver_ficha', args=id))
