@@ -33,7 +33,7 @@ tipos_consultas = [
                         label='Ficha Clínica de Pré Natal',
                         base='db.ficha_clinica_pre_natal',
                         view_form='fichas/ficha_clinica_pre_natal.html',
-                        view_prontuario='prontuarios/'), # TODO
+                        view_prontuario='prontuarios/prontuario_pre_consulta.html'),
 
                    dict(form='ficha_clinica_de_uroginecologia',
                         label='Ficha Clínica de Uroginecologia',
