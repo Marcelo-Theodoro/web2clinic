@@ -151,15 +151,16 @@ def ver_consulta():
     consulta = db(db.consultas.id == id_consulta).select().first()
     if not consulta:
         raise HTTP(404)
+    consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
     fichas = db(db.fichas.id_consulta == consulta.id).select()
-    # Retorna objeto fichas que traz, bom, todas as fichas.
     for ficha in fichas:
         ficha.tipo_consulta = [i for i in tipos_consultas
                                   if ficha.tipo_consulta == i['form']][0]
         ficha.label = ficha.tipo_consulta['label']
         ficha.form = ficha.tipo_consulta['form']
-    consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
+    paciente.nascimento = paciente.nascimento.strftime(format='%d/%m/%Y')
+    consultas_pre_natal = db(db.ficha_clinica_pre_natal.id_paciente == paciente.id).select()
     atestados = db(db.atestados.id_consulta == consulta.id).select()
     exames = db(db.exames.id_consulta == consulta.id).select()
     prescricoes = db(db.prescricoes.id_consulta == consulta.id).select()
