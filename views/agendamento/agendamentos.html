@@ -1,11 +1,31 @@
 {{extend 'layout.html'}}
-<div class="row">
-	<div class="col-sm-12 col-md-12 col-lg-12">
-		<div class="calendario" id='calendar'>
+<div class="thumbnail">
+	<div class="row">
+		<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
+			<a href="{{=URL(c='agendamento', f='novo_agendamento')}}" class="btn btn-default btn-block">Novo</a>
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-6 col-lg-8">
+			<h4 class="text-right">Agendamentos para hoje: <strong class="text-danger">{{=qtd_agendamentos_dia}}</strong></h4>
 		</div>
 	</div>
-	
 </div>
+<div class="thumbnail hidden-xs">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<div class="calendario" id='calendar'>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="visible-xs-block">
+	<div class="row">
+		<div class="calendario" id='calendar-xs'></div>
+	</div>
+</div>
+
+<br />
 <script>
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
@@ -54,4 +74,53 @@
 		});
 	});
 </script>
+<script>
+$(document).ready(function() {
+		$('#calendar-xs').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right:'',
+			},
+			height: 600,
+			businessHours: {
+				start: "08:00:00",
+				end: "18:00:00",
+			dow: [ 1, 2, 3, 4, 5]
+			},
+			minTime: "08:00:00",
+			maxTime: "18:00:00",
+			lang: 'pt-br',
+			defaultView: 'agendaDay',
+			selectable: false,
+			selectHelper: false,
+			select: function(start, end) {
+				var title = prompt('Event Title:');
+				var eventData;
+				if (title) {
+					eventData = {
+						title: title,
+						start: start,
+						end: end
+					};
+					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+				}
+				$('#calendar').fullCalendar('unselect');
+			},
+			editable: false,
+			eventLimit: false, // allow "more" link when too many events
+			events: [
+			{{for item in lista:}}
+		{
+			title: '{{=item['nome']}}',
+			start: '{{=item['dia_iso']}}T{{=item['hora_inicio']}}',
+			end: '{{=item['dia_iso']}}T{{=item['hora_fim']}}',
+			url: '{{=URL(c='agendamento', f='agendamento', args=item['id_agendamento'])}}'
+		},
+		{{pass}}
+			]
+		});
+	});
+</script>
+
 <!-- /Calend-->
