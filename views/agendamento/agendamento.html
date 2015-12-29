@@ -1,26 +1,31 @@
 <!-- fix #21 -->
 {{extend 'layout.html'}}
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-sm-12 col-md-12 col-lg-12">
 		<h3>Detalhes do agendamento</h3>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-12">
-		<p><strong>Nome:</strong> <a href="{{=URL('paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
-		<p><strong>Dia agendado:</strong> {{=agendamento.dia}}</p>
-		<p><strong>Hora início:</strong> {{=agendamento.hora_inicio}}</p>
-		<p><strong>Hora fim:</strong> {{=agendamento.hora_fim}}</p>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<p><strong>Nome:</strong> <a href="{{=URL('paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
+			<p><strong>Dia agendado:</strong> {{=agendamento.dia}}</p>
+			<p><strong>Hora início:</strong> {{=agendamento.hora_inicio}}</p>
+			<p><strong>Hora fim:</strong> {{=agendamento.hora_fim}}</p>
+		</div>
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-12">
-		<a href="{{=URL('editar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil">Editar</span></a>
-		<a href="{{=URL('apagar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon plus icon-plus glyphicon glyphicon-plus">Apagar</span></a>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-12">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-1 col-md-1 col-lg-1">
 		{{=form}}
+	</div>
+		<div class="col-sm-1 col-md-1 col-lg-1">
+		<a href="{{=URL('editar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil">Editar</span></a>
+		</div>
+		<div class="col-sm-1 col-md-1 col-lg-1">
+		<a href="{{=URL('apagar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon plus icon-plus glyphicon glyphicon-plus">Apagar</span></a>
+		</div>
+
 	</div>
 </div>
