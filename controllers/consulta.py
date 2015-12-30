@@ -111,7 +111,6 @@ def consultar():
             raise HTTP(404)
     else:
         id_agendamento = False
-
     form = SQLFORM.factory()
     if form.process().accepted:
          # Faz o registro da consulta

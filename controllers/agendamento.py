@@ -86,13 +86,11 @@ def apagar_agendamento():
 
 @auth.requires_login()
 def agendamentos():
-    #mudanças lucas
     from datetime import datetime
     data = datetime.now().date()
     agendamentos = db(db.agendamentos).select()
     qtd_agendamentos_dia = len([i for i in agendamentos
                                 if i.dia == data])
-    #fim
     lista = []
     for agendamento in agendamentos:
         paciente = db(db.pacientes.id == agendamento.id_paciente).select().first()

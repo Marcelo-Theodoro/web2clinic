@@ -3,7 +3,7 @@
 from gluon.tools import Auth
 
 
-db = DAL('sqlite://storage.sqlite')
+db = DAL('sqlite://storage.sqlite', lazy_tables=True)
 
 
 response.formstyle = 'bootstrap3_stacked'
