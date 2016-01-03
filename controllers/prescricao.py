@@ -2,6 +2,9 @@
 
 @auth.requires_login()
 def gerar_prescricao():
+    # TODO: lista_medicamentos deve servir apenas como sugestão.
+    # Mas o que vai ser armazenado no model de prescrição não deve
+    # ter nenhuma ligação com a lista_medicamentos. Issue: #48
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
     consulta = db(db.consultas.id == id_consulta).select().first()
