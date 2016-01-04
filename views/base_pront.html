@@ -6,6 +6,9 @@
 			<div class="col-md-12 col-sm-12 col-lg-12">			
 				<p><a onclick="myFunction()" class="btn btn-default btn-sm btn-block" role="button">Imprimir</a></p>
 			</div>
+			<div class="col-md-12 col-sm-12 col-lg-12">			
+				<p><a href="{{=URL(c='consulta', f='editar_ficha', args=[tipo_consulta, consulta.id], vars={'editar': id_ficha})}}" class="btn btn-default btn-sm btn-block" role="button">Editar</a></p>
+			</div>
 		</div>
 	</div>
 	<div class="visible-xs">
@@ -82,4 +85,3 @@ function myFunction() {
 	window.print();
 }
 </script>
-
