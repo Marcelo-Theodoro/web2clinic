@@ -130,8 +130,17 @@ def consultar():
 
 @auth.requires_login()
 def todas_consultas():
-    links = [lambda row: A('Ver consulta', _class='button btn btn-default',
+    links = [lambda row: A(SPAN('Visualizar',
+                                _class='icon magnifier icon-zoom-in\
+                                        glyphicon glyphicon-zoom-in'),
+                           _class='button btn btn-default',
                            _href=URL(c='consulta', f='ver_consulta',
+                                     args=[row.id])),
+             lambda row: A(SPAN('Apagar',
+                                _class='icon trash icon-trash glyphicon\
+                                glyphicon-trash'),
+                           _class='button btn btn-default',
+                           _href=URL(c='consulta', f='apagar_consulta',
                                      args=[row.id]))]
     haders = {'consultas.id_paciente': 'Paciente'}
     db.consultas.id_paciente.readable = True
@@ -178,8 +187,12 @@ def apagar_consulta():
     consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     fichas = db(db.fichas.id_consulta == consulta.id).select()
+    consultas_pre_natal = db(db.ficha_clinica_pre_natal.id_paciente == paciente.id).select()
     form = SQLFORM.factory()
     if form.process().accepted:
+        # Deleta ficha_pre_natal_evolucao associadas
+        for consulta in consultas_pre_natal:
+            db(db.ficha_pre_natal_evolucao.id_ficha == consulta.id).delete()
         # Deletas as fichas associadas
         for ficha in fichas:
             # Verifica se o que será executado pelo eval() é realmente o objeto
