@@ -18,6 +18,9 @@ def ficha():
     else:
         raise HTTP(403)
     formulario = db(base.id == ficha.id_form).select().first()
+    if tipo_consulta['form']  == 'retorno':
+        if formulario.data:
+            formulario.data = formulario.data.strftime(format='%d/%m/%Y')
     response.view = tipo_consulta['view_prontuario']
     return locals()
 
