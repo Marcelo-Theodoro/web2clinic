@@ -44,7 +44,10 @@ def ver_medicamento():
         raise HTTP(404)
     for medicamento in medicamentos:
         if medicamento.fichas:
-            medicamento.fichas = medicamento.fichas.replace('|', ' ')
+            if len(filter(None, medicamento.fichas.split('|'))) == 9:
+                medicamento.fichas = 'Todas as fichas'
+            else:
+                medicamento.fichas = medicamento.fichas.replace('|', ' ')
         else:
             medicamento.fichas = 'Todas as fichas'
 
