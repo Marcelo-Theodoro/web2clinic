@@ -44,7 +44,8 @@ def ver_medicamento():
         raise HTTP(404)
     for medicamento in medicamentos:
         if medicamento.fichas:
-            if len(filter(None, medicamento.fichas.split('|'))) == 9:
+            tamanho_tipos_consultas = len(tipos_consultas)
+            if len(filter(None, medicamento.fichas.split('|'))) == tamanho_tipos_consultas:
                 medicamento.fichas = 'Todas as fichas'
             else:
                 medicamento.fichas = medicamento.fichas.replace('|', ' ')
@@ -115,9 +116,18 @@ def editar_exame():
 def ver_exame():
     id_exame = request.args(0) or redirect(URL(c='admin',
                                                f='exames'))
-    exame = db(db.lista_exames.id == id_exame).select()
-    if not exame:
+    exames = db(db.lista_exames.id == id_exame).select()
+    if not exames:
         raise HTTP(404)
+    for exame in exames:
+        if exame.fichas:
+            tamanho_tipos_consultas = len(tipos_consultas)
+            if len(filter(None, exame.fichas.split('|'))) == tamanho_tipos_consultas:
+                exame.fichas = 'Todas as fichas'
+            else:
+                exame.fichas = exame.fichas.replace('|', ' ')
+        else:
+            exame.fichas = 'Todas as fichas'
     return locals()
 
 
