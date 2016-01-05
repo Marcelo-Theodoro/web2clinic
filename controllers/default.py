@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
-# TODO: agendamentos por dia, agendamentos por mês, consultas hoje, consultas neste mês
 
 def user():
     return dict(form=auth())
 
 @auth.requires_login()
 def index():
+    import os
+    import shutil
     from datetime import datetime
     data = datetime.now().date()
     mes = datetime.now().date().strftime(format='%m/%Y')
@@ -40,5 +41,17 @@ def index():
             label = [i['label'] for i in tipos_consultas
                      if item == i['form']][0]
             lista.append({'label': label, 'qtd': qtd_consultas})
+
+
+    # Backup automático
+    DIA = datetime.now().strftime(format='%Y%m%d')
+    SRC = '/home/marcelotheodoro/web2py/applications/web2clinic/databases/'
+    DST = '/home/marcelotheodoro/teste/{0}'.format(DIA)
+    if not os.path.exists(DST):
+        try:
+            shutil.copytree(SRC, DST)
+        except:
+            response.flash = '''Falha no backup automático.
+                                Entre em contato com o desenvolvedor.'''
     return locals()
 
