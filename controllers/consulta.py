@@ -36,8 +36,7 @@ def nova_ficha():
 @auth.requires_login()
 def editar_ficha():
     import re
-    # Falta os html's e testar
-    # Recebe: consulta/editar_ficha/*tipo_consulta*/*id_consulta*?editar=*id_ficha*
+    # Recebe: consulta/editar_ficha/*tipo_consulta['form']*/*id_consulta*?editar=*id_ficha*
     tipo_consulta = request.args(0) or redirect(URL(c='consulta',
                                                     f='todas_consultas'))
     id_consulta = request.args(1) or redirect(URL(c='consulta',
@@ -46,7 +45,7 @@ def editar_ficha():
                                                         f='todas_consultas'))
     # Busca o dicionário para o tipo de consulta selecionado em args(0)
     tipo_consulta = [i for i in tipos_consultas
-                     if i == tipos_consultas][0]
+                     if i['form'] == tipo_consulta][0]
     # Busca a consulta
     consulta = db(db.consultas.id == id_consulta).select().first()
     # Busca o paciente
@@ -60,12 +59,14 @@ def editar_ficha():
         raise HTTP(403)
     # Busca a ficha que vai ser atualizada
     ficha = db(base.id == ficha_id).select().first()
+    if not ficha:
+        raise HTTP(404)
+    # Oculta o id no form
+    base.id.readable = False
     # Cria o form para update da ficha
-    form = SQLFORM(base, update=ficha)
+    form = SQLFORM(base, record=ficha)
     # Selecionar a view para edição
     response.view = tipo_consulta['view_form']
-    # Inputa o ID do paciente no form
-    form.vars.id_paciente = paciente.id
 
     if form.process().accepted:
         redirect(URL(c='consulta', f='ver_consulta', args=consulta.id),
