@@ -21,7 +21,7 @@ def gerar_exame():
     form.vars.id_consulta = consulta.id
     if form.process().accepted:
         id = form.vars.id
-        redirect(URL(c='exames', f='exame', args=id),
+        redirect(URL(c='exame', f='exame', args=id),
                  client_side=True)
     return locals()
 
@@ -50,7 +50,7 @@ def exames():
                                 _class='icon magnifier icon-zoom-in\
                                         glyphicon glyphicon-zoom-in'),
                            _class='button btn btn-default',
-                           _href=URL(c='exames', f='exame',
+                           _href=URL(c='exame', f='exame',
                                      args=[row.id]))]
     db.exames.id_paciente.readable = True
     haders = {'exames.id_paciente': 'Paciente',
