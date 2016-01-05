@@ -97,6 +97,7 @@
 'design': 'projeto',
 'Design': 'Design',
 'Dia': 'Dia',
+'Direitos Reservados': 'Direitos Reservados',
 'DISK': 'DISK',
 'Disk Cache Keys': 'Chaves do Cache de Disco',
 'Disk Cleared': 'Disco Limpo',

@@ -1,15 +1,15 @@
 {{extend 'layout.html'}}
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-lg-12">
-		{{for row in medicamento:}}
-		<p><strong>Nome:</strong> {{=row.nome}}</p>
-		<p><strong>Observação:</strong> {{=row.texto}}</p>
-		<p><strong>Filtro:</strong> {{=row.fichas.replace('|', ' ')}}</p>
+		{{for medicamento in medicamentos:}}
+		<p><strong>Nome:</strong> {{=medicamento.nome}}</p>
+		<p><strong>Observação:</strong> {{=medicamento.texto}}</p>
+		<p><strong>Filtro:</strong> {{=medicamento.fichas}}</p>
 	</div>
 </div>
 <div class="row">
        		<div class="col-sm-2 col-md-2 col-lg-2">
-           		<a href="{{=URL(c='admin', f='editar_medicamento', args=row['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Editar</a>
+           		<a href="{{=URL(c='admin', f='editar_medicamento', args=medicamento['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Editar</a>
         	</div>
 </div>
 {{pass}}

@@ -39,9 +39,15 @@ def editar_medicamento():
 def ver_medicamento():
     id_medicamento = request.args(0) or redirect(URL(c='admin',
                                                      f='medicamentos'))
-    medicamento = db(db.lista_medicamentos.id == id_medicamento).select()
-    if not medicamento:
+    medicamentos = db(db.lista_medicamentos.id == id_medicamento).select()
+    if not medicamentos:
         raise HTTP(404)
+    for medicamento in medicamentos:
+        if medicamento.fichas:
+            medicamento.fichas = medicamento.fichas.replace('|', ' ')
+        else:
+            medicamento.fichas = 'Todas as fichas'
+
     return locals()
 
 
