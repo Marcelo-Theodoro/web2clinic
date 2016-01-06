@@ -20,6 +20,7 @@ if auth.user:
                 ('Todos medicamentos', False, URL(c='admin', f='medicamentos')),
                 ('Cadastrar exame', False, URL(c='admin', f='cadastrar_exame')),
                 ('Todos exames', False, URL(c='admin', f='exames')),
+                ('Backup', False, URL(c='backup', f='index')),
             ]),
     ]
 
