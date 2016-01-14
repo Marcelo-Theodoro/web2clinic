@@ -14,10 +14,11 @@
 				<div class="col-sm-8">
 					<div class="caption">
 						<h3>{{=paciente['nome']}}</h3>
-						<p><a href="{{=URL(c='consulta', f='consultas', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Consultas</a></p>
-						<p><a href="{{=URL(c='atestado', f='atestados', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Atestados</a></p>
-						<p><a href="{{=URL(c='prescricao', f='prescricoes', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Prescrições</a></p>
-						<p><a href="{{=URL(c='exames', f='exames', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Exames</a></p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='agendamento', f='', args=paciente['id'])}}', [], 'target')">Agendamentos</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='atestado', f='atestados.load', args=paciente['id'])}}', [], 'target')">Atestados</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='consulta', f='consultas', args=paciente['id'], extension='load')}}', [], 'target')">Consultas</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='exame', f='exames', args=paciente['id'])}}', [], 'target')">Exames</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='prescricao', f='prescricoes', args=paciente['id'])}}', [], 'target')">Prescrição</button><p>
 					</div>
 				</div>
 			</div>
@@ -32,10 +33,11 @@
 			{{pass}}
 			<div class="caption">
 				<h3>{{=paciente['nome']}}</h3>
-				<p><a href="{{=URL(c='consulta', f='consultas', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Consultas</a></p>
-				<p><a href="{{=URL(c='atestado', f='atestados', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Atestados</a></p>
-				<p><a href="{{=URL(c='prescricao', f='prescricoes', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Prescrições</a></p>
-				<p><a href="{{=URL(c='exames', f='exames', args=paciente['id'])}}" class="btn btn-default btn-sm btn-block" role="button">Exames</a></p>
+				<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='agendamento', f='agendamentos.load', args=paciente['id'])}}', [], 'target')">Agendamentos</button><p>
+				<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='atestado', f='atestados.load', args=paciente['id'])}}', [], 'target')">Atestados</button><p>
+				<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='consulta', f='consultas', args=paciente['id'], extension='load')}}', [], 'target')">Consultas</button><p>
+				<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='exame', f='exames', args=paciente['id'])}}', [], 'target')">Exames</button><p>
+				<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='prescricao', f='prescricoes', args=paciente['id'])}}', [], 'target')">Prescrição</button><p>
 			</div>
 		</div>
 	</div>
@@ -96,5 +98,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div id="target">
 	</div>
 </div>
