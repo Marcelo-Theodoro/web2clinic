@@ -1,139 +1,61 @@
+<!-- fix #21 -->
 {{extend 'layout.html'}}
-<div class="thumbnail">
-	<div class="row">
-		<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
-			<a href="{{=URL(c='agendamento', f='novo_agendamento')}}" class="btn btn-default btn-block">Novo</a>
-		</div>
-		<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
-		</div>
-		<div class="col-xs-4 col-sm-4 col-md-6 col-lg-8">
-			<h4 class="text-right">Agendamentos para hoje: <strong class="text-danger">{{=qtd_agendamentos_dia}}</strong></h4>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<h3>Detalhes do agendamento</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<p><strong>Nome:</strong> <a href="{{=URL('paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
+			<p><strong>Dia agendado:</strong> {{=agendamento.dia}}</p>
+			<p><strong>Hora início:</strong> {{=agendamento.hora_inicio}}</p>
+			<p><strong>Hora fim:</strong> {{=agendamento.hora_fim}}</p>
 		</div>
 	</div>
 </div>
-<div class="thumbnail hidden-xs">
-	<div class="row">
-		<div class="col-sm-12 col-md-12 col-lg-12">
-			<div class="calendario" id='calendar'>
+<hr>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				{{if form:}}
+				<form action="#" enctype="multipart/form-data" method="post" class="form-inline">
+					<div class="form-group">
+					    <label>{{=form.custom.label['peso']}}</label>
+					    {{=form.custom.widget['peso']}}
+					</div>
+				  	<div class="form-group">
+					    <label for="exampleInputEmail2">{{=form.custom.label['pressao_arterial']}}</label>
+					    {{=form.custom.widget['pressao_arterial']}}
+					</div>
+				  <button type="submit" class="btn btn-default">Salvar Pré Consulta</button>
+				  {{=form.hidden_fields()}}
+				</form>
+				{{pass}}
 			</div>
 		</div>
 	</div>
 </div>
-<div class="visible-xs-block">
-	<div class="row">
-		<div class="calendario" id='calendar-xs'></div>
+<hr>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="row">
+			<div class="col-sm-1 col-md-1 col-lg-1">
+				<a href="{{=URL('editar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil">Editar</span></a>
+			</div>
+			<div class="col-sm-1 col-md-1 col-lg-1">
+				<a href="{{=URL('apagar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon plus icon-plus glyphicon glyphicon-plus">Apagar</span></a>
+			</div>
+			<div class="col-sm-1 col-md-1 col-lg-1">
+				{{if form_faltou:}}
+					{{=form_faltou}}
+				{{pass}}
+			</div>
+		</div>
 	</div>
 </div>
-
-<br />
-<script>
-	$(document).ready(function() {
-		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'month,agendaWeek,agendaDay'
-			},
-			height: 600,
-			businessHours: {
-				start: "08:00:00",
-				end: "18:00:00",
-			dow: [ 1, 2, 3, 4, 5]
-			},
-			minTime: "08:00:00",
-			maxTime: "18:00:00",
-			lang: 'pt-br',
-			defaultView: 'agendaWeek',
-			selectable: false,
-			selectHelper: false,
-			select: function(start, end) {
-				var title = prompt('Event Title:');
-				var eventData;
-				if (title) {
-					eventData = {
-						title: title,
-						start: start,
-						end: end
-					};
-					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-				}
-				$('#calendar').fullCalendar('unselect');
-			},
-			editable: false,
-			eventLimit: false, // allow "more" link when too many events
-			events: [
-			{{for item in lista:}}
-		{
-			title: '{{=item['nome']}}',
-			start: '{{=item['dia_iso']}}T{{=item['hora_inicio']}}',
-			end: '{{=item['dia_iso']}}T{{=item['hora_fim']}}',
-			url: '{{=URL(c='agendamento', f='agendamento', args=item['id_agendamento'])}}',
-			{{if item['status'] == 'aguardando':}}
-				backgroundColor: '#FFFF00',
-				borderColor: '#EEDD82',	
-				textColor: '#000'
-			{{elif item['status'] == 'realizado':}}
-				backgroundColor: '#00FF00',
-				borderColor: '#3CB371',	
-				textColor: '#000'
-			{{elif item['status'] == 'faltou':}}
-				color: '#FF0000'
-			{{else:}}
-				color: '#4682B4'
-			{{pass}}
-		},		
-		{{pass}}
-			]
-		});
-	});
+<script type="text/javascript">
+$('input:submit[value="Paciente não compareceu"]').addClass('btn btn-danger')
 </script>
-<script>
-$(document).ready(function() {
-		$('#calendar-xs').fullCalendar({
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right:'',
-			},
-			height: 600,
-			businessHours: {
-				start: "08:00:00",
-				end: "18:00:00",
-			dow: [ 1, 2, 3, 4, 5]
-			},
-			minTime: "08:00:00",
-			maxTime: "18:00:00",
-			lang: 'pt-br',
-			defaultView: 'agendaDay',
-			selectable: false,
-			selectHelper: false,
-			select: function(start, end) {
-				var title = prompt('Event Title:');
-				var eventData;
-				if (title) {
-					eventData = {
-						title: title,
-						start: start,
-						end: end
-					};
-					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-				}
-				$('#calendar').fullCalendar('unselect');
-			},
-			editable: false,
-			eventLimit: false, // allow "more" link when too many events
-			events: [
-			{{for item in lista:}}
-		{
-			title: '{{=item['nome']}}',
-			start: '{{=item['dia_iso']}}T{{=item['hora_inicio']}}',
-			end: '{{=item['dia_iso']}}T{{=item['hora_fim']}}',
-			url: '{{=URL(c='agendamento', f='agendamento', args=item['id_agendamento'])}}'
-		},
-		{{pass}}
-			]
-		});
-	});
-</script>
-
-<!-- /Calend-->
