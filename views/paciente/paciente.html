@@ -14,11 +14,11 @@
 				<div class="col-sm-8">
 					<div class="caption">
 						<h3>{{=paciente['nome']}}</h3>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='agendamento', f='', args=paciente['id'])}}', [], 'target')">Agendamentos</button><p>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='atestado', f='atestados.load', args=paciente['id'])}}', [], 'target')">Atestados</button><p>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='consulta', f='consultas.load', args=paciente['id'])}}', [], 'target')">Consultas</button><p>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='exame', f='exames.load', args=paciente['id'])}}', [], 'target')">Exames</button><p>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='prescricao', f='prescricoes.load', args=paciente['id'])}}', [], 'target')">Prescrição</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="jQuery('#agendamento').show(); jQuery('#target').hide();">Agendamentos</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='atestado', f='atestados.load', args=paciente['id'])}}', [], 'target'), jQuery('#agendamento').hide(); jQuery('#target').show();">Atestados</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='consulta', f='consultas.load', args=paciente['id'])}}', [], 'target', jQuery('#agendamento').hide();  jQuery('#target').show();)">Consultas</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='exame', f='exames.load', args=paciente['id'])}}', [], 'target', jQuery('#agendamento').hide();  jQuery('#target').show();)">Exames</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='prescricao', f='prescricoes.load', args=paciente['id'])}}', [], 'target', jQuery('#agendamento').hide();  jQuery('#target').show();)">Prescrição</button><p>
 					</div>
 				</div>
 			</div>
@@ -33,11 +33,11 @@
 			{{pass}}
 			<div class="caption">
 						<h3>{{=paciente['nome']}}</h3>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='agendamento', f='', args=paciente['id'])}}', [], 'target')">Agendamentos</button><p>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='atestado', f='atestados.load', args=paciente['id'])}}', [], 'target')">Atestados</button><p>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='consulta', f='consultas.load', args=paciente['id'])}}', [], 'target')">Consultas</button><p>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='exame', f='exames.load', args=paciente['id'])}}', [], 'target')">Exames</button><p>
-						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='prescricao', f='prescricoes.load', args=paciente['id'])}}', [], 'target')">Prescrição</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="jQuery('#agendamento').show(); jQuery('#target').hide();">Agendamentos</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='atestado', f='atestados.load', args=paciente['id'])}}', [], 'target'), jQuery('#agendamento').hide();  jQuery('#target').show();">Atestados</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='consulta', f='consultas.load', args=paciente['id'])}}', [], 'target'), jQuery('#agendamento').hide();  jQuery('#target').show();">Consultas</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='exame', f='exames.load', args=paciente['id'])}}', [], 'target'), jQuery('#agendamento').hide();  jQuery('#target').show();">Exames</button><p>
+						<p><button type="button" class="btn btn-default btn-sm btn-block" onclick="ajax('{{=URL(c='prescricao', f='prescricoes.load', args=paciente['id'])}}', [], 'target'), jQuery('#agendamento').hide();  jQuery('#target').show();">Prescrição</button><p>
 			</div>
 		</div>
 	</div>
@@ -99,7 +99,47 @@
 			</div>
 		</div>
 	</div>
+	<div id="agendamento">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Dia</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{for agendamento in agendamentos:}}
+					{{if agendamento['status'] == 'realizado':}}
+						<tr class="success">
+							<th scope="row"><a href="{{=URL(c='agendamento', f='agendamento', args=agendamento['id'])}}">{{=agendamento['dia'].strftime('%d/%m/%Y')}}</a></th>
+							<td>{{=agendamento['status']}}</td>
+						</tr>
+					{{elif agendamento['status'] == 'faltou':}}
+						<tr class="danger">
+							<th scope="row"><a href="{{=URL(c='agendamento', f='agendamento', args=agendamento['id'])}}">{{=agendamento['dia'].strftime('%d/%m/%Y')}}</a></th>
+							<td>{{=agendamento['status']}}</td>
+						</tr>
+					{{elif agendamento['status'] == 'aguardando':}}
+						<tr class="warning">
+							<th scope="row"><a href="{{=URL(c='agendamento', f='agendamento', args=agendamento['id'])}}">{{=agendamento['dia'].strftime('%d/%m/%Y')}}</a></th>
+							<td>{{=agendamento['status']}}</td>
+						</tr>
+					{{else:}}
+						<tr class="info">
+							<th scope="row"><a href="{{=URL(c='agendamento', f='agendamento', args=agendamento['id'])}}">{{=agendamento['dia'].strftime('%d/%m/%Y')}}</a></th>
+							<td>{{=agendamento['status']}}</td>
+						</tr>
+					{{pass}}
+				{{pass}}
+			</tbody> 
+	</table>
+	</div>
 	<div id="target">
+
 	</div>
 </div>
-
+<script>
+jQuery(document).ready(function(){
+   jQuery('#agendamento').hide();
+});
+</script>
