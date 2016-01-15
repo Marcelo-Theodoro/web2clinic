@@ -74,8 +74,10 @@ def agendamento():
         # Apenas redireciona para outra página
         redirect(URL(c='consulta', f='consultar', args=paciente.id, vars=dict(agendamento=agendamento.id)))
     elif agendamento.status == 'realizado':
+        form = False
         form_faltou = False
     elif agendamento.status == 'faltou':
+        form = False
         form_faltou = False
 
     return locals()
@@ -117,7 +119,8 @@ def agendamentos():
                            'hora_fim': agendamento.hora_fim,
                            'id_paciente': paciente.id,
                            'nome': paciente.nome,
-                           'id_agendamento': agendamento.id}))
+                           'id_agendamento': agendamento.id,
+                            'status': agendamento.status}))
     lista = sorted(lista,
                    key=lambda x: '{0} {1}'.format(x['dia'], x['hora_inicio']))
     return dict(lista=lista, qtd_agendamentos_dia=qtd_agendamentos_dia)
