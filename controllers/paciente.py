@@ -35,6 +35,7 @@ def paciente():
         raise HTTP(404)
     if paciente.nascimento:
         paciente.nascimento = paciente.nascimento.strftime('%d/%m/%Y')
+    agendamentos = db(db.agendamentos.id_paciente == paciente.id).select()
     return locals()
 
 
