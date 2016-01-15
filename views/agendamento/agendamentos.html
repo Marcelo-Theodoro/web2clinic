@@ -67,8 +67,21 @@
 			title: '{{=item['nome']}}',
 			start: '{{=item['dia_iso']}}T{{=item['hora_inicio']}}',
 			end: '{{=item['dia_iso']}}T{{=item['hora_fim']}}',
-			url: '{{=URL(c='agendamento', f='agendamento', args=item['id_agendamento'])}}'
-		},
+			url: '{{=URL(c='agendamento', f='agendamento', args=item['id_agendamento'])}}',
+			{{if item['status'] == 'aguardando':}}
+				backgroundColor: '#FFFF00',
+				borderColor: '#EEDD82',	
+				textColor: '#000'
+			{{elif item['status'] == 'realizado':}}
+				backgroundColor: '#00FF00',
+				borderColor: '#3CB371',	
+				textColor: '#000'
+			{{elif item['status'] == 'faltou':}}
+				color: '#FF0000'
+			{{else:}}
+				color: '#4682B4'
+			{{pass}}
+		},		
 		{{pass}}
 			]
 		});
