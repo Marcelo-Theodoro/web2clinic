@@ -43,6 +43,7 @@ def BuscaAgendamento(id):
 
 def BuscaPreConsultaAgendamento(id):
     # Recebe id do agendamento
+    id = int(id)
     if not id:
         raise HTTP(404)
     try:

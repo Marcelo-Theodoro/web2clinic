@@ -3,20 +3,23 @@
 @auth.requires_login()
 def nova_ficha():
     import re
-    tipo_consulta = request.args(0) or redirect(URL(c='consulta',
-                                                    f='todas_consultas'))
-    id_consulta = request.args(1) or redirect(URL(c='consulta',
-                                                 f='todas_consultas'))
+    tipo_consulta = request.args(0)
+    id_consulta = request.args(1)
 
-    tipo_consulta = [i for i in tipos_consultas
-                     if tipo_consulta == i['form']][0]
-    consulta = db(db.consultas.id == id_consulta).select().first()
-    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
-    paciente.nascimento = paciente.nascimento.strftime(format='%d/%m/%Y')
+    tipo_consulta = TipoConsultaFormParaDict(tipo_consulta)
+    consulta = BuscaConsulta(id_consulta)
+    paciente = BuscaPaciente(consulta.id_paciente)
+
+    if consulta.id_agendamento != 'NaoAgendado':
+        pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta.id_agendamento)
+    else:
+        pre_consulta_agendamento = False
+
     if re.match('db.ficha_([a-z]+|_+[a-z]+)|db.retorno', tipo_consulta['base']):
         base = eval(tipo_consulta['base'])
     else:
         raise HTTP(403)
+
     form = SQLFORM(base)
     response.view = tipo_consulta['view_form']
     form.vars.id_paciente = paciente.id
@@ -27,8 +30,7 @@ def nova_ficha():
                                     id_consulta=consulta.id,
                                     tipo_consulta = tipo_consulta['form'],
                                     id_form=id_form)
-        redirect(URL(c='consulta', f='ver_consulta', args=consulta.id),
-                 client_side=True)
+        redirect(URL(c='consulta', f='ver_consulta', args=consulta.id))
     return locals()
 
 
@@ -116,10 +118,12 @@ def consultar():
 
     if form.process().accepted:
          # Faz o registro da consulta
+        id_agendamento = id_agendamento if agendamento else 'NaoAgendado'
         id_consulta = db.consultas.insert(id_paciente=paciente.id,
-                                      dia=request.now,
-                                      hora_inicio=request.now,
-                                      hora_fim=request.now)
+                                          id_agendamento=str(id_agendamento),
+                                          dia=request.now,
+                                          hora_inicio=request.now,
+                                          hora_fim=request.now)
 
         # Atualizado o status
         if agendamento:

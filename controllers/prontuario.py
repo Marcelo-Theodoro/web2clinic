@@ -2,17 +2,18 @@
 
 def ficha():
     import re
-    id_ficha = request.args(0) or redirect(URL(c='consulta',
-                                               f='todas_consultas'))
-    ficha = db(db.fichas.id == id_ficha).select().first()
-    if not ficha:
-        raise HTTP(404)
-    paciente = db(db.pacientes.id == ficha.id_paciente).select().first()
-    paciente.nascimento = paciente.nascimento.strftime('%d/%m/%Y')
-    consulta = db(db.consultas.id == ficha.id_consulta).select().first()
-    consulta.dia = consulta.dia.strftime('%d/%m/%Y')
-    tipo_consulta = [i for i in tipos_consultas
-                     if i['form'] == ficha.tipo_consulta][0]
+    id_ficha = request.args(0)
+
+    ficha = BuscaFicha(id_ficha)
+    paciente = BuscaPaciente(ficha.id_paciente)
+    consulta = BuscaConsulta(ficha.id_consulta)
+    tipo_consulta = TipoConsultaFormParaDict(ficha.tipo_consulta)
+    if consulta.id_agendamento != 'NaoAgendado':
+        agendamento = True
+        pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta.id_agendamento)
+    else:
+        agendamento = False
+
     if re.match('db.ficha_([a-z]+|_+[a-z]+)|db.retorno', tipo_consulta['base']):
         base = eval(tipo_consulta['base'])
     else:

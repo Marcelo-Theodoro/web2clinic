@@ -53,3 +53,15 @@ tipos_consultas = [
                         view_form='fichas/retorno.html',
                         view_prontuario='prontuarios/retorno.html'),
                   ]
+
+def TipoConsultaFormParaDict(form):
+    if not form:
+        raise HTTP(404, 'Form não encontrado')
+    try:
+        tipo_consulta = [i for i in tipos_consultas
+                         if form == i['form']][0]
+    except IndexError:
+        raise HTTP(404, 'Form inválido')
+    return tipo_consulta
+
+
