@@ -18,7 +18,9 @@
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-lg-12">
 		<div class="col-sm-1 col-md-1 col-lg-1">
-		{{=form}}
+			{{if form:}} <! -- Use isso aqui também quando for criar o botão de faltou form_faltou -->
+				{{=form}}
+			{{pass}}
 	</div>
 		<div class="col-sm-1 col-md-1 col-lg-1">
 		<a href="{{=URL('editar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil">Editar</span></a>

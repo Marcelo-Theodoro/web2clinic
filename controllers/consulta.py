@@ -2,7 +2,6 @@
 
 @auth.requires_login()
 def nova_ficha():
-    # Tem que editar um onte de HTML
     import re
     tipo_consulta = request.args(0) or redirect(URL(c='consulta',
                                                     f='todas_consultas'))
@@ -101,30 +100,32 @@ def nova_consulta():
 
 @auth.requires_login()
 def consultar():
-    id_paciente = request.args(0) or redirect(URL(c='consulta',
-                                                  f='todas_consultas'))
-    paciente = db(db.pacientes.id == id_paciente).select().first()
+    id_paciente = request.args(0)
+    paciente = BuscaPaciente(id_paciente)
+
     if request.vars['agendamento']:
         # Busca o agendamento e guarda em "agendamento"
         id_agendamento = request.vars['agendamento']
-        agendamento = db(db.agendamentos.id == id_agendamento).select().first()
-        if not agendamento:
-            raise HTTP(404)
+        agendamento = BuscaAgendamento(id_agendamento)
+        # Busca pre consulta
+        pre_consulta_agendamento = BuscaPreConsultaAgendamento(agendamento.id)
     else:
-        id_agendamento = False
-    form = SQLFORM.factory()
+        agendamento = False
+
+    form = SQLFORM.factory(submit_button='Iniciar consulta')
+
     if form.process().accepted:
          # Faz o registro da consulta
         id_consulta = db.consultas.insert(id_paciente=paciente.id,
                                       dia=request.now,
                                       hora_inicio=request.now,
                                       hora_fim=request.now)
-        # Se houver agendamento, deleta
-        if id_agendamento:
-            db(db.agendamentos.id == id_agendamento).delete()
 
-        redirect(URL(c='consulta', f='ver_consulta', args=id_consulta),
-                 client_side=True)
+        # Atualizado o status
+        if agendamento:
+            AtualizaStatusAgendamento(agendamento.id, status='realizado')
+
+        redirect(URL(c='consulta', f='ver_consulta', args=id_consulta))
     return locals()
 
 

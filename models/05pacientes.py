@@ -36,3 +36,20 @@ db.define_table('pacientes',
                 format='%(nome)s'
                 )
 
+
+def BuscaPaciente(id):
+    if not id:
+        raise HTTP(404, 'ID paciente não encontrado')
+    try:
+        paciente = db(db.pacientes.id == id).select().first()
+    except ValueError:
+        raise HTTP(404, 'Argumento PACIENTE inválido')
+    if not paciente:
+        raise HTTP(404, 'Paciente não encontrado')
+    if paciente.nascimento:
+        paciente.nascimento = paciente.nascimento.strftime('%d/%m/%Y')
+    return paciente
+
+
+
+

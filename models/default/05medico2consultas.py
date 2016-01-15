@@ -1,1 +1,0 @@
-../models/05medico2consultas.py

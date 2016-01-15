@@ -47,24 +47,37 @@ def editar_agendamento():
 
 @auth.requires_login()
 def agendamento():
-    id_agendamento = request.args(0) or redirect(URL(c='agendamento',
-                                                     f='agendamentos'),
-                                                 client_side=True)
-    agendamento = db(db.agendamentos.id == id_agendamento).select().first()
-    if not agendamento:
-        raise HTTP(404)
-    agendamento.dia = agendamento.dia.strftime('%d/%m/%Y')
-    id_paciente = agendamento.id_paciente
-    paciente = db(db.pacientes.id == id_paciente).select().first()
-    if not paciente:
-        raise HTTP(404)
-    form = SQLFORM.factory()
-    if form.process().accepted:
-        redirect(URL(c='consulta', f='consultar',
-                     args=paciente.id,
-                     vars=dict(agendamento=agendamento.id)),
-                     client_side=True
-                     )
+    id_agendamento = request.args(0)
+
+    agendamento = BuscaAgendamento(id_agendamento)
+    paciente = BuscaPaciente(agendamento.id_paciente)
+
+    if agendamento.status == 'agendado':
+        '''
+        Se o status for agendado: Vai retornar um form para a
+        pre_consulta_agendamento.
+        Ao submitar o form, é alterado o status para aguardando
+        e da um reload na página.
+        '''
+        form = SQLFORM(db.pre_consulta_agendamento, submit_button='Salvar pré consulta')
+        form.vars.id_agendamento = agendamento.id
+
+        if form.process().accepted:
+            AtualizaStatusAgendamento(agendamento.id, status='aguardando')
+            redirect(URL(c='agendamento', f='agendamento', args=agendamento.id))
+
+        form_faltou = SQLFORM.factory(submit_button='Paciente não compareceu')
+        if form_faltou.process().accepted:
+            AtualizaStatusAgendamento(agendamento.id, status='faltou')
+            redirect(URL(c='agendamento', f='agendamento', args=agendamento.id))
+    elif agendamento.status == 'aguardando':
+        # Apenas redireciona para outra página
+        redirect(URL(c='consulta', f='consultar', args=paciente.id, vars=dict(agendamento=agendamento.id)))
+    elif agendamento.status == 'realizado':
+        form_faltou = False
+    elif agendamento.status == 'faltou':
+        form_faltou = False
+
     return locals()
 
 
