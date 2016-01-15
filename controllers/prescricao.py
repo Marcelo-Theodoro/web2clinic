@@ -63,7 +63,7 @@ def prescricoes():
                                 _class='icon magnifier icon-zoom-in\
                                         glyphicon glyphicon-zoom-in'),
                            _class='button btn btn-default',
-                           _href=URL(c='prescricao', f='prescricao',
+                           _href=URL(c='prescricao', f='prescricao.html',
                                      args=[row.id]))]
     grid = SQLFORM.grid(db.prescricoes.id_paciente == paciente.id
                         if id_paciente else db.prescricoes,
@@ -78,5 +78,6 @@ def prescricoes():
                         editable=False,
                         deletable=False,
                         create=False,
+                        searchable=False,
                         paginate=10)
     return locals()

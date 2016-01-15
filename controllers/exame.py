@@ -50,7 +50,7 @@ def exames():
                                 _class='icon magnifier icon-zoom-in\
                                         glyphicon glyphicon-zoom-in'),
                            _class='button btn btn-default',
-                           _href=URL(c='exame', f='exame',
+                           _href=URL(c='exame', f='exame.html',
                                      args=[row.id]))]
     db.exames.id_paciente.readable = True
     haders = {'exames.id_paciente': 'Paciente',
@@ -68,5 +68,6 @@ def exames():
                         editable=False,
                         deletable=False,
                         create=False,
+                        searchable=False,
                         paginate=10)
     return locals()

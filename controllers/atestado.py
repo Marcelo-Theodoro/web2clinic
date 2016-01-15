@@ -43,7 +43,7 @@ def atestados():
                                 _class='icon magnifier icon-zoom-in\
                                         glyphicon glyphicon-zoom-in'),
                            _class='button btn btn-default',
-                           _href=URL(c='atestado', f='atestado',
+                           _href=URL(c='atestado', f='atestado.html',
                                      args=[row.id]))]
     grid = SQLFORM.grid(db.atestados.id_paciente == paciente.id
                         if id_paciente else db.atestados,
@@ -58,5 +58,6 @@ def atestados():
                         editable=False,
                         deletable=False,
                         create=False,
+                        searchable=False,
                         paginate=10)
     return locals()

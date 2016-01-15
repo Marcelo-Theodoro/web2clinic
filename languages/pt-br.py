@@ -297,6 +297,7 @@
 'User ID': 'ID do Usuário',
 'User Voice': 'Opinião dos usuários',
 'Username': 'Username',
+'Username already taken': 'Username already taken',
 'Value not allowed': 'Valor não permitido',
 'Videos': 'Vídeos',
 'View': 'Visualização',
