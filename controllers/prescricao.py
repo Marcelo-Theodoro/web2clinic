@@ -37,7 +37,6 @@ def prescricao():
 
     lista = []
     for medicamento in prescricao.medicamentos:
-        print medicamento
         medicamento = medicamento.split('|||')
         nome = medicamento[0]
         texto = medicamento[1]
