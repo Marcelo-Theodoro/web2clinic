@@ -73,6 +73,7 @@ def medicamentos():
 
     grid = SQLFORM.grid(db.lista_medicamentos,
                         fields=[db.lista_medicamentos.nome,
+                                db.lista_medicamentos.categoria,
                                 db.lista_medicamentos.texto],
                         links=links,
                         editable=False,

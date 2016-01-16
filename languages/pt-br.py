@@ -47,6 +47,7 @@
 'Cache': 'Cache',
 'Cache Keys': 'Chaves de cache',
 'Cannot be empty': 'Não pode ser vazio',
+'Categoria': 'Categoria',
 'Celular': 'Celular',
 'CEP': 'CEP',
 'Cep': 'Cep',
