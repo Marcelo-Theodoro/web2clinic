@@ -14,3 +14,16 @@ db.define_table('prescricoes',
                                         multiple=True),
                       widget=SQLFORM.widgets.checkboxes.widget),
                 )
+
+
+def BuscaPrescricao(id):
+    # Recebe id da prescrição
+    if not id:
+        raise HTTP(404, 'ID inválido')
+    try:
+        prescricao = db(db.prescricoes.id == id).select().first()
+    except ValueError:
+        raise HTTP(404, 'ID inválido')
+    if not prescricao:
+        raise HTTP(404, 'Prescrição não encontrada')
+    return prescricao

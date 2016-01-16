@@ -2,15 +2,12 @@
 
 @auth.requires_login()
 def gerar_prescricao():
-    # TODO: lista_medicamentos deve servir apenas como sugestão.
-    # Mas o que vai ser armazenado no model de prescrição não deve
-    # ter nenhuma ligação com a lista_medicamentos. Issue: #48
-    id_consulta = request.args(0) or redirect(URL(c='consulta',
-                                                  f='todas_consultas'))
-    consulta = db(db.consultas.id == id_consulta).select().first()
-    if not consulta:
-        raise HTTP(404)
-    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
+    id_consulta = request.args(0)
+
+    consulta = BuscaConsulta(id_consulta)
+
+    paciente = BuscaPaciente(consulta.id_paciente)
+
     lista_medicamentos = db(db.lista_medicamentos).select()
     for medicamento in lista_medicamentos:
         if medicamento.fichas:
@@ -19,6 +16,7 @@ def gerar_prescricao():
             medicamento.fichas = ''
     if not lista_medicamentos:
         lista_medicamentos = []
+
     form = SQLFORM(db.prescricoes)
     form.vars.id_paciente = paciente.id
     form.vars.id_consulta = consulta.id
@@ -32,12 +30,9 @@ def gerar_prescricao():
 
 @auth.requires_login()
 def prescricao():
-    id_prescricao = request.args(0) or redirect(URL(c='consulta',
-                                                    f='todas_consultas'))
-    prescricao = db(db.prescricoes.id == id_prescricao).select().first()
-    if not prescricao:
-        raise HTTP(404)
-    paciente = db(db.pacientes.id == prescricao.id_paciente).select().first()
+    id_prescricao = request.args(0)
+    prescricao = BuscaPrescricao(id_prescricao)
+    paciente = BuscaPaciente(prescricao.id_paciente)
 
     prescricao.medicamentos = filter(None, prescricao.medicamentos.split('|'))
     lista = []
