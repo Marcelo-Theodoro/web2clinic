@@ -8,26 +8,54 @@
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-lg-12">
 		<div class="col-sm-12 col-md-12 col-lg-12">
-			<p><strong>Nome:</strong> <a href="{{=URL(c='paciente', f='paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
+			<p><strong>Nome:</strong> <a href="{{=URL('paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
 			<p><strong>Dia agendado:</strong> {{=agendamento.dia}}</p>
 			<p><strong>Hora início:</strong> {{=agendamento.hora_inicio}}</p>
 			<p><strong>Hora fim:</strong> {{=agendamento.hora_fim}}</p>
 		</div>
 	</div>
 </div>
+<hr>
 <div class="row">
 	<div class="col-sm-12 col-md-12 col-lg-12">
-		<div class="col-sm-1 col-md-1 col-lg-1">
-			{{if form:}} <! -- Use isso aqui também quando for criar o botão de faltou form_faltou -->
-				{{=form}}
-			{{pass}}
-	</div>
-		<div class="col-sm-1 col-md-1 col-lg-1">
-		<a href="{{=URL('editar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil">Editar</span></a>
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				{{if form:}}
+				<form action="#" enctype="multipart/form-data" method="post" class="form-inline">
+					<div class="form-group">
+					    <label>{{=form.custom.label['peso']}}</label>
+					    {{=form.custom.widget['peso']}}
+					</div>
+				  	<div class="form-group">
+					    <label for="exampleInputEmail2">{{=form.custom.label['pressao_arterial']}}</label>
+					    {{=form.custom.widget['pressao_arterial']}}
+					</div>
+				  <button type="submit" class="btn btn-default">Salvar Pré Consulta</button>
+				  {{=form.hidden_fields()}}
+				</form>
+				{{pass}}
+			</div>
 		</div>
-		<div class="col-sm-1 col-md-1 col-lg-1">
-		<a href="{{=URL('apagar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon plus icon-plus glyphicon glyphicon-plus">Apagar</span></a>
-		</div>
-
 	</div>
 </div>
+<hr>
+<div class="row">
+	<div class="col-sm-12 col-md-12 col-lg-12">
+		<div class="row">
+			<div class="col-sm-1 col-md-1 col-lg-1">
+				<a href="{{=URL('editar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon pen icon-pencil glyphicon glyphicon-pencil">Editar</span></a>
+			</div>
+			<div class="col-sm-1 col-md-1 col-lg-1">
+				<a href="{{=URL('apagar_agendamento', args=agendamento.id)}}" class="btn btn-default" role="button"><span class="icon plus icon-plus glyphicon glyphicon-plus">Apagar</span></a>
+			</div>
+			<div class="col-sm-1 col-md-1 col-lg-1">
+				{{if form_faltou:}}
+					{{=form_faltou}}
+				{{pass}}
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$('input:submit[value="Paciente não compareceu"]').addClass('btn btn-danger')
+</script>
