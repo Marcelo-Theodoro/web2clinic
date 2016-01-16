@@ -53,12 +53,13 @@
 											<div class="row">
 												<div class="col-sm-4">
 													<label>
-														<input type="checkbox" value="{{=remedio.nome}}" name="medicamentos">
+														<!--colocar delimitador em value-->
+														<input type="checkbox" value="{{=remedio.nome}}{{=remedio.texto}}" name="medicamentos" id="check{{=remedio.nome}}">
 														{{=remedio.nome}}
 													</label>
 												</div>
 												<div class="col-sm-8">
-													<input class="form-control" id="disabledInput" type="text" placeholder="{{=remedio.texto}}" disabled>
+													<input class="form-control" type="text" placeholder="{{=remedio.texto}}" id="input{{=remedio.nome}}">
 												</div>
 											</div>
 										</div>
@@ -92,3 +93,12 @@ $(document).ready(function () {
 	});
 });      
 </script>
+{{for remedio in lista_medicamentos:}}
+<script type="text/javascript">
+$('#input{{=remedio.nome}}').change(function() {
+	var x = $('#input{{=remedio.nome}}').val();
+	//colocar delimitar dentro de val() ao lado do {{=remedio.nome}}  
+	$('#check{{=remedio.nome}}').val('{{=remedio.nome}}'+x);
+});
+</script>
+{{pass}}
