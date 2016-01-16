@@ -10,6 +10,7 @@ def gerar_prescricao():
 
     lista_medicamentos = db(db.lista_medicamentos).select()
     for medicamento in lista_medicamentos:
+        medicamento.nome_sanitizado = medicamento.nome.replace(' ', '_')
         if medicamento.fichas:
             medicamento.fichas = medicamento.fichas.replace('|', ' ')
         else:
@@ -34,13 +35,14 @@ def prescricao():
     prescricao = BuscaPrescricao(id_prescricao)
     paciente = BuscaPaciente(prescricao.id_paciente)
 
-    prescricao.medicamentos = filter(None, prescricao.medicamentos.split('|'))
     lista = []
     for medicamento in prescricao.medicamentos:
-        nome = medicamento
-        med = db(db.lista_medicamentos.nome == nome).select().first()
-        texto = med.texto
-        lista.append({'nome': nome, 'texto': texto})
+        print medicamento
+        medicamento = medicamento.split('|||')
+        nome = medicamento[0]
+        texto = medicamento[1]
+        categoria = medicamento[2]
+        lista.append({'nome': nome, 'texto': texto, 'categoria': categoria})
     prescricao.medicamentos = lista
     return locals()
 
