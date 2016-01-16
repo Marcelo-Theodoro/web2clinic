@@ -12,6 +12,7 @@ db.define_table('consultas',
                 )
 
 def BuscaConsulta(id):
+    # Recebe id da consulta
     if not id:
         raise HTTP(404, 'Consulta ID não encontrada')
     try:
@@ -23,3 +24,23 @@ def BuscaConsulta(id):
     if not consulta:
         raise HTTP(404, 'Consulta não encontrada')
     return consulta
+
+def BuscaTodasConsultasPaciente(id):
+    # Recebe id paciente
+    if not id:
+        raise HTTP(404, 'ID inválido')
+    consultas = db(db.consultas.id_paciente == id).select()
+    for consulta in consultas:
+        if consulta.dia:
+            consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
+    return consultas
+
+
+
+
+
+
+
+
+
+

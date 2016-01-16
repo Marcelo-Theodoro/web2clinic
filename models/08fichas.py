@@ -12,6 +12,7 @@ db.define_table('fichas',
 
 
 def BuscaFicha(id):
+    # Recebe id da ficha
     if not id:
         raise HTTP(404, 'ID ficha não encontrado')
     try:
@@ -21,3 +22,10 @@ def BuscaFicha(id):
     if not ficha:
         raise HTTP(404, 'Ficha não encontrada')
     return ficha
+
+def BuscaTodasFichasConsulta(id):
+    # Recebe id da consulta
+    if not id:
+        raise HTTP(404, 'ID inválido')
+    fichas = db(db.fichas.id_consulta == id).select()
+    return fichas

@@ -5,25 +5,20 @@ def nova_ficha():
     import re
     tipo_consulta = request.args(0)
     id_consulta = request.args(1)
-
     tipo_consulta = TipoConsultaFormParaDict(tipo_consulta)
     consulta = BuscaConsulta(id_consulta)
     paciente = BuscaPaciente(consulta.id_paciente)
-
     if consulta.id_agendamento != 'NaoAgendado':
         pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta.id_agendamento)
     else:
         pre_consulta_agendamento = False
-
     if re.match('db.ficha_([a-z]+|_+[a-z]+)|db.retorno', tipo_consulta['base']):
         base = eval(tipo_consulta['base'])
     else:
         raise HTTP(403)
-
     form = SQLFORM(base)
     response.view = tipo_consulta['view_form']
     form.vars.id_paciente = paciente.id
-
     if form.process().accepted:
         id_form = form.vars.id
         id_ficha = db.fichas.insert(id_paciente=paciente.id,
@@ -36,36 +31,35 @@ def nova_ficha():
 
 @auth.requires_login()
 def editar_ficha():
-    import re
     # Recebe: consulta/editar_ficha/*tipo_consulta['form']*/*id_consulta*?editar=*id_ficha*
-    tipo_consulta = request.args(0) or redirect(URL(c='consulta',
-                                                    f='todas_consultas'))
-    id_consulta = request.args(1) or redirect(URL(c='consulta',
-                                                  f='todas_consultas'))
-    ficha_id = request.vars['editar'] or redirect(URL(c='consulta',
-                                                        f='todas_consultas'))
-    # Busca o dicionário para o tipo de consulta selecionado em args(0)
-    tipo_consulta = [i for i in tipos_consultas
-                     if i['form'] == tipo_consulta][0]
+    tipo_consulta = request.args(0) # depreciated
+    id_consulta = request.args(1)
+    ficha_id = request.vars['editar']
     # Busca a consulta
-    consulta = db(db.consultas.id == id_consulta).select().first()
+    consulta = BuscaConsulta(id_consulta)
+    # Busca a pre consulta do agendamento, se houver.
+    if consulta.id_agendamento != 'NaoAgendado':
+        pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta.id_agendamento)
+    else:
+        pre_consulta_agendamento = False
     # Busca o paciente
-    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
-    paciente.nascimento = paciente.nascimento.strftime(format='%d/%m/%Y')
+    paciente = BuscaPaciente(consulta.id_paciente)
+    # Busca o registro da ficha
+    ficha = BuscaFicha(ficha_id)
+    # Busca o dicionário para o tipo de consulta selecionado em args(0)
+    tipo_consulta = TipoConsultaFormParaDict(ficha.tipo_consulta)
     # Verifica se o que será executado pelo eval() é realmente o objeto
     # db.*, e não um código malicioso
-    if re.match('db.ficha_([a-z]+|_+[a-z]+)|db.retorno', tipo_consulta['base']):
+    if ChecaFichaValida(tipo_consulta['base']):
         base = eval(tipo_consulta['base'])
     else:
         raise HTTP(403)
-    # Busca a ficha que vai ser atualizada
-    ficha = db(base.id == ficha_id).select().first()
-    if not ficha:
-        raise HTTP(404)
+    # Busca o formulario que vai ser atualizado
+    formulario = db(base.id == ficha.id_form).select().first()
     # Oculta o id no form
     base.id.readable = False
     # Cria o form para update da ficha
-    form = SQLFORM(base, record=ficha)
+    form = SQLFORM(base, record=formulario)
     # Selecionar a view para edição
     response.view = tipo_consulta['view_form']
 
@@ -77,12 +71,9 @@ def editar_ficha():
 
 @auth.requires_login()
 def consultas():
-    id_paciente = request.args(0) or redirect(URL(c='consulta',
-                                                  f='todas_consultas'))
-    paciente = db(db.pacientes.id == id_paciente).select().first()
-    consultas = db(db.consultas.id_paciente == id_paciente).select()
-    for consulta in consultas:
-        consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
+    id_paciente = request.args(0)
+    paciente = BuscaPaciente(id_paciente)
+    consultas = BuscaTodasConsultasPaciente(paciente.id)
     return locals()
 
 
@@ -160,20 +151,14 @@ def todas_consultas():
 
 @auth.requires_login()
 def ver_consulta():
-    id_consulta = request.args(0) or redirect(URL(c='consulta',
-                                                  f='todas_consultas'))
-    consulta = db(db.consultas.id == id_consulta).select().first()
-    if not consulta:
-        raise HTTP(404)
-    consulta.dia = consulta.dia.strftime(format='%d/%m/%Y')
-    fichas = db(db.fichas.id_consulta == consulta.id).select()
+    id_consulta = request.args(0)
+    consulta = BuscaConsulta(id_consulta)
+    fichas = BuscaTodasFichasConsulta(consulta.id)
     for ficha in fichas:
-        ficha.tipo_consulta = [i for i in tipos_consultas
-                                  if ficha.tipo_consulta == i['form']][0]
+        ficha.tipo_consulta = TipoConsultaFormParaDict(ficha.tipo_consulta)
         ficha.label = ficha.tipo_consulta['label']
         ficha.form = ficha.tipo_consulta['form']
-    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
-    paciente.nascimento = paciente.nascimento.strftime(format='%d/%m/%Y')
+    paciente = BuscaPaciente(consulta.id_paciente)
     consultas_pre_natal = db(db.ficha_clinica_pre_natal.id_paciente == paciente.id).select()
     atestados = db(db.atestados.id_consulta == consulta.id).select()
     exames = db(db.exames.id_consulta == consulta.id).select()
@@ -182,7 +167,7 @@ def ver_consulta():
 
 
 @auth.requires_login()
-def apagar_consulta():
+def apagar_consulta(): # depreciated
     import re
     id_consulta = request.args(0) or redirect(URL(c='consulta',
                                                   f='todas_consultas'))
