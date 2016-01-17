@@ -37,7 +37,9 @@ def BuscaTodasConsultasPaciente(id):
 
 
 
-
+def BuscaTodasConsultas():
+    consultas = db(db.consultas).select()
+    return consultas
 
 
 

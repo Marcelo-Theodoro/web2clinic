@@ -36,7 +36,7 @@ def BuscaAgendamento(id):
         raise HTTP(404, 'Argumento AGENDAMENTO inválido')
     if not agendamento:
         raise HTTP(404, 'Agendamento não encontrado')
-    if agendamento.dia:
+    if agendamento.dia and request.function != 'editar_agendamento':
         agendamento.dia = agendamento.dia.strftime('%d/%m/%Y')
     return agendamento
 

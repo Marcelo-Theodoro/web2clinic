@@ -1,2 +1,6 @@
 {{extend 'layout.html'}}
-{{=form}}
+{{if form:}}
+	{{=form}}
+{{else:}}
+	<h2> Nenhuma consulta realizada!</h2>
+{{pass}}

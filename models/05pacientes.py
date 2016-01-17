@@ -36,6 +36,8 @@ db.define_table('pacientes',
                 format='%(nome)s'
                 )
 
+db.pacientes.cpf.represent = lambda field, x: field if field else 'Não informado'
+
 
 def BuscaPaciente(id):
     if not id:
@@ -48,8 +50,34 @@ def BuscaPaciente(id):
         raise HTTP(404, 'Paciente não encontrado')
     if paciente.nascimento:
         paciente.nascimento = paciente.nascimento.strftime('%d/%m/%Y')
+
+    NI = 'Não informado'
+    if paciente.endereco == None or paciente.endereco == '':
+        paciente.endereco = NI
+    if paciente.cidade == None or paciente.cidade == '':
+        paciente.cidade = NI
+    if paciente.telefone == None or paciente.telefone == '':
+        paciente.telefone = NI
+    if paciente.escolaridade == None or paciente.escolaridade == '':
+        paciente.escolaridade = NI
+    if paciente.observacoes == None or paciente.observacoes == '':
+        paciente.observacoes = NI
+    if paciente.cpf == None or paciente.cpf == '':
+        paciente.cpf = NI
+    if paciente.uf == None or paciente.uf == '':
+        paciente.uf = NI
+    if paciente.estadocivil == None or paciente.estadocivil == '':
+        paciente.estadocivil = NI
+    if paciente.cor == None or paciente.cor == '':
+        paciente.cor = NI
+    if paciente.cep == None or paciente.cep == '':
+        paciente.cep = NI
     return paciente
 
+
+def BuscaTodosPacientes():
+    pacientes = db(db.pacientes).select()
+    return pacientes
 
 
 
