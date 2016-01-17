@@ -2,7 +2,6 @@
 
 @auth.requires_login()
 def nova_ficha():
-    import re
     tipo_consulta = request.args(0)
     id_consulta = request.args(1)
     tipo_consulta = TipoConsultaFormParaDict(tipo_consulta)
@@ -12,7 +11,7 @@ def nova_ficha():
         pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta.id_agendamento)
     else:
         pre_consulta_agendamento = False
-    if re.match('db.ficha_([a-z]+|_+[a-z]+)|db.retorno', tipo_consulta['base']):
+    if ChecaFichaValida(tipo_consulta['base']):
         base = eval(tipo_consulta['base'])
     else:
         raise HTTP(403)
@@ -25,7 +24,7 @@ def nova_ficha():
                                     id_consulta=consulta.id,
                                     tipo_consulta = tipo_consulta['form'],
                                     id_form=id_form)
-        redirect(URL(c='consulta', f='ver_consulta', args=consulta.id))
+        redirect(URL(c='prontuario', f='ficha', args=id_ficha))
     return locals()
 
 
@@ -64,8 +63,7 @@ def editar_ficha():
     response.view = tipo_consulta['view_form']
 
     if form.process().accepted:
-        redirect(URL(c='consulta', f='ver_consulta', args=consulta.id),
-                 client_side=True)
+        redirect(URL(c='prontuario', f='ficha', args=ficha.id))
     return locals()
 
 
@@ -79,15 +77,19 @@ def consultas():
 
 @auth.requires_login()
 def nova_consulta():
-    links = [lambda row: A('Iniciar consulta', _class='button btn\
-                                                       btn-default',
-                           _href=URL(c='consulta', f='consultar',
-                                     args=[row.id]))]
-    grid = SQLFORM.grid(db.pacientes,
-                        fields=[db.pacientes.nome, db.pacientes.cpf],
-                        links=links, csv=False, editable=False,
-                        deletable=False, details=False, create=False,
-                        paginate=10)
+    pacientes = BuscaTodosPacientes()
+    if pacientes:
+        links = [lambda row: A('Iniciar consulta', _class='button btn\
+                                                           btn-default',
+                               _href=URL(c='consulta', f='consultar',
+                                         args=[row.id]))]
+        grid = SQLFORM.grid(db.pacientes,
+                            fields=[db.pacientes.nome, db.pacientes.cpf],
+                            links=links, csv=False, editable=False,
+                            deletable=False, details=False, create=False,
+                            paginate=10)
+    else:
+        grid = False
     return locals()
 
 
@@ -126,26 +128,30 @@ def consultar():
 
 @auth.requires_login()
 def todas_consultas():
-    links = [lambda row: A(SPAN('Visualizar',
-                                _class='icon magnifier icon-zoom-in\
-                                        glyphicon glyphicon-zoom-in'),
-                           _class='button btn btn-default',
-                           _href=URL(c='consulta', f='ver_consulta',
-                                     args=[row.id])),
-             lambda row: A(SPAN('Apagar',
-                                _class='icon trash icon-trash glyphicon\
-                                glyphicon-trash'),
-                           _class='button btn btn-default',
-                           _href=URL(c='consulta', f='apagar_consulta',
-                                     args=[row.id]))]
-    haders = {'consultas.id_paciente': 'Paciente'}
-    db.consultas.id_paciente.readable = True
-    form = SQLFORM.grid(db.consultas,
-                        fields=[db.consultas.id_paciente,
-                                db.consultas.dia],
-                        csv=False, editable=False, deletable=False,
-                        details=False, create=False, links=links,
-                        headers=haders, paginate=10)
+    consultas = BuscaTodasConsultas()
+    if consultas:
+        links = [lambda row: A(SPAN('Visualizar',
+                                    _class='icon magnifier icon-zoom-in\
+                                            glyphicon glyphicon-zoom-in'),
+                               _class='button btn btn-default',
+                               _href=URL(c='consulta', f='ver_consulta',
+                                         args=[row.id])),
+                 lambda row: A(SPAN('Apagar',
+                                    _class='icon trash icon-trash glyphicon\
+                                    glyphicon-trash'),
+                               _class='button btn btn-default',
+                               _href=URL(c='consulta', f='apagar_consulta',
+                                         args=[row.id]))]
+        haders = {'consultas.id_paciente': 'Paciente'}
+        db.consultas.id_paciente.readable = True
+        form = SQLFORM.grid(db.consultas,
+                            fields=[db.consultas.id_paciente,
+                                    db.consultas.dia],
+                            csv=False, editable=False, deletable=False,
+                            details=False, create=False, links=links,
+                            headers=haders, paginate=10)
+    else:
+        form = False
     return locals()
 
 

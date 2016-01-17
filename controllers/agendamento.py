@@ -2,26 +2,28 @@
 
 @auth.requires_login()
 def novo_agendamento():
-    links = [lambda row: A(SPAN('Agendar',
-                                _class='icon plus icon-plus\
-                                        glyphicon glyphicon-plus'),
-                           _class='button btn btn-default',
-                           _href=URL(c='agendamento', f='agendar',
-                                     args=[row.id]))]
-    grid = SQLFORM.grid(db.pacientes,
-                        fields=[db.pacientes.nome, db.pacientes.cpf],
-                        links=links, csv=False, editable=False,
-                        deletable=False, details=False, create=False,
-                        paginate=10)
+    pacientes = BuscaTodosPacientes()
+    if pacientes:
+        links = [lambda row: A(SPAN('Agendar',
+                                    _class='icon plus icon-plus\
+                                            glyphicon glyphicon-plus'),
+                               _class='button btn btn-default',
+                               _href=URL(c='agendamento', f='agendar',
+                                         args=[row.id]))]
+        grid = SQLFORM.grid(db.pacientes,
+                            fields=[db.pacientes.nome, db.pacientes.cpf],
+                            links=links, csv=False, editable=False,
+                            deletable=False, details=False, create=False,
+                            paginate=10)
+    else:
+        grid = False
     return locals()
 
 
 @auth.requires_login()
 def agendar():
-    id_paciente = request.args(0) or redirect(URL(c='agendamento',
-                                                  f='novo_agendamento'),
-                                              client_side=True)
-    paciente = db(db.pacientes.id == id_paciente).select().first()
+    id_paciente = request.args(0)
+    paciente = BuscaPaciente(id_paciente)
     form = SQLFORM(db.agendamentos)
     form.vars.id_paciente = id_paciente
     if form.process().accepted:
@@ -33,10 +35,8 @@ def agendar():
 
 @auth.requires_login()
 def editar_agendamento():
-    id_agendamento = request.args(0) or redirect(URL(c='agendamento',
-                                                     f='agendamentos'),
-                                                 client_side=True)
-    agendamento = db(db.agendamentos.id == id_agendamento).select().first()
+    id_agendamento = request.args(0)
+    agendamento = BuscaAgendamento(id_agendamento)
     db.agendamentos.id.readable = False
     form = SQLFORM(db.agendamentos, record=agendamento)
     if form.process().accepted:
@@ -85,13 +85,9 @@ def agendamento():
 
 @auth.requires_login()
 def apagar_agendamento():
-    id_agendamento = request.args(0) or redirect(URL(c='agendamento',
-                                                     f='agendamentos'),
-                                                 client_side=True)
-    agendamento = db(db.agendamentos.id == id_agendamento).select().first()
-    agendamento.dia = agendamento.dia.strftime('%d/%m/%Y')
-    id_paciente = agendamento.id_paciente
-    paciente = db(db.pacientes.id == id_paciente).select().first()
+    id_agendamento = request.args(0)
+    agendamento = BuscaAgendamento(id_agendamento)
+    paciente = BuscaPaciente(agendamento.id_paciente)
     form = SQLFORM.factory()
     if form.process().accepted:
         db(db.agendamentos.id == id_agendamento).delete()

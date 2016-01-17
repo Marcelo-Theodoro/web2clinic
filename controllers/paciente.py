@@ -27,14 +27,8 @@ def cadastro():
 
 @auth.requires_login()
 def paciente():
-    id_paciente = request.args(0) or redirect(URL(c='paciente',
-                                                    f='pacientes'),
-                                              client_side=True)
-    paciente = db(db.pacientes.id == id_paciente).select().first()
-    if not paciente:
-        raise HTTP(404)
-    if paciente.nascimento:
-        paciente.nascimento = paciente.nascimento.strftime('%d/%m/%Y')
+    id_paciente = request.args(0)
+    paciente = BuscaPaciente(id_paciente)
     agendamentos = db(db.agendamentos.id_paciente == paciente.id).select()
     return locals()
 
