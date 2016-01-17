@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# STATUS_AGENDAMENTO = [
-#     ('agendado', 'Agendado'),
-    # ('aguardando', 'Aguardando'),
-    # ('realizado', 'Realizado'),
-    # ('faltou', 'Faltou'),
-# ]
+STATUS_AGENDAMENTO = [
+    ('agendado', 'Agendado'),
+    ('aguardando', 'Aguardando'),
+    ('realizado', 'Realizado'),
+    ('faltou', 'Faltou'),
+]
 
-STATUS_AGENDAMENTO = ['Agendado', 'Aguardando', 'Realizado', 'Faltou']
 
 db.define_table('agendamentos',
                 Field('id_paciente', 'reference pacientes',
