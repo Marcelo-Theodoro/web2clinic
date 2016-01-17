@@ -1,2 +1,7 @@
 {{extend 'layout.html'}}
-{{=grid}}<br />
+{{if grid:}}
+	{{=grid}}
+{{else:}}
+	<h2>Nenhum paciente cadastrado para realizar o agendamento.</h2>
+	<a href="{{=URL(c='paciente', f='cadastro')}}"> Clique aqui para cadastrar um novo paciente. </a>
+{{pass}}

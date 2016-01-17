@@ -35,23 +35,27 @@ def paciente():
 
 @auth.requires_login()
 def pacientes():
-    links = [lambda row: A(SPAN('Visualizar',
-                                _class='icon magnifier icon-zoom-in\
-                                        glyphicon glyphicon-zoom-in'),
-                           _class='button btn btn-default',
-                           _href=URL(c='paciente', f='paciente',
-                                     args=[row.id])),
-             lambda row: A(SPAN('Editar',
-                                _class='icon pen icon-pencil\
-                                        glyphicon glyphicon-pencil'),
-                           _class='button btn btn-default',
-                           _href=URL(c='paciente', f='cadastro',
-                                     vars = {'editar': row.id}))]
-    grid = SQLFORM.grid(db.pacientes,
-                        fields=[db.pacientes.nome, db.pacientes.nascimento,
-                                db.pacientes.sexo],
-                        csv=False, links=links, details=False, create=False,
-                        editable=False, deletable=True, paginate=10)
+    pacientes = BuscaTodosPacientes()
+    if pacientes:
+        links = [lambda row: A(SPAN('Visualizar',
+                                    _class='icon magnifier icon-zoom-in\
+                                            glyphicon glyphicon-zoom-in'),
+                               _class='button btn btn-default',
+                               _href=URL(c='paciente', f='paciente',
+                                         args=[row.id])),
+                 lambda row: A(SPAN('Editar',
+                                    _class='icon pen icon-pencil\
+                                            glyphicon glyphicon-pencil'),
+                               _class='button btn btn-default',
+                               _href=URL(c='paciente', f='cadastro',
+                                         vars = {'editar': row.id}))]
+        grid = SQLFORM.grid(db.pacientes,
+                            fields=[db.pacientes.nome, db.pacientes.nascimento,
+                                    db.pacientes.sexo],
+                            csv=False, links=links, details=False, create=False,
+                            editable=False, deletable=True, paginate=10)
+    else:
+        grid = False
     return locals()
 
 @auth.requires_login()
