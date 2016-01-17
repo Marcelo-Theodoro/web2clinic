@@ -14,6 +14,7 @@ def ficha():
         pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta.id_agendamento)
     else:
         agendamento = False
+        pre_consulta_agendamento = False
 
     if re.match('db.ficha_([a-z]+|_+[a-z]+)|db.retorno', tipo_consulta['base']):
         base = eval(tipo_consulta['base'])
