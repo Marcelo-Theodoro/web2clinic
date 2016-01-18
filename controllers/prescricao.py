@@ -10,7 +10,7 @@ def gerar_prescricao():
 
     lista_medicamentos = db(db.lista_medicamentos).select()
     for medicamento in lista_medicamentos:
-        medicamento.nome_sanitizado = medicamento.nome.replace(' ', '_')
+        medicamento.nome_sanitizado = ''.join(s for s in medicamento.nome if s.isalnum())
         if medicamento.fichas:
             medicamento.fichas = medicamento.fichas.replace('|', ' ')
         else:
