@@ -47,8 +47,8 @@ def pacientes():
                                     _class='icon pen icon-pencil\
                                             glyphicon glyphicon-pencil'),
                                _class='button btn btn-default',
-                               _href=URL(c='paciente', f='cadastro',
-                                         vars = {'editar': row.id}))]
+                                   _href=URL(c='paciente', f='cadastro',
+                                             vars = {'editar': row.id}))]
         grid = SQLFORM.grid(db.pacientes,
                             fields=[db.pacientes.nome, db.pacientes.nascimento,
                                     db.pacientes.sexo],
@@ -57,6 +57,17 @@ def pacientes():
     else:
         grid = False
     return locals()
+
+@auth.requires_login()
+def pesquisa():
+    pesquisa = request.args(0)
+    if pesquisa:
+        pacientes = db(db.pacientes.nome == pesquisa).select()
+    else:
+        pacientes = db(db.pacientes).select()
+
+    return locals()
+
 
 @auth.requires_login()
 def download():
