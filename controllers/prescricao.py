@@ -35,14 +35,33 @@ def prescricao():
     prescricao = BuscaPrescricao(id_prescricao)
     paciente = BuscaPaciente(prescricao.id_paciente)
 
-    lista = []
+    prescricao.uso_interno = [] # Uso interno
+    prescricao.uso_externo = [] # Uso externo
+    prescricao.uso_local = [] # Uso local
+    prescricao.uso_transdermico = [] # Uso transdérmico
+    prescricao.uso_sublingual = [] # Uso sublingual
+    prescricao.sem_categoria = []
+
     for medicamento in prescricao.medicamentos:
         medicamento = medicamento.split('|||')
         nome = medicamento[0]
         texto = medicamento[1]
         categoria = medicamento[2]
-        lista.append({'nome': nome, 'texto': texto, 'categoria': categoria})
-    prescricao.medicamentos = lista
+        medicamento = {'nome': nome, 'texto': texto}
+
+        if categoria == 'Uso interno':
+            prescricao.uso_interno.append(medicamento)
+        elif categoria == 'Uso externo':
+            prescricao.uso_externo.append(medicamento)
+        elif categoria == 'Uso local':
+            prescricao.uso_local.append(medicamento)
+        elif categoria == 'Uso transdérmico':
+            prescricao.uso_transdermico.append(medicamento)
+        elif categoria == 'Uso sublingual':
+            prescricao.uso_sublingual.append(medicamento)
+        else:
+            prescricao.sem_categoria.append(medicamento)
+
     return locals()
 
 
