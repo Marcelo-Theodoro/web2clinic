@@ -30,12 +30,84 @@
 		</div>
 	</div>
 	<ul>
-		{{for medicamento in prescricao.medicamentos:}}
+		{{if prescricao.uso_interno:}}
 		<div class="row top-buffer">
-			<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-			<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
-			<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Interno<p></strong></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
 		</div>
+			{{for medicamento in prescricao.uso_interno:}}
+			<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+			{{pass}}
+		{{pass}}
+		{{if prescricao.uso_externo:}}
+		<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Externo<p></strong></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+		</div>
+			{{for medicamento in prescricao.uso_externo:}}
+			<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+			{{pass}}
+		{{pass}}
+		{{if prescricao.uso_local:}}
+		<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Local<p></strong></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+		</div>
+			{{for medicamento in prescricao.uso_local:}}
+			<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+			{{pass}}
+		{{pass}}
+		{{if prescricao.uso_transdermico:}}
+		<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Transdermico<p></strong></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+		</div>
+			{{for medicamento in prescricao.uso_transdermico:}}
+			<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+			{{pass}}
+		{{pass}}
+		{{if prescricao.uso_sublingual:}}
+		<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso sublingual<p></strong></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+		</div>
+			{{for medicamento in prescricao.uso_sublingual:}}
+			<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+			{{pass}}
+		{{pass}}
+		{{if prescricao.sem_categoria:}}
+			{{for medicamento in prescricao.sem_categoria:}}
+			<div class="row top-buffer">
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+			{{pass}}
 		{{pass}}
 	</ul>
 	{{if prescricao.texto:}}
@@ -69,4 +141,3 @@ function myFunction() {
 	window.print();
 }
 </script>
-
