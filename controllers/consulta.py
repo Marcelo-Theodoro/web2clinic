@@ -7,17 +7,23 @@ def nova_ficha():
     tipo_consulta = TipoConsultaFormParaDict(tipo_consulta)
     consulta = BuscaConsulta(id_consulta)
     paciente = BuscaPaciente(consulta.id_paciente)
+
     if consulta.id_agendamento != 'NaoAgendado':
         pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta.id_agendamento)
     else:
         pre_consulta_agendamento = False
+
     if ChecaFichaValida(tipo_consulta['base']):
         base = eval(tipo_consulta['base'])
     else:
         raise HTTP(403)
+
     form = SQLFORM(base)
+    if tipo_consulta['form'] == 'ficha_clinica_pre_natal':
+        form.vars.id_consulta = consulta.id
     response.view = tipo_consulta['view_form']
     form.vars.id_paciente = paciente.id
+
     if form.process().accepted:
         id_form = form.vars.id
         id_ficha = db.fichas.insert(id_paciente=paciente.id,

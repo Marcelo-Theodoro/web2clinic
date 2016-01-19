@@ -36,7 +36,6 @@ def paciente():
 @auth.requires_login()
 def pacientes():
     pacientes = BuscaTodosPacientes()
-    
     return locals()
 
 @auth.requires_login()

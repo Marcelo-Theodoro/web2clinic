@@ -2,12 +2,26 @@
 
 @auth.requires_login()
 def nova_ficha():
-    id_consulta_pre_natal = request.args(0) or redirect(URL(c='consulta',
-                                                            f='todas_consultas'))
+    id_consulta_pre_natal = request.args(0)
+
+    if not id_consulta_pre_natal:
+        raise HTTP(404, 'Consulta não encontrada')
     consulta = db(db.ficha_clinica_pre_natal.id == id_consulta_pre_natal).select().first()
-    paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
+    if not consulta:
+        raise HTTP(404, 'Consulta não encontrada')
+
+    paciente = BuscaPaciente(consulta.id_paciente)
+
     pre_natal_anteriores = db(db.ficha_pre_natal_evolucao.id_ficha == consulta.id).select()
+
     numero_pre_natal = len(pre_natal_anteriores) + 1
+
+    consulta_original = BuscaConsulta(consulta.id_consulta)
+    if consulta_original.id_agendamento != 'NaoAgendado':
+        pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta_original.id_agendamento)
+    else:
+        pre_consulta_agendamento = False
+
     form = SQLFORM(db.ficha_pre_natal_evolucao)
     form.vars.id_ficha = consulta.id
     form.vars.consulta_numero = numero_pre_natal
