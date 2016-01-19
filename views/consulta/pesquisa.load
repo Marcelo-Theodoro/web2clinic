@@ -1,0 +1,32 @@
+{{if pacientes:}}
+		<table id="results" class="table table-hover table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th class="hidden-xs">Telefone</th>
+                    <th class="hidden-xs">Endereço</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+	{{for row in pacientes:}}
+      		<tr>
+                    <td>{{=row.nome}}</td>
+                    <td>{{=row.cpf}}</td>
+                    <td class="hidden-xs">{{=row.telefone}}</td>
+                    <td class="hidden-xs">{{=row.endereco}}</td>
+                    <td><div class="btn-group hidden-xs" role="group" aria-label="...">
+					  <a href="{{=URL(c='consulta', f='consultar.html', args=[row.id])}}"type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nova Consulta</a>
+					</div>
+					<div class="btn-group visible-xs-block" role="group" aria-label="...">
+					 <a href="{{=URL(c='consulta', f='consultar.html', args=[row.id])}}"type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+					</div>
+					</td>
+                </tr>
+	{{pass}}
+	 </tbody>
+</table>
+{{else:}}
+	Nenhum paciente encontrado
+{{pass}}
