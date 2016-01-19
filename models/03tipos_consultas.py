@@ -6,7 +6,7 @@ tipos_consultas = [
                         view_prontuario='prontuarios/prontuario_mulher.html'),
 
                    dict(form='ficha_clinica_de_climaterio',
-                        label='Ficha Clíninica de Climaterio',
+                        label='Ficha Clínica de Climaterio',
                         base='db.ficha_clinica_de_climaterio',
                         view_form='fichas/ficha_clinica_de_climaterio.html',
                         view_prontuario='prontuarios/prontuario_climaterio.html'),
@@ -63,5 +63,3 @@ def TipoConsultaFormParaDict(form):
     except IndexError:
         raise HTTP(404, 'Form inválido')
     return tipo_consulta
-
-
