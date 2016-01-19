@@ -38,6 +38,11 @@ def ver_ficha():
     ficha = db(db.ficha_pre_natal_evolucao.id == id_ficha).select().first()
     consulta = db(db.ficha_clinica_pre_natal.id == ficha.id_ficha).select().first()
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
+    consulta_original = BuscaConsulta(consulta.id_consulta)
+    if consulta_original.id_agendamento != 'NaoAgendado':
+        pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta_original.id_agendamento)
+    else:
+        pre_consulta_agendamento = False
     return locals()
 
 
@@ -47,11 +52,14 @@ def editar_ficha():
                                                f='todas_consultas'))
     ficha = db(db.ficha_pre_natal_evolucao.id == id_ficha).select().first()
     consulta = db(db.ficha_clinica_pre_natal.id == ficha.id_ficha).select().first()
+    consulta_original = BuscaConsulta(consulta.id_consulta)
+    if consulta_original.id_agendamento != 'NaoAgendado':
+        pre_consulta_agendamento = BuscaPreConsultaAgendamento(consulta_original.id_agendamento)
+    else:
+        pre_consulta_agendamento = False
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     form = SQLFORM(db.ficha_pre_natal_evolucao, record=ficha)
     if form.process().accepted:
         id = form.vars.id
         redirect(URL(c='consulta_pre_natal', f='ver_ficha', args=id))
     return locals()
-
-
