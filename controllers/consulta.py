@@ -218,5 +218,28 @@ def apagar_consulta(): # depreciated
         db(db.consultas.id == consulta.id).delete()
         redirect(URL(c='consulta', f='todas_consultas'))
     return locals()
+    
+@auth.requires_login()
+def pesquisa():
+    pesquisa = request.args(0)
+
+    if pesquisa:
+        pacientes = db(db.pacientes.nome.contains(pesquisa)).select() or db(db.pacientes.cpf.contains(pesquisa)).select()
+    else:
+        pacientes = db(db.pacientes).select()
+
+    return locals()
+
+@auth.requires_login()
+def pesquisa_consultas():
+    pesquisa = request.args(0)
+    db.consultas.id_paciente.readable = True
+
+    if pesquisa:
+        consultas = db(db.pacientes.nome.contains(pesquisa)).select(join=db.consultas.on(db.pacientes.id == db.consultas.id_paciente))
+    else:
+        consultas = db(db.consultas).select(join=db.pacientes.on(db.pacientes.id == db.consultas.id_paciente))
+
+    return locals()
 
 
