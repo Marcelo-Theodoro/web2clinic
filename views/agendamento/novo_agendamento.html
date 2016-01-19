@@ -1,7 +1,30 @@
 {{extend 'layout.html'}}
-{{if grid:}}
-	{{=grid}}
-{{else:}}
-	<h2>Nenhum paciente cadastrado.</h2>
-	<a href="{{=URL(c='paciente', f='cadastro')}}"> Clique aqui para cadastrar um novo paciente. </a>
-{{pass}}
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input id="name" type="text" class="form-control" placeholder="Pesquisar por...">
+      <span class="input-group-btn">
+        <button type="button" onclick="loadDoc()" class="btn btn-primary">Procurar</button>
+        <button type="button" onclick="ajax('{{=URL(c='agendamento', f='pesquisa.load')}}', [], 'target')" class="btn btn-danger">Limpar</button>
+      </span>
+    </div><!-- /input-group -->
+  </div>
+</div>
+<div class="row">
+  <div id="target">
+    {{=LOAD(c='agendamento', f='pesquisa.load', ajax=True)}}
+  </div>
+</div>  
+<script>
+function loadDoc() {
+  var nome = $('#name').val();
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (xhttp.readyState == 4 && xhttp.status == 200) {
+      document.getElementById("target").innerHTML = xhttp.responseText;
+    }
+  };
+  xhttp.open("GET", "{{=URL(c='agendamento', f='pesquisa.load')}}/" + nome, true);
+  xhttp.send();
+}
+</script>
