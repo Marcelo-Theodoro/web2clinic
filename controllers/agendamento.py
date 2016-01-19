@@ -120,4 +120,14 @@ def agendamentos():
     lista = sorted(lista,
                    key=lambda x: '{0} {1}'.format(x['dia'], x['hora_inicio']))
     return dict(lista=lista, qtd_agendamentos_dia=qtd_agendamentos_dia)
+    
+@auth.requires_login()
+def pesquisa():
+    pesquisa = request.args(0)
+    if pesquisa:
+        pacientes = db(db.pacientes.nome.contains(pesquisa)).select() or db(db.pacientes.cpf.contains(pesquisa)).select()
+    else:
+        pacientes = db(db.pacientes).select()
+
+    return locals()
 
