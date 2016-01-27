@@ -14,127 +14,132 @@
 	</div>
 </div>			
 <div class="col-xs-12 col-md-10 col-sm-10 col-lg-10 col-p-12">
-	<div class="row">
-		<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4 col-p-4"></div>
-		<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4 col-p-4 col-xs-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-offset-4 col-p-offset-4">
-			<address>
-				<strong>{{=CC['nome_clinica']}}</strong><br>
-				{{=CC['endereco']}}<br>
-				Telefone: {{=CC['telefone']}}
-			</address>
+		<div class="row">
+			<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4 col-p-4">
+				<address>
+					<strong>{{=CC['nome_medico']}}</strong><br>
+					{{=CC['crm']}}<br>
+				</address>
+			</div>
 		</div>
-	</div>
-	<div class="row top-buffer">
-		<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
-			<h4><strong>Prescrição Médica</strong></h4>
-		</div>
-	</div>
-	<ul>
-		{{if prescricao.uso_interno:}}
+		<div class="pricipal">
 		<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Interno<p></strong></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-		</div>
-			{{for medicamento in prescricao.uso_interno:}}
-			<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
+				<h4><strong>Prescrição Médica</strong></h4>
 			</div>
+		</div>
+		<ul>
+			{{if prescricao.uso_interno:}}
+			<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Interno<p></strong></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+				{{for medicamento in prescricao.uso_interno:}}
+				<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				</div>
+				{{pass}}
 			{{pass}}
-		{{pass}}
-		{{if prescricao.uso_externo:}}
+			{{if prescricao.uso_externo:}}
+			<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Externo<p></strong></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+				{{for medicamento in prescricao.uso_externo:}}
+				<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				</div>
+				{{pass}}
+			{{pass}}
+			{{if prescricao.uso_local:}}
+			<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Local<p></strong></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+				{{for medicamento in prescricao.uso_local:}}
+				<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				</div>
+				{{pass}}
+			{{pass}}
+			{{if prescricao.uso_transdermico:}}
+			<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Transdermico<p></strong></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+				{{for medicamento in prescricao.uso_transdermico:}}
+				<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				</div>
+				{{pass}}
+			{{pass}}
+			{{if prescricao.uso_sublingual:}}
+			<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso sublingual<p></strong></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			</div>
+				{{for medicamento in prescricao.uso_sublingual:}}
+				<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				</div>
+				{{pass}}
+			{{pass}}
+			{{if prescricao.sem_categoria:}}
+				{{for medicamento in prescricao.sem_categoria:}}
+				<div class="row top-buffer">
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+					<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
+					<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+				</div>
+				{{pass}}
+			{{pass}}
+		</ul>
+		{{if prescricao.texto:}}
 		<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Externo<p></strong></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-		</div>
-			{{for medicamento in prescricao.uso_externo:}}
-			<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-			</div>
-			{{pass}}
-		{{pass}}
-		{{if prescricao.uso_local:}}
-		<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Local<p></strong></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-		</div>
-			{{for medicamento in prescricao.uso_local:}}
-			<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-			</div>
-			{{pass}}
-		{{pass}}
-		{{if prescricao.uso_transdermico:}}
-		<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso Transdermico<p></strong></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-		</div>
-			{{for medicamento in prescricao.uso_transdermico:}}
-			<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-			</div>
-			{{pass}}
-		{{pass}}
-		{{if prescricao.uso_sublingual:}}
-		<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><strong><p>Uso sublingual<p></strong></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-		</div>
-			{{for medicamento in prescricao.uso_sublingual:}}
-			<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-			</div>
-			{{pass}}
-		{{pass}}
-		{{if prescricao.sem_categoria:}}
-			{{for medicamento in prescricao.sem_categoria:}}
-			<div class="row top-buffer">
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-				<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10"><li><p>{{=medicamento['nome']}} - {{=medicamento['texto']}}<p></li></div>
-				<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-			</div>
-			{{pass}}
-		{{pass}}
-	</ul>
-	{{if prescricao.texto:}}
-	<div class="row top-buffer">
-		<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
-		<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10">
-			<p>{{=prescricao.texto}}<p>
-			</div>
 			<div class="col-xs-1 col-md-1 col-sm-1 col-lg-1 col-p-1"></div>
+			<div class="col-xs-10 col-md-10 col-sm-10 col-lg-10 col-p-10">
+				<p>{{=prescricao.texto}}<p>
+			</div>
+		</div>
+		{{pass}}
+		
+		<div class="assinatura  row top-buffer">
+				<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
+					<p><strong>{{=prescricao.data_criacao.strftime('%d/%m/%Y')}}</strong></p>
+					<address>
+						<strong>________________________</strong><br>
+						<strong>{{=CC['nome_medico']}}</strong><br>
+						<strong>{{=CC['especialidade']}}</strong><br>
+						<strong>{{=CC['crm']}}</strong><br>
+					</address>
+				</div>
 		</div>
 	</div>
-	{{pass}}
-	<div class="row top-buffer">
-		<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
-			<p><strong>{{=prescricao.data_criacao.strftime('%d/%m/%Y')}}</strong></p>
+		
+		<div class="fixo row top-buffer">
+			<div class="col-xs-4 col-md-4 col-sm-4 col-lg-4 col-p-6">
+				<address>
+					<strong>{{=CC['endereco']}}</strong><br>
+					Telefone: {{=CC['telefone']}}
+				</address>
+			</div>
 		</div>
-	</div>
-	<div class="row top-buffer">
-		<div align="center" class="col-xs-12 col-md-12 col-sm-12 col-lg-12 col-p-12">
-			<address>
-				<strong>________________________</strong><br>
-				<strong>{{=CC['nome_medico']}}</strong><br>
-				<strong>{{=CC['especialidade']}}</strong><br>
-				<strong>{{=CC['crm']}}</strong><br>
-			</address>
 		</div>
-	</div>
 </div>
 <script>
 function myFunction() {
