@@ -28,7 +28,7 @@ def agendar():
     form.vars.id_paciente = id_paciente
     if form.process().accepted:
         id = form.vars.id
-        redirect(URL(c='agendamento', f='agendamento', args=id),
+        redirect(URL(c='agendamento', f='agendamentos'),
                  client_side=True)
     return locals()
 

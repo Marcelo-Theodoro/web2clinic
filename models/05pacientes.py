@@ -10,6 +10,7 @@ cor = ['Branca', 'Negra', 'Parda', 'Indígena', 'Asiática']
 estadocivil = ['Casada', 'Solteira (sem união estável)',
                'Solteira (com união estável)', 'Outra']
 sexo = ['Feminino', 'Masculino']
+tipo = ['Particular', 'Convênio']
 
 
 db.define_table('pacientes',
@@ -19,7 +20,7 @@ db.define_table('pacientes',
                 Field('profissao', label='Profissão'),
                 Field('nascimento', label='Data de nascimento', type='date',
                     requires=[IS_NOT_EMPTY(), IS_DATE(format='%d/%m/%Y')]),
-                Field('telefone', label='Telefone'),
+                Field('telefone', label='Telefone', requires=IS_NOT_EMPTY()),
                 Field('escolaridade', label='Escolaridade',
                     requires=IS_EMPTY_OR(IS_IN_SET(escolaridade))),
                 Field('estadocivil', label='Estado civil',
@@ -33,6 +34,7 @@ db.define_table('pacientes',
                       requires=IS_EMPTY_OR(IS_IN_SET(ufs))),
                 Field('cep', label='CEP'),
                 Field('observacoes', label='Observações', type='text'),
+                Field('tipo', label='Tipo de atendimento', requires=IS_IN_SET(tipo)),
                 format='%(nome)s'
                 )
 

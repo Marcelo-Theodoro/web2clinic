@@ -6,7 +6,7 @@ STATUS_AGENDAMENTO = [
     ('realizado', 'Realizado'),
     ('faltou', 'Faltou'),
 ]
-
+TIPO = ['Consulta', 'Retorno']
 
 db.define_table('agendamentos',
                 Field('id_paciente', 'reference pacientes',
@@ -17,6 +17,8 @@ db.define_table('agendamentos',
                 Field('hora_fim', type='time', requires=IS_TIME()),
                 Field('status', requires=IS_IN_SET(STATUS_AGENDAMENTO), default='agendado',
                       readable=False, writable=False),
+                Field('tipo', label="Tipo", requires=IS_IN_SET(TIPO)),
+                Field('observacao', label="Observações"),
                 format='%(id_paciente)s %(dia)s'
                 )
 

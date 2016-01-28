@@ -9,6 +9,12 @@
 	<div class="col-sm-12 col-md-12 col-lg-12">
 		<div class="col-sm-12 col-md-12 col-lg-12">
 			<p><strong>Nome:</strong> <a href="{{=URL(c='paciente',f='paciente', args=paciente.id)}}">{{=paciente.nome}}</a></p>
+			<p><strong>Tipo de agendamento:</strong> {{=agendamento.tipo}}</p>
+			<p><strong>Tipo:</strong> {{=paciente.tipo}}</p>
+			{{if agendamento.observacao:}}
+				<p><strong>Observação:</strong> {{=agendamento.observacao}}</p>
+			{{pass}}
+			<hr>
 			<p><strong>Dia agendado:</strong> {{=agendamento.dia}}</p>
 			<p><strong>Hora início:</strong> {{=agendamento.hora_inicio}}</p>
 			<p><strong>Hora fim:</strong> {{=agendamento.hora_fim}}</p>

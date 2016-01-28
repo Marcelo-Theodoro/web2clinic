@@ -10,8 +10,17 @@ def gerar_atestado():
     paciente = db(db.pacientes.id == consulta.id_paciente).select().first()
     form = SQLFORM(db.atestados)
     texto_atestado = '''
-    Texto pré-definido para o atestado do paciente {0}
-    '''.format(paciente.nome)
+    Atesto para os devidos fins que {0} esteve sob meus cuidados, no dia {1} devendo:
+    ( ) Retornar ao trabalho
+
+
+    ( ) Permanecer afastada no dia de hoje
+
+    
+    ( ) Permanecer afastada do dia __/__/_____ ao dia __/__/_____
+
+    CID:
+    '''.format(paciente.nome, request.now.strftime('%d/%m/%Y'))
     form.vars.atestado = texto_atestado
     form.vars.id_paciente = paciente.id
     form.vars.id_consulta = consulta.id

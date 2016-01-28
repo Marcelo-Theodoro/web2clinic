@@ -288,6 +288,7 @@
 'Time in Cache (h:m:s)': 'Tempo em Cache (h:m:s)',
 'Timestamp': 'Timestamp',
 'Tipo Consulta': 'Tipo Consulta',
+'Tipo de atendimento': 'Tipo de atendimento',
 'TSV (Spreadsheets)': 'TSV (Spreadsheets)',
 'TSV (Spreadsheets, hidden cols)': 'TSV (Spreadsheets, hidden cols)',
 'Twitter': 'Twitter',
