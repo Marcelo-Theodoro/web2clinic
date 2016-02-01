@@ -12,13 +12,11 @@ def gerar_atestado():
     texto_atestado = '''
     Atesto para os devidos fins que {0} esteve sob meus cuidados, no dia {1} devendo:
     ( ) Retornar ao trabalho
-
-
+    \n\n
     ( ) Permanecer afastada no dia de hoje
-
-    
+    \n\n
     ( ) Permanecer afastada do dia __/__/_____ ao dia __/__/_____
-
+    \n\n
     CID:
     '''.format(paciente.nome, request.now.strftime('%d/%m/%Y'))
     form.vars.atestado = texto_atestado
