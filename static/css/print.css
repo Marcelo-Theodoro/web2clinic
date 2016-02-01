@@ -200,11 +200,15 @@
         bottom: 0;
  	}
  	div.pricipal {
-         margin-top: 10%;
+         margin-top: 15%;
  	}
  	div.assinatura{
  		position: fixed;
- 		margin-left: 50%;
+ 		left: 40%;
         bottom: 20%;
+ 	}
+ 	pre {
+ 		border: 0px;
+ 		font-size: 12px;
  	}
  }
