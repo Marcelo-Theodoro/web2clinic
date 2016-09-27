@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
 
+
+# Só um comentário sobre isso aqui:
+# Essa parte provavelmente a parte mais mal feita do projeto todo.
+# Ter que obrigatóriamente criar um tabela pra cada ficha é desnecessário
+# e utiliza recursos demais.
+# Uma possibilidade pra resolver isso seria utilização
+# de alguma base de dados não relacional, por exemplo.
+# Ou até mesmo uma adapção técnica de tipo: transformar os dados dos forms
+# para Json e salvar num campo qualquer como TEXT. 
+
 db.define_table('ficha_clinica_mulher',
              Field('id_paciente', 'reference pacientes',
                    writable=False,readable=False),
