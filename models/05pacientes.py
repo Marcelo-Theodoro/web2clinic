@@ -54,26 +54,24 @@ def BuscaPaciente(id):
         paciente.nascimento = paciente.nascimento.strftime('%d/%m/%Y')
 
     NI = 'Não informado'
-    if paciente.endereco == None or paciente.endereco == '':
-        paciente.endereco = NI
-    if paciente.cidade == None or paciente.cidade == '':
-        paciente.cidade = NI
-    if paciente.telefone == None or paciente.telefone == '':
-        paciente.telefone = NI
-    if paciente.escolaridade == None or paciente.escolaridade == '':
-        paciente.escolaridade = NI
-    if paciente.observacoes == None or paciente.observacoes == '':
-        paciente.observacoes = NI
-    if paciente.cpf == None or paciente.cpf == '':
-        paciente.cpf = NI
-    if paciente.uf == None or paciente.uf == '':
-        paciente.uf = NI
-    if paciente.estadocivil == None or paciente.estadocivil == '':
-        paciente.estadocivil = NI
-    if paciente.cor == None or paciente.cor == '':
-        paciente.cor = NI
-    if paciente.cep == None or paciente.cep == '':
-        paciente.cep = NI
+
+    campos = []
+
+    campos.append(paciente.endereco)
+    campos.append(paciente.cidade)
+    campos.append(paciente.telefone)
+    campos.append(paciente.escolaridade)
+    campos.append(paciente.observacoes)
+    campos.append(paciente.cpf)
+    campos.append(paciente.uf)
+    campos.append(paciente.estadocivil)
+    campos.append(paciente.cor)
+    campos.append(paciente.cep)
+
+    for campo in campos:
+    	if not campo:
+    		campo = NI
+
     return paciente
 
 
