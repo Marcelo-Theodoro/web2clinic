@@ -3,7 +3,7 @@
 Sistema para gerenciamento de clínicas médicas. Com funcionalidades que vão desde um simples cadastro de pacientes, até criação de uma consulta com possibilidade de inserção de atestados, exames, fichas e prescrições.
 
 
-veja a aplicação em funciona em: https://marcelotheodoro.pythonanywhere.com/web2clinic
+Veja a aplicação em: https://marcelotheodoro.pythonanywhere.com/web2clinic
 
 Usuário: user
 Senha: user
@@ -106,7 +106,7 @@ Após isso, o sistema estará sendo executado em `localhost` na porta `:8000`.
 
 Acesse o painel do administrador no endereço http://127.0.0.1:8000/admin e digite a senha definida na execução do web2py.
 
-Neste painel, você pode fazer a importação do web2clinic. Para isso, acesse o repositório oficial do web2clinic em https://github.com/Marcelo-Theodoro/web2commerce e faça o download do arquivo `web2py.app.web2clinic.w2p`. Agora é só fazer o upload deste arquivo através do painel do administrador, que o sistema já estará disponível em http://127.0.0.1:8000/web2clinic.
+Neste painel, você pode fazer a importação do web2clinic. Para isso, acesse o repositório oficial do web2clinic em https://github.com/Marcelo-Theodoro/web2clinic e faça o download do arquivo `web2py.app.web2clinic.w2p`. Agora é só fazer o upload deste arquivo através do painel do administrador, que o sistema já estará disponível em http://127.0.0.1:8000/web2clinic.
 
 
 
