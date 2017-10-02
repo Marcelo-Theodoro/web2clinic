@@ -3,11 +3,6 @@
 Sistema para gerenciamento de clínicas médicas. Com funcionalidades que vão desde um simples cadastro de pacientes, até criação de uma consulta com possibilidade de inserção de atestados, exames, fichas e prescrições.
 
 
-Veja a aplicação em: https://marcelotheodoro.pythonanywhere.com/web2clinic
-
-Usuário: user
-Senha: user
-
 ### Gerenciamento de pacientes:
 
 No menu `Pacientes` > `Novo cadastro` você pode cadastrar as informações de uma paciente. Informações obrigatórias:
